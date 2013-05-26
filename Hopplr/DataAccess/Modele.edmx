@@ -1,0 +1,747 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="HopplrModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="HopplrModelStoreContainer">
+          <EntitySet Name="Article" EntityType="HopplrModel.Store.Article" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ArticleTag" EntityType="HopplrModel.Store.ArticleTag" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Blog" EntityType="HopplrModel.Store.Blog" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Comment" EntityType="HopplrModel.Store.Comment" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Follow" EntityType="HopplrModel.Store.Follow" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="MediaType" EntityType="HopplrModel.Store.MediaType" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Style" EntityType="HopplrModel.Store.Style" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Tag" EntityType="HopplrModel.Store.Tag" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Theme" EntityType="HopplrModel.Store.Theme" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="User" EntityType="HopplrModel.Store.User" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Article_Blog" Association="HopplrModel.Store.FK_Article_Blog">
+            <End Role="Blog" EntitySet="Blog" />
+            <End Role="Article" EntitySet="Article" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Article_MediaType" Association="HopplrModel.Store.FK_Article_MediaType">
+            <End Role="MediaType" EntitySet="MediaType" />
+            <End Role="Article" EntitySet="Article" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ArticleTag_Article" Association="HopplrModel.Store.FK_ArticleTag_Article">
+            <End Role="Article" EntitySet="Article" />
+            <End Role="ArticleTag" EntitySet="ArticleTag" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ArticleTag_Tag" Association="HopplrModel.Store.FK_ArticleTag_Tag">
+            <End Role="Tag" EntitySet="Tag" />
+            <End Role="ArticleTag" EntitySet="ArticleTag" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Blog_Style" Association="HopplrModel.Store.FK_Blog_Style">
+            <End Role="Style" EntitySet="Style" />
+            <End Role="Blog" EntitySet="Blog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Blog_Theme" Association="HopplrModel.Store.FK_Blog_Theme">
+            <End Role="Theme" EntitySet="Theme" />
+            <End Role="Blog" EntitySet="Blog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Blog_User" Association="HopplrModel.Store.FK_Blog_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Blog" EntitySet="Blog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comment_Article" Association="HopplrModel.Store.FK_Comment_Article">
+            <End Role="Article" EntitySet="Article" />
+            <End Role="Comment" EntitySet="Comment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comment_User" Association="HopplrModel.Store.FK_Comment_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Comment" EntitySet="Comment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Follow_Blog" Association="HopplrModel.Store.FK_Follow_Blog">
+            <End Role="Blog" EntitySet="Blog" />
+            <End Role="Follow" EntitySet="Follow" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Follow_User" Association="HopplrModel.Store.FK_Follow_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Follow" EntitySet="Follow" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Style" Association="HopplrModel.Store.FK_User_Style">
+            <End Role="Style" EntitySet="Style" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Article">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="blogId" Type="bigint" Nullable="false" />
+          <Property Name="MediaUrl" Type="varchar" MaxLength="50" />
+          <Property Name="MediaTypeId" Type="bigint" />
+          <Property Name="Text" Type="text" />
+        </EntityType>
+        <EntityType Name="ArticleTag">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="TagId" Type="bigint" Nullable="false" />
+          <Property Name="ArticleId" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Blog">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="bigint" Nullable="false" />
+          <Property Name="StyleId" Type="bigint" Nullable="false" />
+          <Property Name="ThemeId" Type="bigint" Nullable="false" />
+          <Property Name="Nom" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Description" Type="text" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Comment">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="bigint" Nullable="false" />
+          <Property Name="ArticleId" Type="bigint" Nullable="false" />
+          <Property Name="Comment" Type="text" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Follow">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="bigint" Nullable="false" />
+          <Property Name="BlogId" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MediaType">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="text" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Style">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CSSPath" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Description" Type="text" />
+        </EntityType>
+        <EntityType Name="Tag">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="varchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Theme">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="text" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="StyleId" Type="bigint" Nullable="false" />
+          <Property Name="Pseudo" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Nom" Type="varchar" MaxLength="50" />
+          <Property Name="Prenom" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="HashPassword" Type="varchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_Article_Blog">
+          <End Role="Blog" Type="HopplrModel.Store.Blog" Multiplicity="1" />
+          <End Role="Article" Type="HopplrModel.Store.Article" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Blog">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Article">
+              <PropertyRef Name="blogId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Article_MediaType">
+          <End Role="MediaType" Type="HopplrModel.Store.MediaType" Multiplicity="0..1" />
+          <End Role="Article" Type="HopplrModel.Store.Article" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MediaType">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Article">
+              <PropertyRef Name="MediaTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ArticleTag_Article">
+          <End Role="Article" Type="HopplrModel.Store.Article" Multiplicity="1" />
+          <End Role="ArticleTag" Type="HopplrModel.Store.ArticleTag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Article">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ArticleTag">
+              <PropertyRef Name="ArticleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ArticleTag_Tag">
+          <End Role="Tag" Type="HopplrModel.Store.Tag" Multiplicity="1" />
+          <End Role="ArticleTag" Type="HopplrModel.Store.ArticleTag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tag">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ArticleTag">
+              <PropertyRef Name="TagId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Blog_Style">
+          <End Role="Style" Type="HopplrModel.Store.Style" Multiplicity="1" />
+          <End Role="Blog" Type="HopplrModel.Store.Blog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Style">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Blog">
+              <PropertyRef Name="StyleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Blog_Theme">
+          <End Role="Theme" Type="HopplrModel.Store.Theme" Multiplicity="1" />
+          <End Role="Blog" Type="HopplrModel.Store.Blog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Theme">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Blog">
+              <PropertyRef Name="ThemeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Blog_User">
+          <End Role="User" Type="HopplrModel.Store.User" Multiplicity="1" />
+          <End Role="Blog" Type="HopplrModel.Store.Blog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Blog">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comment_Article">
+          <End Role="Article" Type="HopplrModel.Store.Article" Multiplicity="1" />
+          <End Role="Comment" Type="HopplrModel.Store.Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Article">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Comment">
+              <PropertyRef Name="ArticleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comment_User">
+          <End Role="User" Type="HopplrModel.Store.User" Multiplicity="1" />
+          <End Role="Comment" Type="HopplrModel.Store.Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Comment">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Follow_Blog">
+          <End Role="Blog" Type="HopplrModel.Store.Blog" Multiplicity="1" />
+          <End Role="Follow" Type="HopplrModel.Store.Follow" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Blog">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Follow">
+              <PropertyRef Name="BlogId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Follow_User">
+          <End Role="User" Type="HopplrModel.Store.User" Multiplicity="1" />
+          <End Role="Follow" Type="HopplrModel.Store.Follow" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Follow">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Style">
+          <End Role="Style" Type="HopplrModel.Store.Style" Multiplicity="1" />
+          <End Role="User" Type="HopplrModel.Store.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Style">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="StyleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HopplrModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="HopplrEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Article" EntityType="HopplrModel.Article" />
+          <EntitySet Name="ArticleTag" EntityType="HopplrModel.ArticleTag" />
+          <EntitySet Name="Blog" EntityType="HopplrModel.Blog" />
+          <EntitySet Name="Comment" EntityType="HopplrModel.Comment" />
+          <EntitySet Name="Follow" EntityType="HopplrModel.Follow" />
+          <EntitySet Name="MediaType" EntityType="HopplrModel.MediaType" />
+          <EntitySet Name="Style" EntityType="HopplrModel.Style" />
+          <EntitySet Name="Tag" EntityType="HopplrModel.Tag" />
+          <EntitySet Name="Theme" EntityType="HopplrModel.Theme" />
+          <EntitySet Name="User" EntityType="HopplrModel.User" />
+          <AssociationSet Name="FK_Article_Blog" Association="HopplrModel.FK_Article_Blog">
+            <End Role="Blog" EntitySet="Blog" />
+            <End Role="Article" EntitySet="Article" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Article_MediaType" Association="HopplrModel.FK_Article_MediaType">
+            <End Role="MediaType" EntitySet="MediaType" />
+            <End Role="Article" EntitySet="Article" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ArticleTag_Article" Association="HopplrModel.FK_ArticleTag_Article">
+            <End Role="Article" EntitySet="Article" />
+            <End Role="ArticleTag" EntitySet="ArticleTag" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comment_Article" Association="HopplrModel.FK_Comment_Article">
+            <End Role="Article" EntitySet="Article" />
+            <End Role="Comment" EntitySet="Comment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ArticleTag_Tag" Association="HopplrModel.FK_ArticleTag_Tag">
+            <End Role="Tag" EntitySet="Tag" />
+            <End Role="ArticleTag" EntitySet="ArticleTag" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Blog_Style" Association="HopplrModel.FK_Blog_Style">
+            <End Role="Style" EntitySet="Style" />
+            <End Role="Blog" EntitySet="Blog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Blog_Theme" Association="HopplrModel.FK_Blog_Theme">
+            <End Role="Theme" EntitySet="Theme" />
+            <End Role="Blog" EntitySet="Blog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Blog_User" Association="HopplrModel.FK_Blog_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Blog" EntitySet="Blog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Follow_Blog" Association="HopplrModel.FK_Follow_Blog">
+            <End Role="Blog" EntitySet="Blog" />
+            <End Role="Follow" EntitySet="Follow" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comment_User" Association="HopplrModel.FK_Comment_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Comment" EntitySet="Comment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Follow_User" Association="HopplrModel.FK_Follow_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Follow" EntitySet="Follow" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Style" Association="HopplrModel.FK_User_Style">
+            <End Role="Style" EntitySet="Style" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Article">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="blogId" Type="Int64" Nullable="false" />
+          <Property Name="MediaUrl" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="MediaTypeId" Type="Int64" />
+          <Property Name="Text" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Blog" Relationship="HopplrModel.FK_Article_Blog" FromRole="Article" ToRole="Blog" />
+          <NavigationProperty Name="MediaType" Relationship="HopplrModel.FK_Article_MediaType" FromRole="Article" ToRole="MediaType" />
+          <NavigationProperty Name="ArticleTag" Relationship="HopplrModel.FK_ArticleTag_Article" FromRole="Article" ToRole="ArticleTag" />
+          <NavigationProperty Name="Comment" Relationship="HopplrModel.FK_Comment_Article" FromRole="Article" ToRole="Comment" />
+        </EntityType>
+        <EntityType Name="ArticleTag">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="TagId" Type="Int64" Nullable="false" />
+          <Property Name="ArticleId" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Article" Relationship="HopplrModel.FK_ArticleTag_Article" FromRole="ArticleTag" ToRole="Article" />
+          <NavigationProperty Name="Tag" Relationship="HopplrModel.FK_ArticleTag_Tag" FromRole="ArticleTag" ToRole="Tag" />
+        </EntityType>
+        <EntityType Name="Blog">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int64" Nullable="false" />
+          <Property Name="StyleId" Type="Int64" Nullable="false" />
+          <Property Name="ThemeId" Type="Int64" Nullable="false" />
+          <Property Name="Nom" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Article" Relationship="HopplrModel.FK_Article_Blog" FromRole="Blog" ToRole="Article" />
+          <NavigationProperty Name="Style" Relationship="HopplrModel.FK_Blog_Style" FromRole="Blog" ToRole="Style" />
+          <NavigationProperty Name="Theme" Relationship="HopplrModel.FK_Blog_Theme" FromRole="Blog" ToRole="Theme" />
+          <NavigationProperty Name="User" Relationship="HopplrModel.FK_Blog_User" FromRole="Blog" ToRole="User" />
+          <NavigationProperty Name="Follow" Relationship="HopplrModel.FK_Follow_Blog" FromRole="Blog" ToRole="Follow" />
+        </EntityType>
+        <EntityType Name="Comment">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int64" Nullable="false" />
+          <Property Name="ArticleId" Type="Int64" Nullable="false" />
+          <Property Name="Comment1" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Article" Relationship="HopplrModel.FK_Comment_Article" FromRole="Comment" ToRole="Article" />
+          <NavigationProperty Name="User" Relationship="HopplrModel.FK_Comment_User" FromRole="Comment" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Follow">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int64" Nullable="false" />
+          <Property Name="BlogId" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Blog" Relationship="HopplrModel.FK_Follow_Blog" FromRole="Follow" ToRole="Blog" />
+          <NavigationProperty Name="User" Relationship="HopplrModel.FK_Follow_User" FromRole="Follow" ToRole="User" />
+        </EntityType>
+        <EntityType Name="MediaType">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Article" Relationship="HopplrModel.FK_Article_MediaType" FromRole="MediaType" ToRole="Article" />
+        </EntityType>
+        <EntityType Name="Style">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="CSSPath" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Blog" Relationship="HopplrModel.FK_Blog_Style" FromRole="Style" ToRole="Blog" />
+          <NavigationProperty Name="User" Relationship="HopplrModel.FK_User_Style" FromRole="Style" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Tag">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="ArticleTag" Relationship="HopplrModel.FK_ArticleTag_Tag" FromRole="Tag" ToRole="ArticleTag" />
+        </EntityType>
+        <EntityType Name="Theme">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Blog" Relationship="HopplrModel.FK_Blog_Theme" FromRole="Theme" ToRole="Blog" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="StyleId" Type="Int64" Nullable="false" />
+          <Property Name="Pseudo" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Nom" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Prenom" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="HashPassword" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Blog" Relationship="HopplrModel.FK_Blog_User" FromRole="User" ToRole="Blog" />
+          <NavigationProperty Name="Comment" Relationship="HopplrModel.FK_Comment_User" FromRole="User" ToRole="Comment" />
+          <NavigationProperty Name="Follow" Relationship="HopplrModel.FK_Follow_User" FromRole="User" ToRole="Follow" />
+          <NavigationProperty Name="Style" Relationship="HopplrModel.FK_User_Style" FromRole="User" ToRole="Style" />
+        </EntityType>
+        <Association Name="FK_Article_Blog">
+          <End Role="Blog" Type="HopplrModel.Blog" Multiplicity="1" />
+          <End Role="Article" Type="HopplrModel.Article" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Blog">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Article">
+              <PropertyRef Name="blogId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Article_MediaType">
+          <End Role="MediaType" Type="HopplrModel.MediaType" Multiplicity="0..1" />
+          <End Role="Article" Type="HopplrModel.Article" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MediaType">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Article">
+              <PropertyRef Name="MediaTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ArticleTag_Article">
+          <End Role="Article" Type="HopplrModel.Article" Multiplicity="1" />
+          <End Role="ArticleTag" Type="HopplrModel.ArticleTag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Article">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ArticleTag">
+              <PropertyRef Name="ArticleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comment_Article">
+          <End Role="Article" Type="HopplrModel.Article" Multiplicity="1" />
+          <End Role="Comment" Type="HopplrModel.Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Article">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Comment">
+              <PropertyRef Name="ArticleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ArticleTag_Tag">
+          <End Role="Tag" Type="HopplrModel.Tag" Multiplicity="1" />
+          <End Role="ArticleTag" Type="HopplrModel.ArticleTag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tag">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ArticleTag">
+              <PropertyRef Name="TagId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Blog_Style">
+          <End Role="Style" Type="HopplrModel.Style" Multiplicity="1" />
+          <End Role="Blog" Type="HopplrModel.Blog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Style">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Blog">
+              <PropertyRef Name="StyleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Blog_Theme">
+          <End Role="Theme" Type="HopplrModel.Theme" Multiplicity="1" />
+          <End Role="Blog" Type="HopplrModel.Blog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Theme">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Blog">
+              <PropertyRef Name="ThemeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Blog_User">
+          <End Role="User" Type="HopplrModel.User" Multiplicity="1" />
+          <End Role="Blog" Type="HopplrModel.Blog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Blog">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Follow_Blog">
+          <End Role="Blog" Type="HopplrModel.Blog" Multiplicity="1" />
+          <End Role="Follow" Type="HopplrModel.Follow" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Blog">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Follow">
+              <PropertyRef Name="BlogId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comment_User">
+          <End Role="User" Type="HopplrModel.User" Multiplicity="1" />
+          <End Role="Comment" Type="HopplrModel.Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Comment">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Follow_User">
+          <End Role="User" Type="HopplrModel.User" Multiplicity="1" />
+          <End Role="Follow" Type="HopplrModel.Follow" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Follow">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Style">
+          <End Role="Style" Type="HopplrModel.Style" Multiplicity="1" />
+          <End Role="User" Type="HopplrModel.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Style">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="StyleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HopplrModelStoreContainer" CdmEntityContainer="HopplrEntities">
+          <EntitySetMapping Name="Article">
+            <EntityTypeMapping TypeName="HopplrModel.Article">
+              <MappingFragment StoreEntitySet="Article">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="blogId" ColumnName="blogId" />
+                <ScalarProperty Name="MediaUrl" ColumnName="MediaUrl" />
+                <ScalarProperty Name="MediaTypeId" ColumnName="MediaTypeId" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ArticleTag">
+            <EntityTypeMapping TypeName="HopplrModel.ArticleTag">
+              <MappingFragment StoreEntitySet="ArticleTag">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="TagId" ColumnName="TagId" />
+                <ScalarProperty Name="ArticleId" ColumnName="ArticleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Blog">
+            <EntityTypeMapping TypeName="HopplrModel.Blog">
+              <MappingFragment StoreEntitySet="Blog">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="StyleId" ColumnName="StyleId" />
+                <ScalarProperty Name="ThemeId" ColumnName="ThemeId" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Comment">
+            <EntityTypeMapping TypeName="HopplrModel.Comment">
+              <MappingFragment StoreEntitySet="Comment">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ArticleId" ColumnName="ArticleId" />
+                <ScalarProperty Name="Comment1" ColumnName="Comment" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Follow">
+            <EntityTypeMapping TypeName="HopplrModel.Follow">
+              <MappingFragment StoreEntitySet="Follow">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="BlogId" ColumnName="BlogId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MediaType">
+            <EntityTypeMapping TypeName="HopplrModel.MediaType">
+              <MappingFragment StoreEntitySet="MediaType">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Style">
+            <EntityTypeMapping TypeName="HopplrModel.Style">
+              <MappingFragment StoreEntitySet="Style">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="CSSPath" ColumnName="CSSPath" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tag">
+            <EntityTypeMapping TypeName="HopplrModel.Tag">
+              <MappingFragment StoreEntitySet="Tag">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Theme">
+            <EntityTypeMapping TypeName="HopplrModel.Theme">
+              <MappingFragment StoreEntitySet="Theme">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User">
+            <EntityTypeMapping TypeName="HopplrModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="StyleId" ColumnName="StyleId" />
+                <ScalarProperty Name="Pseudo" ColumnName="Pseudo" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+                <ScalarProperty Name="Prenom" ColumnName="Prenom" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="HashPassword" ColumnName="HashPassword" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
