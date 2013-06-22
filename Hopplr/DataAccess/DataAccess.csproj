@@ -57,9 +57,11 @@
     <Compile Include="Blog.cs">
       <DependentUpon>Modele.tt</DependentUpon>
     </Compile>
+    <Compile Include="BlogCRUD.cs" />
     <Compile Include="Comment.cs">
       <DependentUpon>Modele.tt</DependentUpon>
     </Compile>
+    <Compile Include="ArticleTagCRUD.cs" />
     <Compile Include="Feed.cs" />
     <Compile Include="Follow.cs">
       <DependentUpon>Modele.tt</DependentUpon>
