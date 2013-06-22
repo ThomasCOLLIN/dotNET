@@ -45,12 +45,15 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Feed1.cs" />
-    <Compile Include="IFeed1.cs" />
+    <Compile Include="Feed.cs" />
+    <Compile Include="IFeed.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="User.Config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BusinessManagement\BusinessManagement.csproj">

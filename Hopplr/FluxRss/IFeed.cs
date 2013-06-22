@@ -9,16 +9,15 @@ using System.Text;
 
 namespace FluxRss
 {
-    // REMARQUE : vous pouvez utiliser la commande Renommer du menu Refactoriser pour changer le nom d'interface "IFeed1" à la fois dans le code et le fichier de configuration.
     [ServiceContract]
     [ServiceKnownType(typeof(Atom10FeedFormatter))]
     [ServiceKnownType(typeof(Rss20FeedFormatter))]
-    public interface IFeed1
+    public interface IFeed
     {
 
         [OperationContract]
-        [WebGet(UriTemplate = "*", BodyStyle = WebMessageBodyStyle.Bare)]
-        SyndicationFeedFormatter CreateFeed();
+        [WebGet(UriTemplate = "{user}/{blog}", BodyStyle = WebMessageBodyStyle.Bare)]
+        SyndicationFeedFormatter CreateFeedForBlog(string user, string blog);
 
         // TODO: ajoutez vos opérations de service ici
     }

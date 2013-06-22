@@ -9,18 +9,19 @@ using System.Text;
 
 namespace FluxRss
 {
-    // REMARQUE : vous pouvez utiliser la commande Renommer du menu Refactoriser pour changer le nom de classe "Feed1" à la fois dans le code et le fichier de configuration.
-    public class Feed1 : IFeed1
+    public class Feed : IFeed
     {
-        public SyndicationFeedFormatter CreateFeed()
+        public SyndicationFeedFormatter CreateFeedForBlog(string user, string blog)
         {
-            // Créez un flux RSS.
-            SyndicationFeed feed = new SyndicationFeed("Feed Title", "A WCF Syndication Feed", null);
+            SyndicationFeed feed = new SyndicationFeed("Blog feed", "A feed linked to a blog", null);
             List<SyndicationItem> items = new List<SyndicationItem>();
+            List<Dbo.Article> articles = BusinessManagement.Feed.GetBlogContent(user, blog);
 
-            // Créez un article RSS.
-            SyndicationItem item = new SyndicationItem("An item", "Item content", null);
-            items.Add(item);
+            foreach (Dbo.Article article in articles)
+            {
+                SyndicationItem item = new SyndicationItem(article.Text, article.MediaUrl, null);
+                items.Add(item);
+            }
             feed.Items = items;
 
             // Renvoie ATOM ou RSS en fonction de la chaîne de requête
