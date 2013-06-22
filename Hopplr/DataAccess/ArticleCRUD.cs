@@ -15,7 +15,8 @@ namespace DataAccess
             {
                 using (HopplrEntities bdd = new HopplrEntities())
                 {
-
+                    bdd.Article.Add(article);
+                    bdd.SaveChanges();
                 }
             }
             catch (Exception e)
@@ -25,13 +26,13 @@ namespace DataAccess
             }
         }
 
-        public static void Get(long articleId)
+        public static Article Get(long articleId)
         {
             try
             {
                 using (HopplrEntities bdd = new HopplrEntities())
                 {
-
+                    return bdd.Article.Where(art => art.id == articleId).FirstOrDefault();
                 }
             }
             catch (Exception e)
@@ -41,13 +42,15 @@ namespace DataAccess
             }
         }
 
-        public static void Update(Article article)
+        public static void UpdateText(long articleId, string text)
         {
             try
             {
                 using (HopplrEntities bdd = new HopplrEntities())
                 {
-
+                    Article article = Get(articleId);
+                    article.Text = text;
+                    bdd.SaveChanges();
                 }
             }
             catch (Exception e)
@@ -63,7 +66,8 @@ namespace DataAccess
             {
                 using (HopplrEntities bdd = new HopplrEntities())
                 {
-
+                    bdd.Article.Remove(Get(articleId));
+                    bdd.SaveChanges()
                 }
             }
             catch (Exception e)
