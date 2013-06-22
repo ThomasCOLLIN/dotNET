@@ -8,7 +8,7 @@ namespace BusinessManagement
 {
     public class Feed
     {
-        public static List<Dbo.Article> GetBlogContent(string user, string blog)
+        public static List<DataAccess.Article> GetBlogContent(string user, string blog)
         {
             return DataAccess.Feed.GetBlogContent(user, blog);
         }
