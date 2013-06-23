@@ -43,14 +43,14 @@ namespace DataAccess
             }
         }
 
-        public static void UpdateText(long articleId, string text)
+        public static void Update(long articleId, Article newArticle)
         {
             try
             {
                 using (HopplrEntities bdd = new HopplrEntities())
                 {
                     Article article = Get(articleId);
-                    article.Text = text;
+                    article = newArticle;
                     bdd.SaveChanges();
                 }
             }

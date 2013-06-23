@@ -7,15 +7,15 @@ using System.Threading.Tasks;
 
 namespace DataAccess
 {
-    public class ArticleTagCRUD
+    class StyleCRUD
     {
-        public static void Create(ArticleTag articleTag)
+        public static void Create(Style style)
         {
             try
             {
                 using (HopplrEntities bdd = new HopplrEntities())
                 {
-                    bdd.ArticleTag.Add(articleTag);
+                    bdd.Style.Add(style);
                     bdd.SaveChanges();
                 }
             }
@@ -26,13 +26,13 @@ namespace DataAccess
             }
         }
 
-        public static ArticleTag Get(long articleTagId)
+        public static Style Get(long styleId)
         {
             try
             {
                 using (HopplrEntities bdd = new HopplrEntities())
                 {
-                    return bdd.ArticleTag.Where(art => art.id == articleTagId).FirstOrDefault();
+                    return bdd.Style.Where(stl => stl.id == styleId).FirstOrDefault();
                 }
             }
             catch (Exception e)
@@ -42,13 +42,31 @@ namespace DataAccess
             }
         }
 
-        public static void Delete(long articleTagId)
+        public static void Update(long styleId, Style stl)
         {
             try
             {
                 using (HopplrEntities bdd = new HopplrEntities())
                 {
-                    bdd.ArticleTag.Remove(Get(articleTagId));
+                    Style style = Get(styleId);
+                    style = stl;
+                    bdd.SaveChanges();
+                }
+            }
+            catch (Exception e)
+            {
+                Trace.WriteLine(e.Message);
+                throw;
+            }
+        }
+
+        public static void Delete(long styleId)
+        {
+            try
+            {
+                using (HopplrEntities bdd = new HopplrEntities())
+                {
+                    bdd.Style.Remove(Get(styleId));
                     bdd.SaveChanges();
                 }
             }

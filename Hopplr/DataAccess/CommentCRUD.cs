@@ -7,15 +7,15 @@ using System.Threading.Tasks;
 
 namespace DataAccess
 {
-    public class ArticleTagCRUD
+    class CommentCRUD
     {
-        public static void Create(ArticleTag articleTag)
+        public static void Create(Comment comment)
         {
             try
             {
                 using (HopplrEntities bdd = new HopplrEntities())
                 {
-                    bdd.ArticleTag.Add(articleTag);
+                    bdd.Comment.Add(comment);
                     bdd.SaveChanges();
                 }
             }
@@ -26,13 +26,13 @@ namespace DataAccess
             }
         }
 
-        public static ArticleTag Get(long articleTagId)
+        public static Comment Get(long commentId)
         {
             try
             {
                 using (HopplrEntities bdd = new HopplrEntities())
                 {
-                    return bdd.ArticleTag.Where(art => art.id == articleTagId).FirstOrDefault();
+                    return bdd.Comment.Where(cmmnt => cmmnt.id == commentId).FirstOrDefault();
                 }
             }
             catch (Exception e)
@@ -42,13 +42,31 @@ namespace DataAccess
             }
         }
 
-        public static void Delete(long articleTagId)
+        public static void Update(long commentId, Comment cmmnt)
         {
             try
             {
                 using (HopplrEntities bdd = new HopplrEntities())
                 {
-                    bdd.ArticleTag.Remove(Get(articleTagId));
+                    Comment comment = Get(commentId);
+                    comment = cmmnt;
+                    bdd.SaveChanges();
+                }
+            }
+            catch (Exception e)
+            {
+                Trace.WriteLine(e.Message);
+                throw;
+            }
+        }
+
+        public static void Delete(long commentId)
+        {
+            try
+            {
+                using (HopplrEntities bdd = new HopplrEntities())
+                {
+                    bdd.Comment.Remove(Get(commentId));
                     bdd.SaveChanges();
                 }
             }

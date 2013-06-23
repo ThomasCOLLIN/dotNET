@@ -7,15 +7,15 @@ using System.Threading.Tasks;
 
 namespace DataAccess
 {
-    public class ArticleTagCRUD
+    class UserCRUD
     {
-        public static void Create(ArticleTag articleTag)
+        public static void Create(User user)
         {
             try
             {
                 using (HopplrEntities bdd = new HopplrEntities())
                 {
-                    bdd.ArticleTag.Add(articleTag);
+                    bdd.User.Add(user);
                     bdd.SaveChanges();
                 }
             }
@@ -26,13 +26,13 @@ namespace DataAccess
             }
         }
 
-        public static ArticleTag Get(long articleTagId)
+        public static User Get(long userId)
         {
             try
             {
                 using (HopplrEntities bdd = new HopplrEntities())
                 {
-                    return bdd.ArticleTag.Where(art => art.id == articleTagId).FirstOrDefault();
+                    return bdd.User.Where(usr => usr.id == userId).FirstOrDefault();
                 }
             }
             catch (Exception e)
@@ -42,13 +42,31 @@ namespace DataAccess
             }
         }
 
-        public static void Delete(long articleTagId)
+        public static void Update(long userId, User usr)
         {
             try
             {
                 using (HopplrEntities bdd = new HopplrEntities())
                 {
-                    bdd.ArticleTag.Remove(Get(articleTagId));
+                    User user = Get(userId);
+                    user = usr;
+                    bdd.SaveChanges();
+                }
+            }
+            catch (Exception e)
+            {
+                Trace.WriteLine(e.Message);
+                throw;
+            }
+        }
+
+        public static void Delete(long userId)
+        {
+            try
+            {
+                using (HopplrEntities bdd = new HopplrEntities())
+                {
+                    bdd.User.Remove(Get(userId));
                     bdd.SaveChanges();
                 }
             }

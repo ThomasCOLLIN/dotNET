@@ -7,15 +7,15 @@ using System.Threading.Tasks;
 
 namespace DataAccess
 {
-    public class ArticleTagCRUD
+    class FollowCRUD
     {
-        public static void Create(ArticleTag articleTag)
+        public static void Create(Follow follow)
         {
             try
             {
                 using (HopplrEntities bdd = new HopplrEntities())
                 {
-                    bdd.ArticleTag.Add(articleTag);
+                    bdd.Follow.Add(follow);
                     bdd.SaveChanges();
                 }
             }
@@ -26,13 +26,13 @@ namespace DataAccess
             }
         }
 
-        public static ArticleTag Get(long articleTagId)
+        public static Follow Get(long followId)
         {
             try
             {
                 using (HopplrEntities bdd = new HopplrEntities())
                 {
-                    return bdd.ArticleTag.Where(art => art.id == articleTagId).FirstOrDefault();
+                    return bdd.Follow.Where(fllw => fllw.Id == followId).FirstOrDefault();
                 }
             }
             catch (Exception e)
@@ -42,13 +42,31 @@ namespace DataAccess
             }
         }
 
-        public static void Delete(long articleTagId)
+        public static void Update(long followId, Follow fllw)
         {
             try
             {
                 using (HopplrEntities bdd = new HopplrEntities())
                 {
-                    bdd.ArticleTag.Remove(Get(articleTagId));
+                    Follow follow = Get(followId);
+                    follow = fllw;
+                    bdd.SaveChanges();
+                }
+            }
+            catch (Exception e)
+            {
+                Trace.WriteLine(e.Message);
+                throw;
+            }
+        }
+
+        public static void Delete(long followId)
+        {
+            try
+            {
+                using (HopplrEntities bdd = new HopplrEntities())
+                {
+                    bdd.Follow.Remove(Get(followId));
                     bdd.SaveChanges();
                 }
             }

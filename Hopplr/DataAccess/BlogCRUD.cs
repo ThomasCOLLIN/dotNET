@@ -42,13 +42,13 @@ namespace DataAccess
             }
         }
 
-        public static Blog Get(long blogId)
+        public static Blog GetWithArticles(long blogId)
         {
             try
             {
                 using (HopplrEntities bdd = new HopplrEntities())
                 {
-                    return bdd.Blog.Include(Article).Where(bl => bl.id == blogId).FirstOrDefault();
+                    return bdd.Blog.Include("Article").Where(bl => bl.id == blogId).FirstOrDefault();
                 }
             }
             catch (Exception e)
@@ -66,24 +66,6 @@ namespace DataAccess
                 {
                     Blog blog = Get(blogId);
                     blog = blg;
-                    bdd.SaveChanges();
-                }
-            }
-            catch (Exception e)
-            {
-                Trace.WriteLine(e.Message);
-                throw;
-            }
-        }
-
-        public static void AddArticle(long blogId, Article article)
-        {
-            try
-            {
-                using (HopplrEntities bdd = new HopplrEntities())
-                {
-                    Blog blog = GetWithArticles(blogId);
-                    blog.Article.Add(article);
                     bdd.SaveChanges();
                 }
             }
