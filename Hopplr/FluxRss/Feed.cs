@@ -15,11 +15,12 @@ namespace FluxRss
         {
             SyndicationFeed feed = new SyndicationFeed("Blog feed", "A feed linked to a blog", null);
             List<SyndicationItem> items = new List<SyndicationItem>();
-            List<DataAccess.T_Article> articles = BusinessManagement.Feed.GetBlogContent(user, blog);
+            List<Dbo.RssArticle> articles = BusinessManagement.Feed.GetBlogContent(user, blog);
 
-            foreach (DataAccess.T_Article article in articles)
+            foreach (Dbo.RssArticle article in articles)
             {
-                SyndicationItem item = new SyndicationItem(article.Text, article.MediaUrl, null);
+                SyndicationItem item = new SyndicationItem(article.Title, article.Content, null);
+                item.PublishDate = article.CreationDate;
                 items.Add(item);
             }
             feed.Items = items;

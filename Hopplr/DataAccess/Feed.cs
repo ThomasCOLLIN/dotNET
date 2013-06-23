@@ -16,7 +16,7 @@ namespace DataAccess
                 try
                 {
                     T_User user = bdd.T_User.Where(usr => usr.Login == userName).FirstOrDefault();
-                    T_Blog blog = bdd.T_Blog.Include("Article").Where(blg => blg.Name == blogName && blg.UserId == user.Id).FirstOrDefault();
+                    T_Blog blog = bdd.T_Blog.Include("T_Article").Where(blg => blg.Name == blogName && blg.UserId == user.Id).FirstOrDefault();
 
                     return new List<T_Article>(blog.T_Article);
                 }

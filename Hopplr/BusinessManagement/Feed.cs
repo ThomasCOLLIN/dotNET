@@ -8,9 +8,22 @@ namespace BusinessManagement
 {
     public class Feed
     {
-        public static List<DataAccess.T_Article> GetBlogContent(string user, string blog)
+        public static List<Dbo.RssArticle> GetBlogContent(string user, string blog)
         {
-            return DataAccess.Feed.GetBlogContent(user, blog);
+            List<Dbo.RssArticle> rssArticles = new List<Dbo.RssArticle>();
+            List<DataAccess.T_Article> articles = DataAccess.Feed.GetBlogContent(user, blog);
+
+            foreach (DataAccess.T_Article article in articles)
+            {
+                Dbo.RssArticle rssArticle = new Dbo.RssArticle();
+                rssArticle.Title = article.Text;
+                rssArticle.Content = article.MediaUrl;
+                rssArticle.CreationDate = article.CreationDate;
+
+                rssArticles.Add(rssArticle);
+            }
+
+            return rssArticles;
         }
     }
 }
