@@ -4,17 +4,17 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="3aa50cd06bfc4769872195bc8c35b350" Name="Diagramme1">
-        <EntityTypeShape EntityType="HopplrModel.Article" Width="1.5" PointX="7.5" PointY="8.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="HopplrModel.ArticleTag" Width="1.5" PointX="9.75" PointY="8.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="HopplrModel.Blog" Width="1.5" PointX="5.25" PointY="7.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="HopplrModel.Comment" Width="1.5" PointX="9.75" PointY="11.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="HopplrModel.Follow" Width="1.5" PointX="7.5" PointY="12.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="HopplrModel.MediaType" Width="1.5" PointX="5.25" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="HopplrModel.Style" Width="1.5" PointX="0.75" PointY="6.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="HopplrModel.Tag" Width="1.5" PointX="7.5" PointY="5.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="HopplrModel.Theme" Width="1.5" PointX="3" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="HopplrModel.User" Width="1.5" PointX="3" PointY="9.625" IsExpanded="true" />
+      <Diagram DiagramId="206f80b4d957435da4560dc6b581cb33" Name="Diagramme1">
+        <EntityTypeShape EntityType="HopplrModel.T_Article" Width="1.5" PointX="7.625" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="HopplrModel.T_ArticleTag" Width="1.5" PointX="9.75" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HopplrModel.T_Blog" Width="1.5" PointX="0.625" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="HopplrModel.T_Comment" Width="1.5" PointX="7.625" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="HopplrModel.T_Follow" Width="1.5" PointX="5.75" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HopplrModel.T_MediaType" Width="1.5" PointX="5.375" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HopplrModel.T_Style" Width="1.5" PointX="0.875" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HopplrModel.T_Tag" Width="1.5" PointX="9.75" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HopplrModel.T_Theme" Width="1.5" PointX="3.125" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HopplrModel.T_User" Width="1.5" PointX="3.625" PointY="3.875" IsExpanded="true" />
         <AssociationConnector Association="HopplrModel.FK_Article_Blog" ManuallyRouted="false" />
         <AssociationConnector Association="HopplrModel.FK_Article_MediaType" ManuallyRouted="false" />
         <AssociationConnector Association="HopplrModel.FK_ArticleTag_Article" ManuallyRouted="false" />

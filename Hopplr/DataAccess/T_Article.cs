@@ -12,23 +12,24 @@ namespace DataAccess
     using System;
     using System.Collections.Generic;
     
-    public partial class Article
+    public partial class T_Article
     {
-        public Article()
+        public T_Article()
         {
-            this.ArticleTag = new HashSet<ArticleTag>();
-            this.Comment = new HashSet<Comment>();
+            this.T_ArticleTag = new HashSet<T_ArticleTag>();
+            this.T_Comment = new HashSet<T_Comment>();
         }
     
-        public long id { get; set; }
-        public long blogId { get; set; }
+        public long Id { get; set; }
+        public long BlogId { get; set; }
         public string MediaUrl { get; set; }
         public Nullable<long> MediaTypeId { get; set; }
         public string Text { get; set; }
+        public System.DateTime CreationDate { get; set; }
     
-        public virtual Blog Blog { get; set; }
-        public virtual MediaType MediaType { get; set; }
-        public virtual ICollection<ArticleTag> ArticleTag { get; set; }
-        public virtual ICollection<Comment> Comment { get; set; }
+        public virtual T_Blog T_Blog { get; set; }
+        public virtual T_MediaType T_MediaType { get; set; }
+        public virtual ICollection<T_ArticleTag> T_ArticleTag { get; set; }
+        public virtual ICollection<T_Comment> T_Comment { get; set; }
     }
 }

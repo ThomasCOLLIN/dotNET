@@ -12,13 +12,16 @@ namespace DataAccess
     using System;
     using System.Collections.Generic;
     
-    public partial class Follow
+    public partial class T_Theme
     {
-        public long Id { get; set; }
-        public long UserId { get; set; }
-        public long BlogId { get; set; }
+        public T_Theme()
+        {
+            this.T_Blog = new HashSet<T_Blog>();
+        }
     
-        public virtual Blog Blog { get; set; }
-        public virtual User User { get; set; }
+        public long Id { get; set; }
+        public string Description { get; set; }
+    
+        public virtual ICollection<T_Blog> T_Blog { get; set; }
     }
 }

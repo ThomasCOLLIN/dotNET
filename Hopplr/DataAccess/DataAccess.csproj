@@ -47,35 +47,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Article.cs">
-      <DependentUpon>Modele.tt</DependentUpon>
-    </Compile>
     <Compile Include="ArticleCRUD.cs" />
-    <Compile Include="ArticleTag.cs">
-      <DependentUpon>Modele.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Blog.cs">
-      <DependentUpon>Modele.tt</DependentUpon>
-    </Compile>
     <Compile Include="BlogCRUD.cs" />
-    <Compile Include="Comment.cs">
-      <DependentUpon>Modele.tt</DependentUpon>
-    </Compile>
     <Compile Include="ArticleTagCRUD.cs" />
     <Compile Include="CommentCRUD.cs" />
-    <Compile Include="ThemeCRUD.cs" />
-    <Compile Include="TagCRUD.cs" />
-    <Compile Include="StyleCRUD.cs" />
-    <Compile Include="MediaTypeCRUD.cs" />
-    <Compile Include="FollowCRUD.cs" />
-    <Compile Include="UserCRUD.cs" />
-    <Compile Include="Feed.cs" />
-    <Compile Include="Follow.cs">
-      <DependentUpon>Modele.tt</DependentUpon>
-    </Compile>
-    <Compile Include="MediaType.cs">
-      <DependentUpon>Modele.tt</DependentUpon>
-    </Compile>
     <Compile Include="Modele.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -91,30 +66,53 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Modele.edmx</DependentUpon>
     </Compile>
+    <Compile Include="ThemeCRUD.cs" />
+    <Compile Include="TagCRUD.cs" />
+    <Compile Include="StyleCRUD.cs" />
+    <Compile Include="MediaTypeCRUD.cs" />
+    <Compile Include="FollowCRUD.cs" />
+    <Compile Include="T_Article.cs">
+      <DependentUpon>Modele.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_ArticleTag.cs">
+      <DependentUpon>Modele.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_Blog.cs">
+      <DependentUpon>Modele.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_Comment.cs">
+      <DependentUpon>Modele.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_Follow.cs">
+      <DependentUpon>Modele.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_MediaType.cs">
+      <DependentUpon>Modele.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_Style.cs">
+      <DependentUpon>Modele.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_Tag.cs">
+      <DependentUpon>Modele.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_Theme.cs">
+      <DependentUpon>Modele.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T_User.cs">
+      <DependentUpon>Modele.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserCRUD.cs" />
+    <Compile Include="Feed.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Style.cs">
-      <DependentUpon>Modele.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Tag.cs">
-      <DependentUpon>Modele.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Theme.cs">
-      <DependentUpon>Modele.tt</DependentUpon>
-    </Compile>
-    <Compile Include="User.cs">
-      <DependentUpon>Modele.tt</DependentUpon>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <EntityDeploy Include="Modele.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Modele.Designer.cs</LastGenOutput>
-    </EntityDeploy>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config">
       <SubType>Designer</SubType>
     </None>
+    <EntityDeploy Include="Modele.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Modele.Designer.cs</LastGenOutput>
+    </EntityDeploy>
     <None Include="Modele.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Modele.edmx</DependentUpon>

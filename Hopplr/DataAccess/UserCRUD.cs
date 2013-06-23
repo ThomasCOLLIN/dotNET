@@ -9,13 +9,13 @@ namespace DataAccess
 {
     class UserCRUD
     {
-        public static void Create(User user)
+        public static void Create(T_User user)
         {
             try
             {
-                using (HopplrEntities bdd = new HopplrEntities())
+                using (Entities bdd = new Entities())
                 {
-                    bdd.User.Add(user);
+                    bdd.T_User.Add(user);
                     bdd.SaveChanges();
                 }
             }
@@ -26,13 +26,13 @@ namespace DataAccess
             }
         }
 
-        public static User Get(long userId)
+        public static T_User Get(long userId)
         {
             try
             {
-                using (HopplrEntities bdd = new HopplrEntities())
+                using (Entities bdd = new Entities())
                 {
-                    return bdd.User.Where(usr => usr.id == userId).FirstOrDefault();
+                    return bdd.T_User.Where(usr => usr.Id == userId).FirstOrDefault();
                 }
             }
             catch (Exception e)
@@ -42,13 +42,13 @@ namespace DataAccess
             }
         }
 
-        public static void Update(long userId, User usr)
+        public static void Update(long userId, T_User usr)
         {
             try
             {
-                using (HopplrEntities bdd = new HopplrEntities())
+                using (Entities bdd = new Entities())
                 {
-                    User user = Get(userId);
+                    T_User user = Get(userId);
                     user = usr;
                     bdd.SaveChanges();
                 }
@@ -64,9 +64,9 @@ namespace DataAccess
         {
             try
             {
-                using (HopplrEntities bdd = new HopplrEntities())
+                using (Entities bdd = new Entities())
                 {
-                    bdd.User.Remove(Get(userId));
+                    bdd.T_User.Remove(Get(userId));
                     bdd.SaveChanges();
                 }
             }

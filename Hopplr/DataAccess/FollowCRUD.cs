@@ -9,13 +9,13 @@ namespace DataAccess
 {
     class FollowCRUD
     {
-        public static void Create(Follow follow)
+        public static void Create(T_Follow follow)
         {
             try
             {
-                using (HopplrEntities bdd = new HopplrEntities())
+                using (Entities bdd = new Entities())
                 {
-                    bdd.Follow.Add(follow);
+                    bdd.T_Follow.Add(follow);
                     bdd.SaveChanges();
                 }
             }
@@ -26,13 +26,13 @@ namespace DataAccess
             }
         }
 
-        public static Follow Get(long followId)
+        public static T_Follow Get(long followId)
         {
             try
             {
-                using (HopplrEntities bdd = new HopplrEntities())
+                using (Entities bdd = new Entities())
                 {
-                    return bdd.Follow.Where(fllw => fllw.Id == followId).FirstOrDefault();
+                    return bdd.T_Follow.Where(fllw => fllw.Id == followId).FirstOrDefault();
                 }
             }
             catch (Exception e)
@@ -42,13 +42,13 @@ namespace DataAccess
             }
         }
 
-        public static void Update(long followId, Follow fllw)
+        public static void Update(long followId, T_Follow fllw)
         {
             try
             {
-                using (HopplrEntities bdd = new HopplrEntities())
+                using (Entities bdd = new Entities())
                 {
-                    Follow follow = Get(followId);
+                    T_Follow follow = Get(followId);
                     follow = fllw;
                     bdd.SaveChanges();
                 }
@@ -64,9 +64,9 @@ namespace DataAccess
         {
             try
             {
-                using (HopplrEntities bdd = new HopplrEntities())
+                using (Entities bdd = new Entities())
                 {
-                    bdd.Follow.Remove(Get(followId));
+                    bdd.T_Follow.Remove(Get(followId));
                     bdd.SaveChanges();
                 }
             }

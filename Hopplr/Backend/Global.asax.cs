@@ -31,7 +31,7 @@ namespace Backend
             // de votre application.
             // Pour plus d’informations sur l’enregistrement de l’Entity Data Model avec Dynamic Date, consultez http://go.microsoft.com/fwlink/?LinkId=257395            
             DefaultModel.RegisterContext(
-                new EFCodeFirstDataModelProvider(() => new DataAccess.HopplrEntities()),
+                new EFCodeFirstDataModelProvider(() => new DataAccess.Entities()),
                 new ContextConfiguration() { ScaffoldAllTables = true });
 
             // L’enregistrement suivant doit être utilisé si  YourDataContextType ne dérive pas de DbContext

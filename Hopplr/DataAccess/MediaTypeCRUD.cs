@@ -7,15 +7,15 @@ using System.Threading.Tasks;
 
 namespace DataAccess
 {
-    class MediaTypeCRUD
+    class T_MediaTypeCRUD
     {
-        public static void Create(MediaType mediaType)
+        public static void Create(T_MediaType mediaType)
         {
             try
             {
-                using (HopplrEntities bdd = new HopplrEntities())
+                using (Entities bdd = new Entities())
                 {
-                    bdd.MediaType.Add(mediaType);
+                    bdd.T_MediaType.Add(mediaType);
                     bdd.SaveChanges();
                 }
             }
@@ -26,13 +26,13 @@ namespace DataAccess
             }
         }
 
-        public static MediaType Get(long mediaTypeId)
+        public static T_MediaType Get(long mediaTypeId)
         {
             try
             {
-                using (HopplrEntities bdd = new HopplrEntities())
+                using (Entities bdd = new Entities())
                 {
-                    return bdd.MediaType.Where(mdType => mdType.id == mediaTypeId).FirstOrDefault();
+                    return bdd.T_MediaType.Where(mdType => mdType.Id == mediaTypeId).FirstOrDefault();
                 }
             }
             catch (Exception e)
@@ -42,13 +42,13 @@ namespace DataAccess
             }
         }
 
-        public static void Update(long mediaTypeId, MediaType mdType)
+        public static void Update(long mediaTypeId, T_MediaType mdType)
         {
             try
             {
-                using (HopplrEntities bdd = new HopplrEntities())
+                using (Entities bdd = new Entities())
                 {
-                    MediaType mediaType = Get(mediaTypeId);
+                    T_MediaType mediaType = Get(mediaTypeId);
                     mediaType = mdType;
                     bdd.SaveChanges();
                 }
@@ -64,9 +64,9 @@ namespace DataAccess
         {
             try
             {
-                using (HopplrEntities bdd = new HopplrEntities())
+                using (Entities bdd = new Entities())
                 {
-                    bdd.MediaType.Remove(Get(mediaTypeId));
+                    bdd.T_MediaType.Remove(Get(mediaTypeId));
                     bdd.SaveChanges();
                 }
             }

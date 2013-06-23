@@ -12,16 +12,15 @@ namespace DataAccess
     using System;
     using System.Collections.Generic;
     
-    public partial class Tag
+    public partial class T_Comment
     {
-        public Tag()
-        {
-            this.ArticleTag = new HashSet<ArticleTag>();
-        }
+        public long Id { get; set; }
+        public long UserId { get; set; }
+        public long ArticleId { get; set; }
+        public string Comment { get; set; }
+        public System.DateTime CreationDate { get; set; }
     
-        public long id { get; set; }
-        public string name { get; set; }
-    
-        public virtual ICollection<ArticleTag> ArticleTag { get; set; }
+        public virtual T_Article T_Article { get; set; }
+        public virtual T_User T_User { get; set; }
     }
 }

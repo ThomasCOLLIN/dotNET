@@ -7,15 +7,15 @@ using System.Threading.Tasks;
 
 namespace DataAccess
 {
-    class ThemeCRUD
+    class T_ThemeCRUD
     {
-        public static void Create(Theme theme)
+        public static void Create(T_Theme theme)
         {
             try
             {
-                using (HopplrEntities bdd = new HopplrEntities())
+                using (Entities bdd = new Entities())
                 {
-                    bdd.Theme.Add(theme);
+                    bdd.T_Theme.Add(theme);
                     bdd.SaveChanges();
                 }
             }
@@ -26,13 +26,13 @@ namespace DataAccess
             }
         }
 
-        public static Theme Get(long themeId)
+        public static T_Theme Get(long themeId)
         {
             try
             {
-                using (HopplrEntities bdd = new HopplrEntities())
+                using (Entities bdd = new Entities())
                 {
-                    return bdd.Theme.Where(thm => thm.id == themeId).FirstOrDefault();
+                    return bdd.T_Theme.Where(thm => thm.Id == themeId).FirstOrDefault();
                 }
             }
             catch (Exception e)
@@ -42,13 +42,13 @@ namespace DataAccess
             }
         }
 
-        public static void Update(long themeId, Theme thm)
+        public static void Update(long themeId, T_Theme thm)
         {
             try
             {
-                using (HopplrEntities bdd = new HopplrEntities())
+                using (Entities bdd = new Entities())
                 {
-                    Theme theme = Get(themeId);
+                    T_Theme theme = Get(themeId);
                     theme = thm;
                     bdd.SaveChanges();
                 }
@@ -64,9 +64,9 @@ namespace DataAccess
         {
             try
             {
-                using (HopplrEntities bdd = new HopplrEntities())
+                using (Entities bdd = new Entities())
                 {
-                    bdd.Theme.Remove(Get(themeId));
+                    bdd.T_Theme.Remove(Get(themeId));
                     bdd.SaveChanges();
                 }
             }

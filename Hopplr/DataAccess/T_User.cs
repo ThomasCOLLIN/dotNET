@@ -12,26 +12,26 @@ namespace DataAccess
     using System;
     using System.Collections.Generic;
     
-    public partial class User
+    public partial class T_User
     {
-        public User()
+        public T_User()
         {
-            this.Blog = new HashSet<Blog>();
-            this.Comment = new HashSet<Comment>();
-            this.Follow = new HashSet<Follow>();
+            this.T_Blog = new HashSet<T_Blog>();
+            this.T_Comment = new HashSet<T_Comment>();
+            this.T_Follow = new HashSet<T_Follow>();
         }
     
-        public long id { get; set; }
+        public long Id { get; set; }
         public long StyleId { get; set; }
-        public string Pseudo { get; set; }
-        public string Nom { get; set; }
-        public string Prenom { get; set; }
+        public string Login { get; set; }
+        public string LastName { get; set; }
+        public string FirstName { get; set; }
         public string Email { get; set; }
         public string HashPassword { get; set; }
     
-        public virtual ICollection<Blog> Blog { get; set; }
-        public virtual ICollection<Comment> Comment { get; set; }
-        public virtual ICollection<Follow> Follow { get; set; }
-        public virtual Style Style { get; set; }
+        public virtual ICollection<T_Blog> T_Blog { get; set; }
+        public virtual ICollection<T_Comment> T_Comment { get; set; }
+        public virtual ICollection<T_Follow> T_Follow { get; set; }
+        public virtual T_Style T_Style { get; set; }
     }
 }

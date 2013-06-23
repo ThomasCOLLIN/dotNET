@@ -9,16 +9,16 @@ namespace DataAccess
 {
     public class Feed
     {
-        public static List<Article> GetBlogContent(string userName, string blogName)
+        public static List<T_Article> GetBlogContent(string userName, string blogName)
         {
-            using (HopplrEntities entities = new HopplrEntities())
+            using (Entities bdd = new Entities())
             {
                 try
                 {
-                    User user = entities.User.Where(usr => usr.Pseudo == userName).FirstOrDefault();
-                    Blog blog = entities.Blog.Include("Article").Where(blg => blg.Nom == blogName && blg.UserId == user.id).FirstOrDefault();
+                    T_User user = bdd.T_User.Where(usr => usr.Login == userName).FirstOrDefault();
+                    T_Blog blog = bdd.T_Blog.Include("Article").Where(blg => blg.Name == blogName && blg.UserId == user.Id).FirstOrDefault();
 
-                    return new List<Article>(blog.Article);
+                    return new List<T_Article>(blog.T_Article);
                 }
                 catch (Exception e)
                 {

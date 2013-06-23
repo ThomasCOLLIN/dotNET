@@ -7,16 +7,16 @@ using System.Threading.Tasks;
 
 namespace DataAccess
 {
-    public class ArticleCRUD
+    public class T_ArticleCRUD
     {
 
-        public static void Create(Article article)
+        public static void Create(T_Article article)
         {
             try
             {
-                using (HopplrEntities bdd = new HopplrEntities())
+                using (Entities bdd = new Entities())
                 {
-                    bdd.Article.Add(article);
+                    bdd.T_Article.Add(article);
                     bdd.SaveChanges();
                 }
             }
@@ -27,13 +27,13 @@ namespace DataAccess
             }
         }
 
-        public static Article Get(long articleId)
+        public static T_Article Get(long articleId)
         {
             try
             {
-                using (HopplrEntities bdd = new HopplrEntities())
+                using (Entities bdd = new Entities())
                 {
-                    return bdd.Article.Where(art => art.id == articleId).FirstOrDefault();
+                    return bdd.T_Article.Where(art => art.Id == articleId).FirstOrDefault();
                 }
             }
             catch (Exception e)
@@ -43,14 +43,14 @@ namespace DataAccess
             }
         }
 
-        public static void Update(long articleId, Article newArticle)
+        public static void Update(long articleId, T_Article newT_Article)
         {
             try
             {
-                using (HopplrEntities bdd = new HopplrEntities())
+                using (Entities bdd = new Entities())
                 {
-                    Article article = Get(articleId);
-                    article = newArticle;
+                    T_Article article = Get(articleId);
+                    article = newT_Article;
                     bdd.SaveChanges();
                 }
             }
@@ -65,9 +65,9 @@ namespace DataAccess
         {
             try
             {
-                using (HopplrEntities bdd = new HopplrEntities())
+                using (Entities bdd = new Entities())
                 {
-                    bdd.Article.Remove(Get(articleId));
+                    bdd.T_Article.Remove(Get(articleId));
                     bdd.SaveChanges();
                 }
             }

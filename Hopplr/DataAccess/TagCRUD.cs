@@ -7,15 +7,15 @@ using System.Threading.Tasks;
 
 namespace DataAccess
 {
-    class TagCRUD
+    class T_TagCRUD
     {
-        public static void Create(Tag tag)
+        public static void Create(T_Tag tag)
         {
             try
             {
-                using (HopplrEntities bdd = new HopplrEntities())
+                using (Entities bdd = new Entities())
                 {
-                    bdd.Tag.Add(tag);
+                    bdd.T_Tag.Add(tag);
                     bdd.SaveChanges();
                 }
             }
@@ -26,13 +26,13 @@ namespace DataAccess
             }
         }
 
-        public static Tag Get(long tagId)
+        public static T_Tag Get(long tagId)
         {
             try
             {
-                using (HopplrEntities bdd = new HopplrEntities())
+                using (Entities bdd = new Entities())
                 {
-                    return bdd.Tag.Where(tg => tg.id == tagId).FirstOrDefault();
+                    return bdd.T_Tag.Where(tg => tg.Id == tagId).FirstOrDefault();
                 }
             }
             catch (Exception e)
@@ -42,13 +42,13 @@ namespace DataAccess
             }
         }
 
-        public static void Update(long tagId, Tag tg)
+        public static void Update(long tagId, T_Tag tg)
         {
             try
             {
-                using (HopplrEntities bdd = new HopplrEntities())
+                using (Entities bdd = new Entities())
                 {
-                    Tag tag = Get(tagId);
+                    T_Tag tag = Get(tagId);
                     tag = tg;
                     bdd.SaveChanges();
                 }
@@ -64,9 +64,9 @@ namespace DataAccess
         {
             try
             {
-                using (HopplrEntities bdd = new HopplrEntities())
+                using (Entities bdd = new Entities())
                 {
-                    bdd.Tag.Remove(Get(tagId));
+                    bdd.T_Tag.Remove(Get(tagId));
                     bdd.SaveChanges();
                 }
             }

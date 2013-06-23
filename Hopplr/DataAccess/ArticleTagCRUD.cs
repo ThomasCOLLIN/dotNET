@@ -7,15 +7,15 @@ using System.Threading.Tasks;
 
 namespace DataAccess
 {
-    public class ArticleTagCRUD
+    public class T_ArticleTagCRUD
     {
-        public static void Create(ArticleTag articleTag)
+        public static void Create(T_ArticleTag articleTag)
         {
             try
             {
-                using (HopplrEntities bdd = new HopplrEntities())
+                using (Entities bdd = new Entities())
                 {
-                    bdd.ArticleTag.Add(articleTag);
+                    bdd.T_ArticleTag.Add(articleTag);
                     bdd.SaveChanges();
                 }
             }
@@ -26,13 +26,13 @@ namespace DataAccess
             }
         }
 
-        public static ArticleTag Get(long articleTagId)
+        public static T_ArticleTag Get(long articleTagId)
         {
             try
             {
-                using (HopplrEntities bdd = new HopplrEntities())
+                using (Entities bdd = new Entities())
                 {
-                    return bdd.ArticleTag.Where(art => art.id == articleTagId).FirstOrDefault();
+                    return bdd.T_ArticleTag.Where(art => art.Id == articleTagId).FirstOrDefault();
                 }
             }
             catch (Exception e)
@@ -46,9 +46,9 @@ namespace DataAccess
         {
             try
             {
-                using (HopplrEntities bdd = new HopplrEntities())
+                using (Entities bdd = new Entities())
                 {
-                    bdd.ArticleTag.Remove(Get(articleTagId));
+                    bdd.T_ArticleTag.Remove(Get(articleTagId));
                     bdd.SaveChanges();
                 }
             }

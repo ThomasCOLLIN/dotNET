@@ -7,15 +7,15 @@ using System.Threading.Tasks;
 
 namespace DataAccess
 {
-    class CommentCRUD
+    class T_CommentCRUD
     {
-        public static void Create(Comment comment)
+        public static void Create(T_Comment comment)
         {
             try
             {
-                using (HopplrEntities bdd = new HopplrEntities())
+                using (Entities bdd = new Entities())
                 {
-                    bdd.Comment.Add(comment);
+                    bdd.T_Comment.Add(comment);
                     bdd.SaveChanges();
                 }
             }
@@ -26,13 +26,13 @@ namespace DataAccess
             }
         }
 
-        public static Comment Get(long commentId)
+        public static T_Comment Get(long commentId)
         {
             try
             {
-                using (HopplrEntities bdd = new HopplrEntities())
+                using (Entities bdd = new Entities())
                 {
-                    return bdd.Comment.Where(cmmnt => cmmnt.id == commentId).FirstOrDefault();
+                    return bdd.T_Comment.Where(cmmnt => cmmnt.Id == commentId).FirstOrDefault();
                 }
             }
             catch (Exception e)
@@ -42,13 +42,13 @@ namespace DataAccess
             }
         }
 
-        public static void Update(long commentId, Comment cmmnt)
+        public static void Update(long commentId, T_Comment cmmnt)
         {
             try
             {
-                using (HopplrEntities bdd = new HopplrEntities())
+                using (Entities bdd = new Entities())
                 {
-                    Comment comment = Get(commentId);
+                    T_Comment comment = Get(commentId);
                     comment = cmmnt;
                     bdd.SaveChanges();
                 }
@@ -64,9 +64,9 @@ namespace DataAccess
         {
             try
             {
-                using (HopplrEntities bdd = new HopplrEntities())
+                using (Entities bdd = new Entities())
                 {
-                    bdd.Comment.Remove(Get(commentId));
+                    bdd.T_Comment.Remove(Get(commentId));
                     bdd.SaveChanges();
                 }
             }

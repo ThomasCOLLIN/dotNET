@@ -7,15 +7,15 @@ using System.Threading.Tasks;
 
 namespace DataAccess
 {
-    class StyleCRUD
+    class T_StyleCRUD
     {
-        public static void Create(Style style)
+        public static void Create(T_Style style)
         {
             try
             {
-                using (HopplrEntities bdd = new HopplrEntities())
+                using (Entities bdd = new Entities())
                 {
-                    bdd.Style.Add(style);
+                    bdd.T_Style.Add(style);
                     bdd.SaveChanges();
                 }
             }
@@ -26,13 +26,13 @@ namespace DataAccess
             }
         }
 
-        public static Style Get(long styleId)
+        public static T_Style Get(long styleId)
         {
             try
             {
-                using (HopplrEntities bdd = new HopplrEntities())
+                using (Entities bdd = new Entities())
                 {
-                    return bdd.Style.Where(stl => stl.id == styleId).FirstOrDefault();
+                    return bdd.T_Style.Where(stl => stl.Id == styleId).FirstOrDefault();
                 }
             }
             catch (Exception e)
@@ -42,13 +42,13 @@ namespace DataAccess
             }
         }
 
-        public static void Update(long styleId, Style stl)
+        public static void Update(long styleId, T_Style stl)
         {
             try
             {
-                using (HopplrEntities bdd = new HopplrEntities())
+                using (Entities bdd = new Entities())
                 {
-                    Style style = Get(styleId);
+                    T_Style style = Get(styleId);
                     style = stl;
                     bdd.SaveChanges();
                 }
@@ -64,9 +64,9 @@ namespace DataAccess
         {
             try
             {
-                using (HopplrEntities bdd = new HopplrEntities())
+                using (Entities bdd = new Entities())
                 {
-                    bdd.Style.Remove(Get(styleId));
+                    bdd.T_Style.Remove(Get(styleId));
                     bdd.SaveChanges();
                 }
             }

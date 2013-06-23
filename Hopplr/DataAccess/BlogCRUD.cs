@@ -7,15 +7,15 @@ using System.Threading.Tasks;
 
 namespace DataAccess
 {
-    class BlogCRUD
+    class T_BlogCRUD
     {
-        public static void Create(Blog blog)
+        public static void Create(T_Blog blog)
         {
             try
             {
-                using (HopplrEntities bdd = new HopplrEntities())
+                using (Entities bdd = new Entities())
                 {
-                    bdd.Blog.Add(blog);
+                    bdd.T_Blog.Add(blog);
                     bdd.SaveChanges();
                 }
             }
@@ -26,13 +26,13 @@ namespace DataAccess
             }
         }
 
-        public static Blog Get(long blogId)
+        public static T_Blog Get(long blogId)
         {
             try
             {
-                using (HopplrEntities bdd = new HopplrEntities())
+                using (Entities bdd = new Entities())
                 {
-                    return bdd.Blog.Where(bl => bl.id == blogId).FirstOrDefault();
+                    return bdd.T_Blog.Where(bl => bl.Id == blogId).FirstOrDefault();
                 }
             }
             catch (Exception e)
@@ -42,13 +42,13 @@ namespace DataAccess
             }
         }
 
-        public static Blog GetWithArticles(long blogId)
+        public static T_Blog GetWithArticles(long blogId)
         {
             try
             {
-                using (HopplrEntities bdd = new HopplrEntities())
+                using (Entities bdd = new Entities())
                 {
-                    return bdd.Blog.Include("Article").Where(bl => bl.id == blogId).FirstOrDefault();
+                    return bdd.T_Blog.Include("Article").Where(bl => bl.Id == blogId).FirstOrDefault();
                 }
             }
             catch (Exception e)
@@ -58,13 +58,13 @@ namespace DataAccess
             }
         }
 
-        public static void Update(long blogId, Blog blg)
+        public static void Update(long blogId, T_Blog blg)
         {
             try
             {
-                using (HopplrEntities bdd = new HopplrEntities())
+                using (Entities bdd = new Entities())
                 {
-                    Blog blog = Get(blogId);
+                    T_Blog blog = Get(blogId);
                     blog = blg;
                     bdd.SaveChanges();
                 }
@@ -80,9 +80,9 @@ namespace DataAccess
         {
             try
             {
-                using (HopplrEntities bdd = new HopplrEntities())
+                using (Entities bdd = new Entities())
                 {
-                    bdd.Blog.Remove(Get(blogId));
+                    bdd.T_Blog.Remove(Get(blogId));
                     bdd.SaveChanges();
                 }
             }

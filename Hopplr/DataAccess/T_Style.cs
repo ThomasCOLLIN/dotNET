@@ -12,13 +12,19 @@ namespace DataAccess
     using System;
     using System.Collections.Generic;
     
-    public partial class ArticleTag
+    public partial class T_Style
     {
-        public long id { get; set; }
-        public long TagId { get; set; }
-        public long ArticleId { get; set; }
+        public T_Style()
+        {
+            this.T_Blog = new HashSet<T_Blog>();
+            this.T_User = new HashSet<T_User>();
+        }
     
-        public virtual Article Article { get; set; }
-        public virtual Tag Tag { get; set; }
+        public long Id { get; set; }
+        public string CSSPath { get; set; }
+        public string Description { get; set; }
+    
+        public virtual ICollection<T_Blog> T_Blog { get; set; }
+        public virtual ICollection<T_User> T_User { get; set; }
     }
 }

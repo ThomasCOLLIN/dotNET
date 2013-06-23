@@ -12,25 +12,16 @@ namespace DataAccess
     using System;
     using System.Collections.Generic;
     
-    public partial class Blog
+    public partial class T_MediaType
     {
-        public Blog()
+        public T_MediaType()
         {
-            this.Article = new HashSet<Article>();
-            this.Follow = new HashSet<Follow>();
+            this.T_Article = new HashSet<T_Article>();
         }
     
-        public long id { get; set; }
-        public long UserId { get; set; }
-        public long StyleId { get; set; }
-        public long ThemeId { get; set; }
-        public string Nom { get; set; }
+        public long Id { get; set; }
         public string Description { get; set; }
     
-        public virtual ICollection<Article> Article { get; set; }
-        public virtual Style Style { get; set; }
-        public virtual Theme Theme { get; set; }
-        public virtual User User { get; set; }
-        public virtual ICollection<Follow> Follow { get; set; }
+        public virtual ICollection<T_Article> T_Article { get; set; }
     }
 }

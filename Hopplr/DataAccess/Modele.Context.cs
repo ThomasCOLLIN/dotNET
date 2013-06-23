@@ -13,10 +13,10 @@ namespace DataAccess
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class HopplrEntities : DbContext
+    public partial class Entities : DbContext
     {
-        public HopplrEntities()
-            : base("name=HopplrEntities")
+        public Entities()
+            : base("name=Entities")
         {
         }
     
@@ -25,15 +25,15 @@ namespace DataAccess
             throw new UnintentionalCodeFirstException();
         }
     
-        public DbSet<Article> Article { get; set; }
-        public DbSet<ArticleTag> ArticleTag { get; set; }
-        public DbSet<Blog> Blog { get; set; }
-        public DbSet<Comment> Comment { get; set; }
-        public DbSet<Follow> Follow { get; set; }
-        public DbSet<MediaType> MediaType { get; set; }
-        public DbSet<Style> Style { get; set; }
-        public DbSet<Tag> Tag { get; set; }
-        public DbSet<Theme> Theme { get; set; }
-        public DbSet<User> User { get; set; }
+        public DbSet<T_Article> T_Article { get; set; }
+        public DbSet<T_ArticleTag> T_ArticleTag { get; set; }
+        public DbSet<T_Blog> T_Blog { get; set; }
+        public DbSet<T_Comment> T_Comment { get; set; }
+        public DbSet<T_Follow> T_Follow { get; set; }
+        public DbSet<T_MediaType> T_MediaType { get; set; }
+        public DbSet<T_Style> T_Style { get; set; }
+        public DbSet<T_Tag> T_Tag { get; set; }
+        public DbSet<T_Theme> T_Theme { get; set; }
+        public DbSet<T_User> T_User { get; set; }
     }
 }

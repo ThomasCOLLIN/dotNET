@@ -12,16 +12,13 @@ namespace DataAccess
     using System;
     using System.Collections.Generic;
     
-    public partial class Theme
+    public partial class T_Follow
     {
-        public Theme()
-        {
-            this.Blog = new HashSet<Blog>();
-        }
+        public long Id { get; set; }
+        public long UserId { get; set; }
+        public long BlogId { get; set; }
     
-        public long id { get; set; }
-        public string Description { get; set; }
-    
-        public virtual ICollection<Blog> Blog { get; set; }
+        public virtual T_Blog T_Blog { get; set; }
+        public virtual T_User T_User { get; set; }
     }
 }
