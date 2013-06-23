@@ -62,6 +62,13 @@
       <DependentUpon>Modele.tt</DependentUpon>
     </Compile>
     <Compile Include="ArticleTagCRUD.cs" />
+    <Compile Include="CommentCRUD.cs" />
+    <Compile Include="ThemeCRUD.cs" />
+    <Compile Include="TagCRUD.cs" />
+    <Compile Include="StyleCRUD.cs" />
+    <Compile Include="MediaTypeCRUD.cs" />
+    <Compile Include="FollowCRUD.cs" />
+    <Compile Include="UserCRUD.cs" />
     <Compile Include="Feed.cs" />
     <Compile Include="Follow.cs">
       <DependentUpon>Modele.tt</DependentUpon>
