@@ -1,0 +1,14 @@
+﻿<%@ Page Language="C#" Inherits="System.Web.Mvc.ViewPage<dynamic>" %>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Erreur</title>
+</head>
+<body>
+    <h2>
+        Une erreur s'est produite lors du traitement de votre demande.
+    </h2>
+</body>
+</html>

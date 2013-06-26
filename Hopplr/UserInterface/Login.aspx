@@ -4,12 +4,12 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>Hoppler - Connexion</title>
+    <title>Hopplr - Connexion</title>
 </head>
 <body>
     <form id="form1" runat="server">
     <div>
-        <asp:Login ID="Login1" runat="server" DestinationPageUrl="~/User/home.aspx">
+        <asp:Login ID="Login1" runat="server" DestinationPageUrl="~/User/Home.aspx">
         </asp:Login>
     </div>
     </form>
