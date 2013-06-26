@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess
 {
-    class UserCRUD
+    public class UserCRUD
     {
         public static void Create(T_User user)
         {
@@ -39,6 +39,22 @@ namespace DataAccess
             {
                 Trace.WriteLine(e.Message);
                 throw;
+            }
+        }
+
+        public static List<T_User> GetUsersByLogin(string login)
+        {
+            try
+            {
+                using (Entities bdd = new Entities())
+                {
+                    List<T_User> users = bdd.T_User.Where(x => x.Login == login).ToList();
+                    return users;
+                }
+            }
+            catch (Exception)
+            {
+                return null;
             }
         }
 
