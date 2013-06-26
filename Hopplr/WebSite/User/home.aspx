@@ -7,12 +7,8 @@
     <title></title>
 </head>
 <body>
-    <form id="form1" runat="server">
     <div>
-    
+            Bienvenue <asp:LoginName ID="LoginName1" runat="server" /> !
     </div>
-        <asp:Login ID="Login1" runat="server">
-        </asp:Login>
-    </form>
 </body>
 </html>
