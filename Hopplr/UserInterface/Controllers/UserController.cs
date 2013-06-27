@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using UserInterface.Models;
 
 namespace UserInterface.Controllers
 {
@@ -57,6 +58,30 @@ namespace UserInterface.Controllers
             ViewBag.Desc = blog.getDescription();
             ViewBag.Articles = blog.getArticles();
 
+            return View();
+        }
+
+
+                /////////////////////
+                //  AJOUT DE BLOG  //
+                /////////////////////
+
+        public ActionResult CreateBlog()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult CreateBlog(BlogModel bl)
+        {
+            if (ModelState.IsValid)
+            {
+                BusinessManagement.Blog.CreateBlog(User.Identity.Name, bl.Style, bl.Theme, bl.Name, bl.Description);
+
+                return RedirectToAction("Blog");
+            }
+
+            // If we got this far, something failed, redisplay form
             return View();
         }
     }
