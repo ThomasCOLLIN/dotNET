@@ -17,5 +17,10 @@ namespace BusinessManagement
         {
             return DataAccess.StyleCRUD.GetAll();
         }
+
+        public static List<DataAccess.T_MediaType> getMediaStyles()
+        {
+            return DataAccess.MediaTypeCRUD.GetAll();
+        }
     }
 }

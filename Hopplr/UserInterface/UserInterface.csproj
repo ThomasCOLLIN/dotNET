@@ -100,6 +100,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ArticleModel.cs" />
     <Compile Include="Models\BlogModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -201,6 +202,7 @@
     <Content Include="Views\Blog\Display.cshtml" />
     <Content Include="Views\User\BlogManagement.cshtml" />
     <Content Include="Views\User\CreateBlog.cshtml" />
+    <Content Include="Views\User\CreateArticle.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

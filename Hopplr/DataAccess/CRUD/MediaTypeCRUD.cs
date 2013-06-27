@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess
 {
-    class T_MediaTypeCRUD
+    public class MediaTypeCRUD
     {
         public static void Create(T_MediaType mediaType)
         {
@@ -33,6 +33,22 @@ namespace DataAccess
                 using (Entities bdd = new Entities())
                 {
                     return bdd.T_MediaType.Where(mdType => mdType.Id == mediaTypeId).FirstOrDefault();
+                }
+            }
+            catch (Exception e)
+            {
+                Trace.WriteLine(e.Message);
+                throw;
+            }
+        }
+
+        public static List<T_MediaType> GetAll()
+        {
+            try
+            {
+                using (Entities bdd = new Entities())
+                {
+                    return bdd.T_MediaType.ToList();
                 }
             }
             catch (Exception e)

@@ -30,6 +30,19 @@ namespace BusinessManagement
             DataAccess.BlogCRUD.Create(blog);
         }
 
+        public static void CreateArticle(long blogid, string mediaurl, long type, string text)
+        {
+            DataAccess.T_Article art = new DataAccess.T_Article()
+            {
+                CreationDate = DateTime.Now,
+                BlogId = blogid,
+                MediaTypeId = type,
+                MediaUrl = mediaurl,
+                Text = text
+            };
+            DataAccess.ArticleCRUD.Create(art);
+        }
+
         public Blog(long id)
         {
             blog = DataAccess.BlogCRUD.Get(id);

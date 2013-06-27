@@ -57,9 +57,8 @@ namespace UserInterface.Controllers
                 RedirectToAction("Blog");
 
             ViewBag.Title = blog.getName();
-            ViewBag.Author = blog.getAuthor();
-            ViewBag.Desc = blog.getDescription();
             ViewBag.Articles = blog.getArticles();
+            ViewBag.CreateArt = "CreateArticle?id=" + id;
 
             return View();
         }
@@ -88,5 +87,28 @@ namespace UserInterface.Controllers
 
         #endregion
 
+
+        #region Création d'un article
+
+        public ActionResult CreateArticle(long id)
+        {
+            ViewBag.BlogId = id;
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult CreateArticle(ArticleModel art)
+        {
+            if (ModelState.IsValid)
+            {
+                BusinessManagement.Blog.CreateArticle(art.BlogId, art.mediaUrl, art.mediaType, art.text);
+                return RedirectToAction("BlogManagement", new { id = art.BlogId });
+            }
+
+            // If we got this far, something failed, redisplay form
+            return View();
+        }
+
+        #endregion
     }
 }

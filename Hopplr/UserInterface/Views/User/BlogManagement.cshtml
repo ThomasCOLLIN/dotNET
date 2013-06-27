@@ -1,7 +1,14 @@
 ﻿@{
-    ViewBag.Title = "Gestion de Blog";
     Layout = "~/Views/User/_UserLayout.cshtml";
 }
 
 <h2>Gestion de blog : @ViewBag.Title</h2>
 
+<ul>
+@foreach (DataAccess.T_Article art in ViewBag.Articles)
+{
+    <li> @art.Text </li>
+}
+</ul>
+
+<a href=@ViewBag.CreateArt>Ajouter un article</a>
