@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess
 {
-    class FollowCRUD
+    public class FollowCRUD
     {
         public static void Create(T_Follow follow)
         {
@@ -33,6 +33,22 @@ namespace DataAccess
                 using (Entities bdd = new Entities())
                 {
                     return bdd.T_Follow.Where(fllw => fllw.Id == followId).FirstOrDefault();
+                }
+            }
+            catch (Exception e)
+            {
+                Trace.WriteLine(e.Message);
+                throw;
+            }
+        }
+
+        public static List<T_Follow> GetByuserId(long UserId)
+        {
+            try
+            {
+                using (Entities bdd = new Entities())
+                {
+                    return bdd.T_Follow.Where(fllw => fllw.UserId == UserId).ToList(); ;
                 }
             }
             catch (Exception e)

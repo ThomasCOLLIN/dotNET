@@ -23,6 +23,8 @@ namespace UserInterface.Controllers
         /// <returns>The view</returns>
         public ActionResult Blog()
         {
+            BusinessManagement.User user = new BusinessManagement.User(User.Identity.Name);
+            ViewBag.ListBlog = user.getListBlogs();
             return View();
         }
 
@@ -32,7 +34,8 @@ namespace UserInterface.Controllers
         /// <returns>The view</returns>
         public ActionResult Follows()
         {
-
+            BusinessManagement.User user = new BusinessManagement.User(User.Identity.Name);
+            ViewBag.ListBlog = user.getListFollows();
             return View();
         }
 
@@ -42,6 +45,18 @@ namespace UserInterface.Controllers
         /// <returns>The view</returns>
         public ActionResult Followers()
         {
+            return View();
+        }
+
+        public ActionResult BlogManagement(long id)
+        {
+            BusinessManagement.Blog blog = new BusinessManagement.Blog(id);
+
+            ViewBag.Title = blog.getName();
+            ViewBag.Author = blog.getAuthor();
+            ViewBag.Desc = blog.getDescription();
+            ViewBag.Articles = blog.getArticles();
+
             return View();
         }
     }

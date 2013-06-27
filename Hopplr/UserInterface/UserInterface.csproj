@@ -198,6 +198,7 @@
     <Content Include="Views\Blog\_BlogLayout.cshtml" />
     <Content Include="Views\Blog\Index.cshtml" />
     <Content Include="Views\Blog\Display.cshtml" />
+    <Content Include="Views\User\BlogManagement.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

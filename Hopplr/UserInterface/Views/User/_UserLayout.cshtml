@@ -4,10 +4,10 @@
 <head>
     <title>@ViewBag.Title</title>
     @{
-        string css = BusinessManagement.User.GetCSSPath(User.Identity.Name);
-        string css2 = Url.Content(css);
+        BusinessManagement.User us = new BusinessManagement.User(User.Identity.Name);
+        string css = Url.Content(us.GetCSSPath());
      }
-    <link rel="stylesheet" type="text/css" href="@css2">
+    <link rel="stylesheet" type="text/css" href="@css">
 </head>
 <body>
     <ul id="navigation">

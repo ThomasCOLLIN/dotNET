@@ -1,6 +1,11 @@
 ﻿@{
-    ViewBag.Title = "Blog";
+    ViewBag.Title = "Blogs";
     Layout = "~/Views/User/_UserLayout.cshtml";
 }
 
-<h2>Blog</h2>
+<h2>Liste de vos blogs</h2>
+<ul class="list">
+    @foreach (DataAccess.T_Blog blog in @ViewBag.ListBlog) {
+        <li><a href="BlogManagement?id=@blog.Id">@blog.Name</a></li>
+    }
+</ul>

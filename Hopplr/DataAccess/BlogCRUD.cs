@@ -58,6 +58,22 @@ namespace DataAccess
             }
         }
 
+        public static List<T_Blog> GetWithUser(long UserId)
+        {
+            try
+            {
+                using (Entities bdd = new Entities())
+                {
+                    return bdd.T_Blog.Where(bl => bl.UserId == UserId).ToList();
+                }
+            }
+            catch (Exception e)
+            {
+                Trace.WriteLine(e.Message);
+                throw;
+            }
+        }
+
         public static List<T_Blog> GetList()
         {
             try

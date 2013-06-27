@@ -3,4 +3,9 @@
     Layout = "~/Views/User/_UserLayout.cshtml";
 }
 
-<h2>Follows</h2>
+<h2>Liste des blogs que vous suivez</h2>
+<ul class="list">
+    @foreach (DataAccess.T_Blog blog in @ViewBag.ListBlog) {
+        <li><a href="../Blog/Display?id=@blog.Id">@blog.Name</a></li>
+    }
+</ul>
