@@ -15,6 +15,21 @@ namespace BusinessManagement
             return DataAccess.BlogCRUD.GetList();
         }
 
+        public static void CreateBlog(string user, long styleId, long themeId, string name, string desc)
+        {
+            long uid = DataAccess.UserCRUD.GetUserByLogin(user).Id;
+            DataAccess.T_Blog blog = new DataAccess.T_Blog()
+            {
+                UserId = uid,
+                CreationDate = DateTime.Now,
+                Description = desc,
+                Name = name,
+                StyleId = styleId,
+                ThemeId = themeId
+            };
+            DataAccess.BlogCRUD.Create(blog);
+        }
+
         public Blog(long id)
         {
             blog = DataAccess.BlogCRUD.Get(id);

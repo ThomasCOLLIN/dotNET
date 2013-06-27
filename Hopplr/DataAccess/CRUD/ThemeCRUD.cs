@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess
 {
-    class T_ThemeCRUD
+    public class ThemeCRUD
     {
         public static void Create(T_Theme theme)
         {
@@ -33,6 +33,22 @@ namespace DataAccess
                 using (Entities bdd = new Entities())
                 {
                     return bdd.T_Theme.Where(thm => thm.Id == themeId).FirstOrDefault();
+                }
+            }
+            catch (Exception e)
+            {
+                Trace.WriteLine(e.Message);
+                throw;
+            }
+        }
+
+        public static List<T_Theme> GetAll()
+        {
+            try
+            {
+                using (Entities bdd = new Entities())
+                {
+                    return bdd.T_Theme.ToList();
                 }
             }
             catch (Exception e)

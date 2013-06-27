@@ -52,6 +52,9 @@ namespace UserInterface.Controllers
         public ActionResult BlogManagement(long id)
         {
             BusinessManagement.Blog blog = new BusinessManagement.Blog(id);
+            
+            if (User.Identity.Name != blog.getAuthor())
+                RedirectToAction("Blog");
 
             ViewBag.Title = blog.getName();
             ViewBag.Author = blog.getAuthor();
@@ -62,9 +65,7 @@ namespace UserInterface.Controllers
         }
 
 
-                /////////////////////
-                //  AJOUT DE BLOG  //
-                /////////////////////
+        #region Création de blog
 
         public ActionResult CreateBlog()
         {
@@ -84,5 +85,8 @@ namespace UserInterface.Controllers
             // If we got this far, something failed, redisplay form
             return View();
         }
+
+        #endregion
+
     }
 }

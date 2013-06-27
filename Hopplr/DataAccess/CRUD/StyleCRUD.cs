@@ -58,6 +58,22 @@ namespace DataAccess
             }
         }
 
+        public static List<T_Style> GetAll()
+        {
+            try
+            {
+                using (Entities bdd = new Entities())
+                {
+                    return bdd.T_Style.ToList();
+                }
+            }
+            catch (Exception e)
+            {
+                Trace.WriteLine(e.Message);
+                throw;
+            }
+        }
+
         public static void Update(long styleId, T_Style stl)
         {
             try
