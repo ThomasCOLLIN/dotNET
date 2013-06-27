@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluxRss", "FluxRss\FluxRss.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserInterface", "UserInterface\UserInterface.csproj", "{BEA329A6-C69A-4A91-9CCE-83B2068BF86B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApplicationTest", "ConsoleApplicationTest\ConsoleApplicationTest.csproj", "{52099A6A-AB94-4908-BE1C-5F2287AE3541}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +51,10 @@ Global
 		{BEA329A6-C69A-4A91-9CCE-83B2068BF86B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BEA329A6-C69A-4A91-9CCE-83B2068BF86B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BEA329A6-C69A-4A91-9CCE-83B2068BF86B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{52099A6A-AB94-4908-BE1C-5F2287AE3541}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52099A6A-AB94-4908-BE1C-5F2287AE3541}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52099A6A-AB94-4908-BE1C-5F2287AE3541}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52099A6A-AB94-4908-BE1C-5F2287AE3541}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

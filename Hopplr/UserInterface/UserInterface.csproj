@@ -199,6 +199,9 @@
     <Content Include="Views\Blog\Index.cshtml" />
     <Content Include="Views\Blog\Display.cshtml" />
     <Content Include="Views\User\BlogManagement.cshtml" />
+    <Content Include="User.Config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -42,6 +42,38 @@ namespace DataAccess
             }
         }
 
+        public static bool DoesLoginExists(string login)
+        {
+            try
+            {
+                using (Entities bdd = new Entities())
+                {
+                    return bdd.T_User.Where(usr => usr.Login == login).FirstOrDefault() != null;
+                }
+            }
+            catch (Exception e)
+            {
+                Trace.WriteLine(e.Message);
+                throw;
+            }
+        }
+
+        public static bool DoesEmailExists(string email)
+        {
+            try
+            {
+                using (Entities bdd = new Entities())
+                {
+                    return bdd.T_User.Where(usr => usr.Email == email).FirstOrDefault() != null;
+                }
+            }
+            catch (Exception e)
+            {
+                Trace.WriteLine(e.Message);
+                throw;
+            }
+        }
+
         public static T_User GetUserByLogin(string login)
         {
             try
