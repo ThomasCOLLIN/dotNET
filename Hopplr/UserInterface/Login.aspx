@@ -7,9 +7,10 @@
     <title>Hopplr - Connexion</title>
 </head>
 <body>
+    <a href="/Blog/Index">Acceder à la liste des blogs</a>
     <form id="form1" runat="server">
     <div>
-        <asp:Login ID="Login1" runat="server" DestinationPageUrl="~/User/Home.aspx">
+        <asp:Login ID="Login1" runat="server" DestinationPageUrl="~/User/Index">
         </asp:Login>
     </div>
     </form>

@@ -42,14 +42,14 @@ namespace DataAccess
             }
         }
 
-        public static List<T_User> GetUsersByLogin(string login)
+        public static T_User GetUserByLogin(string login)
         {
             try
             {
                 using (Entities bdd = new Entities())
                 {
-                    List<T_User> users = bdd.T_User.Where(x => x.Login == login).ToList();
-                    return users;
+                    T_User user = bdd.T_User.Where(x => x.Login == login).ToList().FirstOrDefault();
+                    return user;
                 }
             }
             catch (Exception)

@@ -149,14 +149,13 @@ namespace BusinessManagement
 
         public override bool ValidateUser(string username, string password)
         {
-            List<DataAccess.T_User> users = DataAccess.UserCRUD.GetUsersByLogin(username);
+            DataAccess.T_User user = DataAccess.UserCRUD.GetUserByLogin(username);
 
-            if (users == null)
+            if (user == null)
                 return false;
 
-            foreach (DataAccess.T_User us in users)
-                if (us.HashPassword.Equals(password))
-                    return true;
+            if (user.HashPassword.Equals(password))
+                return true;
 
             return false;
         }

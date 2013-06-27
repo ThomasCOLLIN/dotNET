@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess
 {
-    class T_BlogCRUD
+    public class BlogCRUD
     {
         public static void Create(T_Blog blog)
         {
@@ -49,6 +49,22 @@ namespace DataAccess
                 using (Entities bdd = new Entities())
                 {
                     return bdd.T_Blog.Include("Article").Where(bl => bl.Id == blogId).FirstOrDefault();
+                }
+            }
+            catch (Exception e)
+            {
+                Trace.WriteLine(e.Message);
+                throw;
+            }
+        }
+
+        public static List<T_Blog> GetList()
+        {
+            try
+            {
+                using (Entities bdd = new Entities())
+                {
+                    return bdd.T_Blog.ToList();
                 }
             }
             catch (Exception e)

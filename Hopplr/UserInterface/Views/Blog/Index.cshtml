@@ -1,0 +1,12 @@
+﻿@{
+    ViewBag.Title = "Liste des blogs";
+    ViewBag.CssPath = "/Content/css/style1.css"; // The list of blogs has the default style
+    Layout = "~/Views/Blog/_BlogLayout.cshtml";
+}
+
+<h2>Liste des blogs</h2>
+<ul class="list">
+    @foreach (DataAccess.T_Blog blog in @ViewBag.ListBlog) {
+        <li><a href="Display?id=@blog.Id">@blog.Name</a></li>
+    }
+</ul>

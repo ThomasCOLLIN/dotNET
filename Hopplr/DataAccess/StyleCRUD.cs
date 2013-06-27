@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess
 {
-    class T_StyleCRUD
+    public class StyleCRUD
     {
         public static void Create(T_Style style)
         {

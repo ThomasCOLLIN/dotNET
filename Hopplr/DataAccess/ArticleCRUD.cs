@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess
 {
-    public class T_ArticleCRUD
+    public class ArticleCRUD
     {
 
         public static void Create(T_Article article)
@@ -34,6 +34,22 @@ namespace DataAccess
                 using (Entities bdd = new Entities())
                 {
                     return bdd.T_Article.Where(art => art.Id == articleId).FirstOrDefault();
+                }
+            }
+            catch (Exception e)
+            {
+                Trace.WriteLine(e.Message);
+                throw;
+            }
+        }
+
+        public static List<T_Article> GetWithBlog(long blogId)
+        {
+            try
+            {
+                using (Entities bdd = new Entities())
+                {
+                    return bdd.T_Article.Where(art => art.BlogId == blogId).ToList();
                 }
             }
             catch (Exception e)

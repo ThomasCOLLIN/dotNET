@@ -1,0 +1,20 @@
+﻿@{
+    Layout = "~/Views/Blog/_BlogLayout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+<p>Créé par @ViewBag.Author</p>
+
+<div class="description">@ViewBag.Desc</div>
+<br/><br/>
+@foreach (DataAccess.T_Article article in @ViewBag.Articles)
+{
+    <div class="article">
+        <div class="content">@article.Text</div>
+        <div class="infos">
+            Le : @article.CreationDate<br/>
+            <a>Lien vers l'article</a>
+        </div>
+    </div>
+}
+
