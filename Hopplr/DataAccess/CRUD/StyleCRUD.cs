@@ -26,6 +26,22 @@ namespace DataAccess
             }
         }
 
+        public static T_Style GetDefault()
+        {
+            try
+            {
+                using (Entities bdd = new Entities())
+                {
+                    return bdd.T_Style.FirstOrDefault();
+                }
+            }
+            catch (Exception e)
+            {
+                Trace.WriteLine(e.Message);
+                throw;
+            }
+        }
+
         public static T_Style Get(long styleId)
         {
             try
