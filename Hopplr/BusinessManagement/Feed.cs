@@ -17,7 +17,7 @@ namespace BusinessManagement
             {
                 Dbo.RssArticle rssArticle = new Dbo.RssArticle();
                 rssArticle.Title = article.Text;
-                rssArticle.Content = article.MediaUrl;
+                rssArticle.Content = "<img src=\"http://imgs.xkcd.com/comics/password_strength.png\">" + article.MediaUrl;
                 rssArticle.CreationDate = article.CreationDate;
 
                 rssArticles.Add(rssArticle);
