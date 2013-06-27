@@ -34,5 +34,10 @@ namespace UserInterface.Controllers
             ViewBag.Articles = blog.getArticles();
             return View();
         }
+
+        public string Test()
+        {
+            return "toto";
+        }
     }
 }

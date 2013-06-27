@@ -51,6 +51,7 @@
     <Compile Include="CRUD\BlogCRUD.cs" />
     <Compile Include="CRUD\ArticleTagCRUD.cs" />
     <Compile Include="CRUD\CommentCRUD.cs" />
+    <Compile Include="CRUD\SearchCRUD.cs" />
     <Compile Include="Modele.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
