@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess
 {
-    class T_MediaTypeCRUD
+    public class T_MediaTypeCRUD
     {
         public static void Create(T_MediaType mediaType)
         {

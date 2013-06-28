@@ -1,0 +1,20 @@
+﻿@model UserInterface.Models.VideoModel
+@using BusinessManagement
+
+@{
+    ViewBag.Title = "Ajouter un article avec une vidéo.";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm("AddVideo", "ArticleCreation", FormMethod.Post))
+{
+    @Html.ValidationSummary()
+    @Html.LabelFor(model => model.Url)
+    @Html.EditorFor(model => model.Url)
+    
+    @Html.LabelFor(model => model.Caption)
+    @Html.TextAreaFor(model => model.Caption, new { style="resize:none" })
+
+    <input type="submit" value="Valider" />
+}
