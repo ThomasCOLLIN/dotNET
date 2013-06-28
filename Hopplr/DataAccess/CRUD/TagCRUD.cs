@@ -92,5 +92,21 @@ namespace DataAccess
                 throw;
             }
         }
+
+        public static T_Tag GetByName(string name)
+        {
+            try
+            {
+                using (Entities bdd = new Entities())
+                {
+                    return bdd.T_Tag.Where(tg => tg.Name.Equals(name, StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault();
+                }
+            }
+            catch (Exception e)
+            {
+                Trace.WriteLine(e.Message);
+                throw;
+            }
+        }
     }
 }

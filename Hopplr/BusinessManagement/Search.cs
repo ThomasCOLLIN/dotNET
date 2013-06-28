@@ -10,17 +10,17 @@ namespace BusinessManagement
     {
         public static List<DataAccess.T_Blog> SearchByTheme(string theme)
         {
-            return DataAccess.CRUD.SearchCRUD.SearchByTheme(theme);
+            return DataAccess.Search.SearchByTheme(theme);
         }
 
         public static List<DataAccess.T_User> SearchByUser(string user)
         {
-            return DataAccess.CRUD.SearchCRUD.SearchByUser(user);
+            return DataAccess.Search.SearchByUser(user);
         }
 
         public static List<DataAccess.T_Article> SearchByTags(string tags)
         {
-            return DataAccess.CRUD.SearchCRUD.SearchByTags(tags);
+            return DataAccess.Search.SearchByTags(tags);
         }
     }
 }

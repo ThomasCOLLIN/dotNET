@@ -96,6 +96,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\ArticleCreationController.cs" />
+    <Compile Include="Controllers\ArticleDisplayController.cs" />
     <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
@@ -214,7 +215,8 @@
     <Content Include="Views\ArticleCreation\AddImage.cshtml" />
     <Content Include="Views\ArticleCreation\AddQuote.cshtml" />
     <Content Include="Views\ArticleCreation\AddVideo.cshtml" />
-    <Content Include="Views\_DisplayArticle.cshtml" />
+    <Content Include="Views\Shared\_DisplayArticle.cshtml" />
+    <Content Include="Views\ArticleDisplay\Display.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

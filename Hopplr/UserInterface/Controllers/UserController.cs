@@ -58,7 +58,8 @@ namespace UserInterface.Controllers
 
             ViewBag.Title = blog.GetName();
             ViewBag.Articles = blog.GetArticles();
-            ViewBag.CreateArt = "CreateArticle?id=" + id;
+            ViewBag.id = id;
+
 
             return View();
         }

@@ -1,0 +1,7 @@
+﻿@model UserInterface.Models.ArticleModel
+@{
+    ViewBag.Title = "Display";
+    Layout = "~/Views/Blog/_BlogLayout.cshtml";
+}
+
+@Html.Partial("_DisplayArticle", Model)

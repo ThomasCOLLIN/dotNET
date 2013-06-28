@@ -1,6 +1,7 @@
 ﻿@model UserInterface.Models.VideoModel
 
 @{
+    Layout = "~/Views/User/_UserLayout.cshtml";
     ViewBag.Title = "Ajouter un article avec une vidéo.";
 }
 
@@ -36,7 +37,3 @@
         </p>
     </fieldset>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
