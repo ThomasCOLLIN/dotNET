@@ -14,7 +14,7 @@ namespace BusinessManagement
             ArticleCRUD.Create(article);
         }
 
-        public T_Article Get(long articleId)
+        public static T_Article Get(long articleId)
         {
             return ArticleCRUD.Get(articleId);
         }

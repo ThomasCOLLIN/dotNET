@@ -34,7 +34,7 @@ namespace UserInterface.Controllers
             ViewBag.Articles = blog.GetArticles();
             return View();
         }
-
+        
         public string Test()
         {
             /*List<DataAccess.T_User> res = BusinessManagement.Search.SearchByUser("kévin");

@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataAccess.CRUD
+namespace DataAccess
 {
-    public class SearchCRUD
+    public class Search
     {
         public static List<T_Blog> SearchByTheme(string theme)
         {
