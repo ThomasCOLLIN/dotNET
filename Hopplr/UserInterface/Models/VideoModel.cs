@@ -9,6 +9,8 @@ namespace UserInterface.Models
 {
     public class VideoModel
     {
+        public long BlogId { get; set; }
+
         [Required(ErrorMessage = "Veuillez saisir une url.")]
         [RegularExpression(@".+youtube\..+", ErrorMessage = "Vous ne pouvez importer que des vidéos Youtube.")]
         [Display(Name = "Lien de la vidéo (youtube)")]

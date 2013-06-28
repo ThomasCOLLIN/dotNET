@@ -8,6 +8,8 @@ namespace UserInterface.Models
 {
     public class QuoteModel
     {
+        public long BlogId { get; set; }
+
         [Required(ErrorMessage = "La citation ne peut pas être vide.")]
         [Display(Name = "Citation")]
         public String Quote { get; set; }

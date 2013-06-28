@@ -205,15 +205,15 @@
     <Content Include="Views\Blog\Index.cshtml" />
     <Content Include="Views\Blog\Display.cshtml" />
     <Content Include="Views\User\BlogManagement.cshtml" />
-    <Content Include="Views\ArticleCreation\AddVideo.cshtml" />
     <Content Include="Views\User\CreateBlog.cshtml" />
     <Content Include="User.Config">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Views\ArticleCreation\AddQuote.cshtml" />
+    <Content Include="Views\User\CreateArticle.cshtml" />
     <Content Include="Views\ArticleCreation\AddMusic.cshtml" />
     <Content Include="Views\ArticleCreation\AddImage.cshtml" />
-    <Content Include="Views\User\CreateArticle.cshtml" />
+    <Content Include="Views\ArticleCreation\AddQuote.cshtml" />
+    <Content Include="Views\ArticleCreation\AddVideo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

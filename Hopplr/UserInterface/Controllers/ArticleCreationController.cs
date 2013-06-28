@@ -14,7 +14,7 @@ namespace UserInterface.Controllers
 {
     public class ArticleCreationController : Controller
     {
-        public ActionResult AddArticle(Int32 type = 2)
+        public ActionResult AddArticle(long blogId, Int32 type = 2)
         {
             MediaType mediaType =  new MediaType();
             if (mediaType.getMediaType(type) == null)
@@ -23,16 +23,22 @@ namespace UserInterface.Controllers
             switch (type)
             {
                 case (Int32)Tools.MediaTypes.Image:
-                    return View("AddImage");
+                    return RedirectToAction("AddImage", new { blogId });
                 case (Int32)Tools.MediaTypes.Video:
-                    return View("AddVideo");
+                    return RedirectToAction("AddVideo", new { blogId });
                 case (Int32)Tools.MediaTypes.Music:
-                    return View("AddMusic");
+                    return RedirectToAction("AddMusic", new { blogId });
                 case (Int32)Tools.MediaTypes.Quote:
-                    return View("AddQuote");
+                    return RedirectToAction("AddQuote", new { blogId });
                 default:
-                    return View();
+                    throw new ArgumentException("type");
             }
+        }
+
+        public ActionResult AddQuote(long blogId)
+        {
+            ViewBag.BlogId = blogId;
+            return View();
         }
 
         [HttpPost]
@@ -43,11 +49,15 @@ namespace UserInterface.Controllers
             if (String.IsNullOrEmpty(model.Quote))
                 return View(model);
 
-            // TODO: Must be replace by the real Blog's Id
-            var blogID = 1;
-            InsertArticleInBDD(blogID, model.Quote, (long)Tools.MediaTypes.Quote, model.Caption);
+            InsertArticleInBDD(model.BlogId, model.Quote, (long)Tools.MediaTypes.Quote, model.Caption);
 
-            return View(model);
+            return View();
+        }
+
+        public ActionResult AddMusic(long blogId)
+        {
+            ViewBag.BlogId = blogId;
+            return View();
         }
 
         [HttpPost]
@@ -64,11 +74,15 @@ namespace UserInterface.Controllers
                 return View(model);
             }
 
-            // TODO: Must be replace by the real Blog's Id
-            var blogID = 1;
-            InsertArticleInBDD(blogID, path, (long)Tools.MediaTypes.Music, model.Caption);
+            InsertArticleInBDD(model.BlogId, path, (long)Tools.MediaTypes.Music, model.Caption);
 
-            return View(model);
+            return View();
+        }
+
+        public ActionResult AddImage(long blogId)
+        {
+            ViewBag.BlogId = blogId;
+            return View();
         }
 
         [HttpPost]
@@ -85,11 +99,15 @@ namespace UserInterface.Controllers
                 return View(model);
             }
 
-            // TODO: Must be replace by the real Blog's Id
-            var blogID = 1;
-            InsertArticleInBDD(blogID, path, (long)Tools.MediaTypes.Image, model.Caption);
+            InsertArticleInBDD(model.BlogId, path, (long)Tools.MediaTypes.Image, model.Caption);
 
-            return View(model);
+            return View();
+        }
+
+        public ActionResult AddVideo(long blogId)
+        {
+            ViewBag.BlogId = blogId;
+            return View();
         }
 
         [HttpPost]
@@ -109,11 +127,9 @@ namespace UserInterface.Controllers
                 return View(model);
             }
 
-            // TODO : Must be replace by the real Blog's Id.
-            var blogID = 1;
-            InsertArticleInBDD(blogID, youtubeID, (long)Tools.MediaTypes.Video, model.Caption);
+            InsertArticleInBDD(model.BlogId, youtubeID, (long)Tools.MediaTypes.Video, model.Caption);
 
-            return View(model);
+            return View();
         }
 
 

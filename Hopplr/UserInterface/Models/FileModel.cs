@@ -8,6 +8,8 @@ namespace UserInterface.Models
 {
     public class FileModel
     {
+        public long BlogId { get; set; }
+
         [Required(ErrorMessage = "Vous devez sélectionner un fichier.")]
         [Display(Name = "Fichier")]
         public HttpPostedFileBase File { get; set; }
