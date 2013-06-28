@@ -1,18 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.Diagnostics;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace BusinessManagement
 {
     public class Registration
     {
-        public static void RegisterAccount(Dbo.Account account)
+        public static bool RegisterAccount(Dbo.Account account)
         {
             if (!IsAccountValid(account))
-                return;
+                return false;
 
             DataAccess.T_User user = new DataAccess.T_User();
             user.Email = account.Email.Trim();
@@ -23,11 +20,21 @@ namespace BusinessManagement
             user.T_Style = DataAccess.StyleCRUD.GetDefault();
             user.StyleId = user.T_Style.Id;
             
-            DataAccess.UserCRUD.Create(user);
+            try 
+	        {	        
+                DataAccess.UserCRUD.Create(user);
 
-            // pas utile en local ^^'
-            // SendValidationEmail(user.Email);
-        }
+                // pas utile en local ^^'
+                // SendValidationEmail(user.Email);
+
+                return true;
+	        }
+	        catch (Exception e)
+	        {
+                Trace.WriteLine(e.Message);
+                return false;
+	        }            
+       }
 
         public static bool IsAccountValid(Dbo.Account account)
         {
