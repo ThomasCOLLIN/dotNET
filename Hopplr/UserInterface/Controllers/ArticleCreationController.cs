@@ -31,6 +31,8 @@ namespace UserInterface.Controllers
             }
         }
 
+        #region quote
+
         public ActionResult AddQuote(long blogId)
         {
             ViewBag.BlogId = blogId;
@@ -52,6 +54,10 @@ namespace UserInterface.Controllers
 
             return RedirectToAction("BlogManagement", "User", new { model.BlogId });
         }
+
+        #endregion quote
+
+        #region music
 
         public ActionResult AddMusic(long blogId)
         {
@@ -78,6 +84,10 @@ namespace UserInterface.Controllers
             return RedirectToAction("BlogManagement", "User", new { model.BlogId });
         }
 
+        #endregion music
+
+        #region image
+
         public ActionResult AddImage(long blogId)
         {
             ViewBag.BlogId = blogId;
@@ -102,6 +112,10 @@ namespace UserInterface.Controllers
 
             return RedirectToAction("BlogManagement", "User", new { model.BlogId });
         }
+
+        #endregion image
+
+        #region video
 
         public ActionResult AddVideo(long blogId)
         {
@@ -134,6 +148,7 @@ namespace UserInterface.Controllers
             return RedirectToAction("BlogManagement", "User", new { model.BlogId });
         }
 
+        #endregion vidéo
 
         #region private
         /// <summary>
