@@ -6,11 +6,21 @@ using System.Threading.Tasks;
 
 namespace BusinessManagement
 {
-    class Search
+    public class Search
     {
-        public static List<DataAccess.T_Blog> search()
+        public static List<DataAccess.T_Blog> SearchByTheme(string theme)
         {
-            return null;
+            return DataAccess.CRUD.SearchCRUD.SearchByTheme(theme);
+        }
+
+        public static List<DataAccess.T_User> SearchByUser(string user)
+        {
+            return DataAccess.CRUD.SearchCRUD.SearchByUser(user);
+        }
+
+        public static List<DataAccess.T_Article> SearchByUser(string tags)
+        {
+            return DataAccess.CRUD.SearchCRUD.SearchByTags(tags);
         }
     }
 }

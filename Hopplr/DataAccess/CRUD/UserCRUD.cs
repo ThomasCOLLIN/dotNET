@@ -124,5 +124,21 @@ namespace DataAccess
                 throw;
             }
         }
+
+        public static List<T_User> GetAll()
+        {
+            try
+            {
+                using (Entities bdd = new Entities())
+                {
+                    return bdd.T_User.ToList();
+                }
+            }
+            catch (Exception e)
+            {
+                Trace.WriteLine(e.Message);
+                throw;
+            }
+        }
     }
 }

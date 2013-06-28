@@ -93,5 +93,21 @@ namespace DataAccess
                 throw;
             }
         }
+
+        public static List<T_Article> GetAll()
+        {
+            try
+            {
+                using (Entities bdd = new Entities())
+                {
+                    return bdd.T_Article.ToList();
+                }
+            }
+            catch (Exception e)
+            {
+                Trace.WriteLine(e.Message);
+                throw;
+            }
+        }
     }
 }

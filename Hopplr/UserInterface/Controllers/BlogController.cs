@@ -37,7 +37,20 @@ namespace UserInterface.Controllers
 
         public string Test()
         {
-            return "toto";
+            /*List<DataAccess.T_User> res = BusinessManagement.Search.SearchByUser("Kévin");
+            string resString = "user are : ";
+            foreach (DataAccess.T_User user in res)
+            {
+                resString += user.Login;
+            }
+            return resString;*/
+            /*List<DataAccess.T_Blog> res = BusinessManagement.Search.SearchByTheme("Manga");
+            string resString = "blogs are : ";
+            foreach (DataAccess.T_Blog user in res)
+            {
+                resString += user.Name;
+            }
+            return resString;*/
         }
     }
 }
