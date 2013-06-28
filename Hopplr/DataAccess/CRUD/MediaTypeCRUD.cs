@@ -7,15 +7,15 @@ using System.Threading.Tasks;
 
 namespace DataAccess
 {
-    class T_ThemeCRUD
+    public class MediaTypeCRUD
     {
-        public static void Create(T_Theme theme)
+        public static void Create(T_MediaType mediaType)
         {
             try
             {
                 using (Entities bdd = new Entities())
                 {
-                    bdd.T_Theme.Add(theme);
+                    bdd.T_MediaType.Add(mediaType);
                     bdd.SaveChanges();
                 }
             }
@@ -26,13 +26,13 @@ namespace DataAccess
             }
         }
 
-        public static T_Theme Get(long themeId)
+        public static T_MediaType Get(long mediaTypeId)
         {
             try
             {
                 using (Entities bdd = new Entities())
                 {
-                    return bdd.T_Theme.Where(thm => thm.Id == themeId).FirstOrDefault();
+                    return bdd.T_MediaType.Where(mdType => mdType.Id == mediaTypeId).FirstOrDefault();
                 }
             }
             catch (Exception e)
@@ -42,14 +42,30 @@ namespace DataAccess
             }
         }
 
-        public static void Update(long themeId, T_Theme thm)
+        public static List<T_MediaType> GetAll()
         {
             try
             {
                 using (Entities bdd = new Entities())
                 {
-                    T_Theme theme = Get(themeId);
-                    theme = thm;
+                    return bdd.T_MediaType.ToList();
+                }
+            }
+            catch (Exception e)
+            {
+                Trace.WriteLine(e.Message);
+                throw;
+            }
+        }
+
+        public static void Update(long mediaTypeId, T_MediaType mdType)
+        {
+            try
+            {
+                using (Entities bdd = new Entities())
+                {
+                    T_MediaType mediaType = Get(mediaTypeId);
+                    mediaType = mdType;
                     bdd.SaveChanges();
                 }
             }
@@ -60,13 +76,13 @@ namespace DataAccess
             }
         }
 
-        public static void Delete(long themeId)
+        public static void Delete(long mediaTypeId)
         {
             try
             {
                 using (Entities bdd = new Entities())
                 {
-                    bdd.T_Theme.Remove(Get(themeId));
+                    bdd.T_MediaType.Remove(Get(mediaTypeId));
                     bdd.SaveChanges();
                 }
             }

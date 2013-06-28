@@ -7,15 +7,15 @@ using System.Threading.Tasks;
 
 namespace DataAccess
 {
-    public class StyleCRUD
+    public class ThemeCRUD
     {
-        public static void Create(T_Style style)
+        public static void Create(T_Theme theme)
         {
             try
             {
                 using (Entities bdd = new Entities())
                 {
-                    bdd.T_Style.Add(style);
+                    bdd.T_Theme.Add(theme);
                     bdd.SaveChanges();
                 }
             }
@@ -26,13 +26,13 @@ namespace DataAccess
             }
         }
 
-        public static T_Style Get(long styleId)
+        public static T_Theme Get(long themeId)
         {
             try
             {
                 using (Entities bdd = new Entities())
                 {
-                    return bdd.T_Style.Where(stl => stl.Id == styleId).FirstOrDefault();
+                    return bdd.T_Theme.Where(thm => thm.Id == themeId).FirstOrDefault();
                 }
             }
             catch (Exception e)
@@ -42,14 +42,30 @@ namespace DataAccess
             }
         }
 
-        public static void Update(long styleId, T_Style stl)
+        public static List<T_Theme> GetAll()
         {
             try
             {
                 using (Entities bdd = new Entities())
                 {
-                    T_Style style = Get(styleId);
-                    style = stl;
+                    return bdd.T_Theme.ToList();
+                }
+            }
+            catch (Exception e)
+            {
+                Trace.WriteLine(e.Message);
+                throw;
+            }
+        }
+
+        public static void Update(long themeId, T_Theme thm)
+        {
+            try
+            {
+                using (Entities bdd = new Entities())
+                {
+                    T_Theme theme = Get(themeId);
+                    theme = thm;
                     bdd.SaveChanges();
                 }
             }
@@ -60,13 +76,13 @@ namespace DataAccess
             }
         }
 
-        public static void Delete(long styleId)
+        public static void Delete(long themeId)
         {
             try
             {
                 using (Entities bdd = new Entities())
                 {
-                    bdd.T_Style.Remove(Get(styleId));
+                    bdd.T_Theme.Remove(Get(themeId));
                     bdd.SaveChanges();
                 }
             }

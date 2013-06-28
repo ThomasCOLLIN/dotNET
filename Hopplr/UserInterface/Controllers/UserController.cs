@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using UserInterface.Models;
 
 namespace UserInterface.Controllers
 {
@@ -51,13 +52,63 @@ namespace UserInterface.Controllers
         public ActionResult BlogManagement(long id)
         {
             BusinessManagement.Blog blog = new BusinessManagement.Blog(id);
+            
+            if (User.Identity.Name != blog.getAuthor())
+                RedirectToAction("Blog");
 
             ViewBag.Title = blog.getName();
-            ViewBag.Author = blog.getAuthor();
-            ViewBag.Desc = blog.getDescription();
             ViewBag.Articles = blog.getArticles();
+            ViewBag.CreateArt = "CreateArticle?id=" + id;
 
             return View();
         }
+
+
+        #region Création de blog
+
+        public ActionResult CreateBlog()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult CreateBlog(BlogModel bl)
+        {
+            if (ModelState.IsValid)
+            {
+                BusinessManagement.Blog.CreateBlog(User.Identity.Name, bl.Style, bl.Theme, bl.Name, bl.Description);
+
+                return RedirectToAction("Blog");
+            }
+
+            // If we got this far, something failed, redisplay form
+            return View();
+        }
+
+        #endregion
+
+
+        #region Création d'un article
+
+        public ActionResult CreateArticle(long id)
+        {
+            ViewBag.BlogId = id;
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult CreateArticle(ArticleModel art)
+        {
+            if (ModelState.IsValid)
+            {
+                BusinessManagement.Blog.CreateArticle(art.BlogId, art.mediaUrl, art.mediaType, art.text);
+                return RedirectToAction("BlogManagement", new { id = art.BlogId });
+            }
+
+            // If we got this far, something failed, redisplay form
+            return View();
+        }
+
+        #endregion
     }
 }

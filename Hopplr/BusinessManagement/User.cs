@@ -25,6 +25,11 @@ namespace BusinessManagement
             return style.CSSPath;
         }
 
+        public long getId()
+        {
+            return user.Id;
+        }
+
         public List<DataAccess.T_Blog> getListBlogs()
         {
             return DataAccess.BlogCRUD.GetWithUser(user.Id);
@@ -44,6 +49,8 @@ namespace BusinessManagement
             return blogs;
         }
 
- 
+
+
+
     }
 }

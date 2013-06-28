@@ -47,10 +47,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ArticleCRUD.cs" />
-    <Compile Include="BlogCRUD.cs" />
-    <Compile Include="ArticleTagCRUD.cs" />
-    <Compile Include="CommentCRUD.cs" />
+    <Compile Include="CRUD\ArticleCRUD.cs" />
+    <Compile Include="CRUD\BlogCRUD.cs" />
+    <Compile Include="CRUD\ArticleTagCRUD.cs" />
+    <Compile Include="CRUD\CommentCRUD.cs" />
+    <Compile Include="CRUD\SearchCRUD.cs" />
     <Compile Include="Modele.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -66,11 +67,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Modele.edmx</DependentUpon>
     </Compile>
-    <Compile Include="ThemeCRUD.cs" />
-    <Compile Include="TagCRUD.cs" />
-    <Compile Include="StyleCRUD.cs" />
-    <Compile Include="MediaTypeCRUD.cs" />
-    <Compile Include="FollowCRUD.cs" />
+    <Compile Include="CRUD\ThemeCRUD.cs" />
+    <Compile Include="CRUD\TagCRUD.cs" />
+    <Compile Include="CRUD\StyleCRUD.cs" />
+    <Compile Include="CRUD\MediaTypeCRUD.cs" />
+    <Compile Include="CRUD\FollowCRUD.cs" />
     <Compile Include="T_Article.cs">
       <DependentUpon>Modele.tt</DependentUpon>
     </Compile>
@@ -101,7 +102,7 @@
     <Compile Include="T_User.cs">
       <DependentUpon>Modele.tt</DependentUpon>
     </Compile>
-    <Compile Include="UserCRUD.cs" />
+    <Compile Include="CRUD\UserCRUD.cs" />
     <Compile Include="Feed.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

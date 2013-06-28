@@ -11,7 +11,7 @@ namespace BusinessManagement
     {
         public T_MediaType getMediaType(long mediaTypeId)
         {
-            return T_MediaTypeCRUD.Get(mediaTypeId);
+            return MediaTypeCRUD.Get(mediaTypeId);
         }
     }
 }

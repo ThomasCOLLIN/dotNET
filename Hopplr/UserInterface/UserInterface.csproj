@@ -101,7 +101,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ArticleModel.cs" />
     <Compile Include="Models\FileModel.cs" />
+    <Compile Include="Models\BlogModel.cs" />
     <Compile Include="Models\QuoteModel.cs" />
     <Compile Include="Models\VideoModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -204,12 +206,14 @@
     <Content Include="Views\Blog\Display.cshtml" />
     <Content Include="Views\User\BlogManagement.cshtml" />
     <Content Include="Views\ArticleCreation\AddVideo.cshtml" />
+    <Content Include="Views\User\CreateBlog.cshtml" />
     <Content Include="User.Config">
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Views\ArticleCreation\AddQuote.cshtml" />
     <Content Include="Views\ArticleCreation\AddMusic.cshtml" />
     <Content Include="Views\ArticleCreation\AddImage.cshtml" />
+    <Content Include="Views\User\CreateArticle.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -6,6 +6,7 @@ using System.ServiceModel;
 using System.ServiceModel.Syndication;
 using System.ServiceModel.Web;
 using System.Text;
+using System.Xml.Linq;
 
 namespace FluxRss
 {
