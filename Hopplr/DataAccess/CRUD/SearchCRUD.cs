@@ -15,23 +15,14 @@ namespace DataAccess.CRUD
             {
                 using (Entities bdd = new Entities())
                 {
-                    /*List<T_Theme> thList = ThemeCRUD.GetAll();
-                    long curId = 0;
-                    foreach (T_Theme thm in thList)
-                    {
-                        if (string.Compare(thm.Description, theme) == 0)
-                            curId = thm.Id;
-                    }
-                    return bdd.T_Blog.Include("T_Theme").Where(blg => blg.ThemeId == curId).ToList();
-                    */return bdd.T_Blog.Include("T_Theme").Where(blg => blg.T_Theme.Description.Equals(theme)).ToList();
+                    return bdd.T_Blog.Include("T_Theme").Where(blg => blg.T_Theme.Description.Equals(theme)).ToList();
                 }
             }
             catch (Exception e)
             {
                 Trace.WriteLine(e.Message);
+                return new List<T_Blog>();
             }
-
-            return new List<T_Blog>();
         }
 
         public static List<T_User> SearchByUser(string name)
@@ -40,24 +31,15 @@ namespace DataAccess.CRUD
             {
                 using (Entities bdd = new Entities())
                 {
-                    List<T_User> usList = UserCRUD.GetAll();
-                    List<T_User> resList = new List<T_User>();
-                    foreach (T_User usr in usList)
-                    {
-                        if (string.Compare(usr.Login, name) == 0)
-                            resList.Add(usr);
-                        else if (string.Compare(usr.FirstName, name) == 0)
-                            resList.Add(usr);
-                    }
-                    return resList;
+                    return bdd.T_User.Where((usr) => usr.Login.Equals(name, StringComparison.CurrentCultureIgnoreCase) 
+                                                || usr.FirstName.Equals(name, StringComparison.CurrentCultureIgnoreCase)).ToList();
                 }
             }
             catch (Exception e)
             {
                 Trace.WriteLine(e.Message);
+                return new List<T_User>();
             }
-
-            return new List<T_User>();
         }
 
         public static List<T_Article> SearchByTags(string tags)
@@ -67,27 +49,37 @@ namespace DataAccess.CRUD
                 using (Entities bdd = new Entities())
                 {
                     //List<T_Tag> usList = T_TagCRUD.GetAll();
-                    /*List<T_Article> arList = ArticleCRUD.GetAll();
+                    //List<T_Article> arList = ArticleCRUD.GetAll();
+                    List<T_ArticleTag> atList = T_ArticleTagCRUD.GetAll();
                     List<T_Article> resList = new List<T_Article>();
                     List<String> tagList = new List<string>(tags.Split(' '));
 
-                    foreach (T_Article art in arList)
+                    foreach (T_ArticleTag arta in atList)
                     {
-                        if (string.Compare(art.Login, tags) == 0)
-                            resList.Add(art);
-                        else if (string.Compare(art.FirstName, tags) == 0)
-                            resList.Add(art);
+                        foreach (string tag in tagList)
+                        {
+                            T_Tag curTag = DataAccess.T_TagCRUD.GetByName(tag);
+                            if (arta.TagId == curTag.Id)
+                            {
+                                Boolean present = false;
+                                foreach (T_Article elt in resList)
+                                {
+                                    if (elt.Id == arta.ArticleId)
+                                        present = true;
+                                }
+                                if (!present)
+                                    resList.Add(ArticleCRUD.Get(arta.ArticleId));
+                            }
+                        }
                     }
-                    return resList;*/
-                    return new List<T_Article>();
+                    return resList.Distinct().ToList();
                 }
             }
             catch (Exception e)
             {
                 Trace.WriteLine(e.Message);
+                return new List<T_Article>();
             }
-
-            return new List<T_Article>();
         }
     }
 }

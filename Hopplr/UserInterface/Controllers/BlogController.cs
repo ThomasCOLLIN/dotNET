@@ -37,7 +37,7 @@ namespace UserInterface.Controllers
 
         public string Test()
         {
-            /*List<DataAccess.T_User> res = BusinessManagement.Search.SearchByUser("Kévin");
+            /*List<DataAccess.T_User> res = BusinessManagement.Search.SearchByUser("kévin");
             string resString = "user are : ";
             foreach (DataAccess.T_User user in res)
             {
@@ -49,6 +49,13 @@ namespace UserInterface.Controllers
             foreach (DataAccess.T_Blog user in res)
             {
                 resString += user.Name;
+            }
+            return resString;*/
+            /*List<DataAccess.T_Article> res = BusinessManagement.Search.SearchByTags("Anime Tennis");
+            string resString = "Articles are : ";
+            foreach (DataAccess.T_Article art in res)
+            {
+                resString += ", " + art.Text;
             }
             return resString;*/
             return "dadidadaire";

@@ -58,5 +58,21 @@ namespace DataAccess
                 throw;
             }
         }
+
+        public static List<T_ArticleTag> GetAll()
+        {
+            try
+            {
+                using (Entities bdd = new Entities())
+                {
+                    return bdd.T_ArticleTag.ToList();
+                }
+            }
+            catch (Exception e)
+            {
+                Trace.WriteLine(e.Message);
+                throw;
+            }
+        }
     }
 }
