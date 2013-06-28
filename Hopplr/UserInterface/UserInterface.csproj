@@ -214,6 +214,7 @@
     <Content Include="Views\ArticleCreation\AddImage.cshtml" />
     <Content Include="Views\ArticleCreation\AddQuote.cshtml" />
     <Content Include="Views\ArticleCreation\AddVideo.cshtml" />
+    <Content Include="Views\_DisplayArticle.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

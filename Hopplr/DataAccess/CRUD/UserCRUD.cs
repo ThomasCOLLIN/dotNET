@@ -90,6 +90,22 @@ namespace DataAccess
             }
         }
 
+        public static T_User GetUserByEmail(string email)
+        {
+            try
+            {
+                using (Entities bdd = new Entities())
+                {
+                    T_User user = bdd.T_User.Where(x => x.Email == email).ToList().FirstOrDefault();
+                    return user;
+                }
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
         public static void Update(long userId, T_User usr)
         {
             try

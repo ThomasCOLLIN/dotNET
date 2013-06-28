@@ -27,11 +27,11 @@ namespace UserInterface.Controllers
         {
             BusinessManagement.Blog blog = new BusinessManagement.Blog(id);
 
-            ViewBag.Title = blog.getName();
-            ViewBag.CssPath = Url.Content(blog.getStylePath());
-            ViewBag.Author = blog.getAuthor();
-            ViewBag.Desc = blog.getDescription();
-            ViewBag.Articles = blog.getArticles();
+            ViewBag.Title = blog.GetName();
+            ViewBag.CssPath = Url.Content(blog.GetStylePath());
+            ViewBag.Author = blog.GetAuthor();
+            ViewBag.Desc = blog.GetDescription();
+            ViewBag.Articles = blog.GetArticles();
             return View();
         }
 
