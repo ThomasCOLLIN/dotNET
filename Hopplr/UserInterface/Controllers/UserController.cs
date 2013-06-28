@@ -101,7 +101,7 @@ namespace UserInterface.Controllers
         {
             if (ModelState.IsValid)
             {
-                BusinessManagement.Blog.CreateArticle(art.BlogId, art.mediaUrl, art.mediaType, art.text);
+                BusinessManagement.Blog.CreateArticle(art.BlogId, art.MediaUrl, art.MediaType, art.Caption);
                 return RedirectToAction("BlogManagement", new { id = art.BlogId });
             }
 

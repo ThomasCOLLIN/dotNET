@@ -12,10 +12,10 @@ namespace UserInterface.Models
         public long BlogId {get; set;}
 
         [Required(ErrorMessage = "Précisez l'url du média")]
-        public string mediaUrl { get; set; }
+        public string MediaUrl { get; set; }
         [Required(ErrorMessage = "Selectionnez un type de média")]
-        public long mediaType { get; set; }
+        public long MediaType { get; set; }
         [Required(ErrorMessage = "Le texte est obligatoire")]
-        public string text { get; set; }
+        public string Caption { get; set; }
     }
 }

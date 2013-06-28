@@ -1,0 +1,39 @@
+﻿@model UserInterface.Models.ArticleModel
+@using BusinessManagement
+
+<fieldset>
+    <legend>Article</legend>
+    @if (Model.MediaType == (long)Tools.MediaTypes.Image)
+    {
+        <div class="display-field">
+            <img alt="image" src="@Model.MediaUrl" />
+        </div>
+    }
+    else if (Model.MediaType == (long)Tools.MediaTypes.Music)
+    {
+        <audio controls height="100" width="100">
+          <source src="@Model.MediaUrl" type="audio/mpeg">
+          <embed height="50" width="100" src="@Model.MediaUrl">
+          Votre navigateur ne supporte pas ce format audio.
+        </audio>
+    }
+    else if (Model.MediaType == (long)Tools.MediaTypes.Quote)
+    {
+        <div class="display-field">
+            <span>@Model.MediaUrl</span>
+        </div>
+    }
+    else if (Model.MediaType == (long)Tools.MediaTypes.Video)
+    {
+        <iframe width="640" height="385" src="//www.youtube.com/embed/@Model.MediaUrl" frameborder="0" allowfullscreen="true"></iframe>
+    }
+
+    @*Display the caption if exists.*@
+    @if(!String.IsNullOrEmpty(Model.Caption))
+    {
+        <div class="display-label">Légende</div>
+        <div class="display-field">
+            <span>@Model.Caption</span>
+        </div>
+    }
+</fieldset>

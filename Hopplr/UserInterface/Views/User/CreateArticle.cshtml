@@ -18,27 +18,27 @@
 
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.mediaUrl)
+            @Html.LabelFor(model => model.MediaUrl)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.mediaUrl)
-            @Html.ValidationMessageFor(model => model.mediaUrl)
+            @Html.EditorFor(model => model.MediaUrl)
+            @Html.ValidationMessageFor(model => model.MediaUrl)
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.mediaType)
+            @Html.LabelFor(model => model.MediaType)
         </div>
         <div class="editor-field">
-            @Html.DropDownListFor(model => model.mediaType, new SelectList(BusinessManagement.DropDownLists.getMediaStyles(), "Id", "Description"))
-            @Html.ValidationMessageFor(model => model.mediaType)
+            @Html.DropDownListFor(model => model.MediaType, new SelectList(BusinessManagement.DropDownLists.getMediaStyles(), "Id", "Description"))
+            @Html.ValidationMessageFor(model => model.MediaType)
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.text)
+            @Html.LabelFor(model => model.Caption)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.text)
-            @Html.ValidationMessageFor(model => model.text)
+            @Html.EditorFor(model => model.Caption)
+            @Html.ValidationMessageFor(model => model.Caption)
         </div>
 
         <p>
