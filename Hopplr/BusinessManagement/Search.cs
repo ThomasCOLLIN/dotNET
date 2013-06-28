@@ -18,7 +18,7 @@ namespace BusinessManagement
             return DataAccess.CRUD.SearchCRUD.SearchByUser(user);
         }
 
-        public static List<DataAccess.T_Article> SearchByUser(string tags)
+        public static List<DataAccess.T_Article> SearchByTags(string tags)
         {
             return DataAccess.CRUD.SearchCRUD.SearchByTags(tags);
         }

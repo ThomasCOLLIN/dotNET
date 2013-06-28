@@ -51,6 +51,7 @@ namespace UserInterface.Controllers
                 resString += user.Name;
             }
             return resString;*/
+            return "dadidadaire";
         }
     }
 }

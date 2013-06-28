@@ -15,7 +15,7 @@ namespace DataAccess.CRUD
             {
                 using (Entities bdd = new Entities())
                 {
-                    List<T_Theme> thList = ThemeCRUD.GetAll();
+                    /*List<T_Theme> thList = ThemeCRUD.GetAll();
                     long curId = 0;
                     foreach (T_Theme thm in thList)
                     {
@@ -23,7 +23,7 @@ namespace DataAccess.CRUD
                             curId = thm.Id;
                     }
                     return bdd.T_Blog.Include("T_Theme").Where(blg => blg.ThemeId == curId).ToList();
-                    //return bdd.T_Blog.Include("T_Theme").Where(blg => blg.T_Theme.Description.Equals("theme name")).ToList();
+                    */return bdd.T_Blog.Include("T_Theme").Where(blg => blg.T_Theme.Description.Equals(theme)).ToList();
                 }
             }
             catch (Exception e)
