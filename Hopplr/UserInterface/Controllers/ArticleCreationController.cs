@@ -50,7 +50,7 @@ namespace UserInterface.Controllers
 
             InsertArticleInBDD(model.BlogId, model.Quote, (long)Tools.MediaTypes.Quote, model.Caption);
 
-            return View();
+            return RedirectToAction("BlogManagement", "User", new { model.BlogId });
         }
 
         public ActionResult AddMusic(long blogId)
@@ -75,7 +75,7 @@ namespace UserInterface.Controllers
 
             InsertArticleInBDD(model.BlogId, path, (long)Tools.MediaTypes.Music, model.Caption);
 
-            return View();
+            return RedirectToAction("BlogManagement", "User", new { model.BlogId });
         }
 
         public ActionResult AddImage(long blogId)
@@ -100,7 +100,7 @@ namespace UserInterface.Controllers
 
             InsertArticleInBDD(model.BlogId, path, (long)Tools.MediaTypes.Image, model.Caption);
 
-            return View();
+            return RedirectToAction("BlogManagement", "User", new { model.BlogId });
         }
 
         public ActionResult AddVideo(long blogId)
@@ -131,7 +131,7 @@ namespace UserInterface.Controllers
 
             InsertArticleInBDD(model.BlogId, youtubeID, (long)Tools.MediaTypes.Video, model.Caption);
 
-            return View();
+            return RedirectToAction("BlogManagement", "User", new { model.BlogId });
         }
 
 
@@ -228,7 +228,7 @@ namespace UserInterface.Controllers
         {
             Blog blog = new Blog();
             T_User user = blog.GetAuthor(blogId);
-            if (User == null || User.Identity.Name != user.Login)
+            if (!User.Identity.IsAuthenticated || User.Identity.Name != user.Login)
                 throw new Exception("The user isn't the author of the blog, or the blog doesn't exist.");
                 //RedirectToAction("Blog", "User");
         }
