@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataAccess;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,6 +10,21 @@ namespace BusinessManagement
     public class Blog
     {
         private DataAccess.T_Blog blog;
+
+        public Blog(long id)
+        {
+            blog = DataAccess.BlogCRUD.Get(id);
+        }
+
+        public Blog()
+        {
+            blog = null;
+        }
+
+        public T_Blog GetBlog(long id)
+        {
+            return BlogCRUD.Get(id);
+        }
 
         public static List<DataAccess.T_Blog> getList()
         {
@@ -43,34 +59,46 @@ namespace BusinessManagement
             DataAccess.ArticleCRUD.Create(art);
         }
 
-        public Blog(long id)
+        public string GetName()
         {
-            blog = DataAccess.BlogCRUD.Get(id);
-        }
-
-        public string getName()
-        {
+            if (blog == null)
+                return null;
             return blog.Name;
         }
 
-        public string getDescription()
+        public string GetDescription()
         {
+            if (blog == null)
+                return null;
             return blog.Description;
         }
 
-        public string getStylePath()
+        public string GetStylePath()
         {
+            if (blog == null)
+                return null;
             return DataAccess.StyleCRUD.Get(blog.StyleId).CSSPath;
         }
 
-        public List<DataAccess.T_Article> getArticles()
+        public List<DataAccess.T_Article> GetArticles()
         {
+            if (blog == null)
+                return null;
             return DataAccess.ArticleCRUD.GetWithBlog(blog.Id);
         }
 
-        public string getAuthor()
+        public string GetAuthor()
         {
-            return DataAccess.UserCRUD.Get(blog.UserId).Login;
+            if (blog == null)
+                return null;
+            T_User user = DataAccess.UserCRUD.Get(blog.UserId);
+            
+            return user != null ? user.Login : null;
+        }
+
+        public T_User GetAuthor(long blogId)
+        {
+            return DataAccess.BlogCRUD.GetUserWithBlogId(blogId);
         }
     }
 }

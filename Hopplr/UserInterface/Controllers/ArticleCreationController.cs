@@ -14,13 +14,9 @@ namespace UserInterface.Controllers
 {
     public class ArticleCreationController : Controller
     {
-        public ActionResult AddArticle(long blogId, Int32 type = 2)
+        public ActionResult AddArticle(long blogId, Int32 mediaType)
         {
-            MediaType mediaType =  new MediaType();
-            if (mediaType.getMediaType(type) == null)
-                throw new Exception("MediaType is invalid");
-
-            switch (type)
+            switch (mediaType)
             {
                 case (Int32)Tools.MediaTypes.Image:
                     return RedirectToAction("AddImage", new { blogId });
@@ -46,6 +42,9 @@ namespace UserInterface.Controllers
         {
             if (model == null)
                 throw new ArgumentNullException("model");
+
+            TestBlog(model.BlogId);
+
             if (String.IsNullOrEmpty(model.Quote))
                 return View(model);
 
@@ -115,6 +114,9 @@ namespace UserInterface.Controllers
         {
             if (model == null)
                 throw new ArgumentNullException("model");
+
+            TestBlog(model.BlogId);
+
             if (String.IsNullOrEmpty(model.Url))
                 return View(model);
             else if (!Regex.Match(model.Url, @".+youtube\..+", RegexOptions.IgnoreCase).Success)
@@ -156,6 +158,8 @@ namespace UserInterface.Controllers
 
             if (model == null)
                 throw new ArgumentNullException("model");
+
+            TestBlog(model.BlogId);
 
             if (model.File == null || model.File.ContentLength < 0)
                 return false;
@@ -218,6 +222,15 @@ namespace UserInterface.Controllers
                 return false;
             }
             return true;
+        }
+
+        private void TestBlog(long blogId)
+        {
+            Blog blog = new Blog();
+            T_User user = blog.GetAuthor(blogId);
+            if (User == null || User.Identity.Name != user.Login)
+                throw new Exception("The user isn't the author of the blog, or the blog doesn't exist.");
+                //RedirectToAction("Blog", "User");
         }
 
         #endregion private

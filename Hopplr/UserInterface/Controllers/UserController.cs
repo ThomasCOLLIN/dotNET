@@ -53,11 +53,11 @@ namespace UserInterface.Controllers
         {
             BusinessManagement.Blog blog = new BusinessManagement.Blog(id);
             
-            if (User.Identity.Name != blog.getAuthor())
+            if (User.Identity.Name != blog.GetAuthor())
                 RedirectToAction("Blog");
 
-            ViewBag.Title = blog.getName();
-            ViewBag.Articles = blog.getArticles();
+            ViewBag.Title = blog.GetName();
+            ViewBag.Articles = blog.GetArticles();
             ViewBag.CreateArt = "CreateArticle?id=" + id;
 
             return View();
