@@ -1,3 +1,4 @@
+USE [Hopplr]
 BEGIN TRANSACTION
 ALTER TABLE [T_Article]
 ALTER COLUMN [Text] varchar(MAX)
