@@ -32,6 +32,21 @@ namespace BusinessManagement
             return user.Id;
         }
 
+        public string getName()
+        {
+            return user.LastName;
+        }
+
+        public string getFirstName()
+        {
+            return user.FirstName;
+        }
+
+        public int getNumBlog()
+        {
+            return DataAccess.BlogCRUD.GetWithUser(user.Id).Count;
+        }
+
         public static void ModifStyleChoice(string user, long style)
         {
             DataAccess.UserCRUD.UpdateStyle(user, style);

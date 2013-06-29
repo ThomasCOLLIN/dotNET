@@ -15,6 +15,14 @@ namespace UserInterface.Controllers
         /// <returns>The view</returns>
         public ActionResult Profile()
         {
+            BusinessManagement.User user = new BusinessManagement.User(User.Identity.Name);
+
+            ViewBag.Username = User.Identity.Name;
+            ViewBag.Name = user.getName();
+            ViewBag.FirstName = user.getFirstName();
+
+            ViewBag.NumBlog = user.getNumBlog();
+
             return View();
         }
 
