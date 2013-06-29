@@ -31,6 +31,10 @@ html,body
     margin: auto
 }
 
+#header {
+    text-align: right;
+}
+
 #Login1 {
     width: 100%;
 }
