@@ -48,4 +48,10 @@
 </fieldset>
 <fieldset>
     <legend>Commentaires</legend>
+    Ajouter un commentaire<BR/>
+    @foreach (Dbo.Comment comment in @Model.Comments)
+    {
+        <a href="@Url.Content("../Blog/DisplayUserBlogs?id=" + comment.UserId)">@comment.UserName</a><span> :</span>
+        <span><BR/> - @comment.Content</span><BR/>
+    }
 </fieldset>
