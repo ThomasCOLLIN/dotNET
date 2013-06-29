@@ -34,7 +34,7 @@ namespace UserInterface.Controllers
                 };
 
             //ViewData.Model = new ArticleModel();
-            string articleUrl = BASE_URL + "/ArticleDisplay/Display?id=" + id;
+            string articleUrl = BASE_URL + "/ArticleDisplay/Display?id=" + articleId;
             ViewBag.urlFB = HttpUtility.UrlEncode(articleUrl);
             ViewBag.urlTw = articleUrl;
 
