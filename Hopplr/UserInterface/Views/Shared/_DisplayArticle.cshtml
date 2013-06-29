@@ -11,7 +11,7 @@
     @if (Model.MediaType == (long)Tools.MediaTypes.Image)
     {
         <div class="display-field">
-            <img alt="image" src="@mediaUrl" width="400px"/>
+            <img alt="image" src="@mediaUrl" style="max-width: 400px; max-height: 400px"/>
         </div>
     }
     else if (Model.MediaType == (long)Tools.MediaTypes.Music)
