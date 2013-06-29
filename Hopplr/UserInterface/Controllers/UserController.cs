@@ -15,6 +15,9 @@ namespace UserInterface.Controllers
         /// <returns>The view</returns>
         public ActionResult Profile()
         {
+            if (!User.Identity.IsAuthenticated)
+                return Redirect("~/Login.aspx");
+
             BusinessManagement.User user = new BusinessManagement.User(User.Identity.Name);
 
             ViewBag.Username = User.Identity.Name;
