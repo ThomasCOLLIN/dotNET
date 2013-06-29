@@ -170,7 +170,7 @@ namespace UserInterface.Controllers
             //RegEx to Find YouTube ID
             Match youtubeID = Regex.Match(youtubeUrl, "^[^v]+v=(.{11}).*", RegexOptions.IgnoreCase);
             if (youtubeID.Success)
-                return youtubeID.Value;
+                return youtubeID.Groups[1].Value;
             else
                 return null;
 

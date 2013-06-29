@@ -2,19 +2,23 @@
 @using BusinessManagement
 @using Dbo
 
+@{
+    string mediaUrl = Url.Content("~/Medias/" + Model.MediaUrl);
+    }
+
 <fieldset>
     <legend>Article</legend>
     @if (Model.MediaType == (long)Tools.MediaTypes.Image)
     {
         <div class="display-field">
-            <img alt="image" src="@Path.Combine(Server.MapPath("~/Medias"), Model.MediaUrl)" />
+            <img alt="image" src="@mediaUrl" width="400px"/>
         </div>
     }
     else if (Model.MediaType == (long)Tools.MediaTypes.Music)
     {
         <audio controls height="100" width="100">
-          <source src="@Model.MediaUrl" type="audio/mpeg">
-          <embed height="50" width="100" src="@Path.Combine(Server.MapPath("~/Medias"), Model.MediaUrl)">
+          <source src="@mediaUrl" type="audio/mpeg">
+          <embed height="50" width="100" src="@mediaUrl">
           Votre navigateur ne supporte pas ce format audio.
         </audio>
     }
@@ -56,11 +60,11 @@
     }
 </fieldset>
 <fieldset>
-    @Html.BeginForm("AddComment", "CommentCreation", FormMethod.Post)
+    @using(Html.BeginForm("AddComment", "CommentCreation", FormMethod.Post))
     {
         <input type="hidden" value="@Model.BlogId" name="blogId" id="blogid"/>
         <input type="hidden" value="@Model.ArticleId" name="articleId" id="articleid"/>
-        <textarea style="resize: none" required="required"></textarea>
+        <textarea style="resize: none" required="required" name="comment" id="comment"></textarea>
         <input type="submit" value="Poster"/>
     }
 </fieldset>

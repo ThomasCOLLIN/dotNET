@@ -23,7 +23,6 @@ namespace UserInterface
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-
             routes.MapRoute(
                 "Default", // Nom d'itinéraire
                 "{controller}/{action}/{id}", // URL avec des paramètres

@@ -13,11 +13,11 @@
 
 @{
     // Lien vers les créations d'articles
-    string quote = Url.Content("../ArticleCreation/AddQuote?blogId=" + ViewBag.id);
-    string music = Url.Content("../ArticleCreation/AddMusic?blogId=" + ViewBag.id);
-    string img = Url.Content("../ArticleCreation/AddImage?blogId=" + ViewBag.id);
-    string video = Url.Content("../ArticleCreation/AddVideo?blogId=" + ViewBag.id);
-    }
+    string quote = Url.Action("AddQuote", "ArticleCreation", new { blogId = ViewBag.id });
+    string music = Url.Action("AddMusic", "ArticleCreation", new { blogId = ViewBag.id });
+    string img = Url.Action("AddImage", "ArticleCreation", new { blogId = ViewBag.id });
+    string video = Url.Action("AddVideo", "ArticleCreation", new { blogId = ViewBag.id });
+}
 
 <a href="@quote" >Ajouter un article - quote</a>
 <a href="@music" >Ajouter un article - musique</a>
