@@ -100,7 +100,7 @@ namespace DataAccess
             {
                 using (Entities bdd = new Entities())
                 {
-                     T_Article article = bdd.T_Article.Include("T_Comment").Include("T_ArticleTag.T_Tag").Where(a => a.Id == articleId).FirstOrDefault();
+                     T_Article article = bdd.T_Article.Include("T_Comment.T_User").Include("T_ArticleTag.T_Tag").Where(a => a.Id == articleId).FirstOrDefault();
                      Dbo.Article dboArticle = new Dbo.Article(){
                         Id = article.Id,
                         BlogId = article.BlogId,
@@ -120,7 +120,8 @@ namespace DataAccess
                             UserId = comment.UserId,
                             ArticleId = comment.ArticleId,
                             Content = comment.Comment,
-                            CreationDate = comment.CreationDate
+                            CreationDate = comment.CreationDate,
+                            UserName = comment.T_User.Login
                         });
                     }
 
