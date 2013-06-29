@@ -3,7 +3,12 @@
 <html>
 <head>
     <title>@ViewBag.Title</title>
-    <link rel="stylesheet" type="text/css" href="@ViewBag.CssPath">
+        @{
+        BusinessManagement.User us = new BusinessManagement.User(User.Identity.Name);
+        string css = Url.Content(us.GetCSSPath());
+     }
+    <link rel="stylesheet" type="text/css" href="@css">
+    
 </head>
 <body>
     <div id="header">
