@@ -27,7 +27,7 @@ namespace UserInterface
             routes.MapRoute(
                 "Default", // Nom d'itinéraire
                 "{controller}/{action}/{id}", // URL avec des paramètres
-                new { controller = "Home", action = "Index", id = UrlParameter.Optional } // Paramètres par défaut
+                new { controller = "User", action = "Profile", id = UrlParameter.Optional } // Paramètres par défaut
             );
 
         }
