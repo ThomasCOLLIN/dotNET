@@ -9,6 +9,7 @@ namespace UserInterface.Models
 {
     public class ArticleModel
     {
+        public long ArticleId { get; set; }
         public long BlogId {get; set;}
 
         [Required(ErrorMessage = "Précisez l'url du média")]

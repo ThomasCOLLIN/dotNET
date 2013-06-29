@@ -17,11 +17,12 @@ namespace UserInterface.Controllers
             return View();
         }
 
-        public ActionResult Display(long id)
+        public ActionResult Display(long articleId)
         {
-            Dbo.Article article = BusinessManagement.Article.GetArticleDbo(id);
+            Dbo.Article article = BusinessManagement.Article.GetArticleDbo(articleId);
             Models.ArticleModel model = new Models.ArticleModel()
                 {
+                    ArticleId = article.Id,
                     BlogId = article.BlogId,
                     Caption = article.Caption,
                     MediaType = article.MediaTypeId.Value,
