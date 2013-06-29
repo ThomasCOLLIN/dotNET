@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using UserInterface.Models;
 
 namespace UserInterface.Controllers
 {
@@ -27,13 +28,26 @@ namespace UserInterface.Controllers
         {
             BusinessManagement.Blog blog = new BusinessManagement.Blog(id);
 
-            ViewBag.Title = blog.GetName();
-            ViewBag.CssPath = Url.Content(blog.GetStylePath());
-            ViewBag.Author = blog.GetAuthor();
-            ViewBag.Desc = blog.GetDescription();
-            ViewBag.Articles = blog.GetArticles();
+            BlogDisplayModel model = new BlogDisplayModel()
+            {
+                IdBlog = blog.Id,
+                Title = blog.GetName(),
+                CssPath = Url.Content(blog.GetStylePath()),
+                Author = blog.GetAuthor(),
+                Description = blog.GetDescription(),
+                ArticleModels = blog.GetArticlesDbo().Select(a => new ArticleModel()
+                {
+                    ArticleId = a.Id,
+                    BlogId = a.BlogId,
+                    MediaUrl = a.MediaUrl,
+                    MediaType = a.MediaTypeId.Value,
+                    Caption = a.Caption,
+                    Tags = a.Tags,
+                    Comments = a.Comments                    
+                }).ToList()
+            };
             
-            return View();
+            return View(model);
         }
 
         public ActionResult DisplayUserBlogs(long id)

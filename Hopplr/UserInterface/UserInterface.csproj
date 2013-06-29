@@ -105,6 +105,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\ArticleModel.cs" />
+    <Compile Include="Models\BlogDisplayModel.cs" />
     <Compile Include="Models\BlogListModel.cs" />
     <Compile Include="Models\FileModel.cs" />
     <Compile Include="Models\BlogModel.cs" />

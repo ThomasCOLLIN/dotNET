@@ -1,20 +1,22 @@
-﻿@{
+﻿@model UserInterface.Models.BlogDisplayModel
+@{
     Layout = "~/Views/Blog/_BlogLayout.cshtml";
 }
 
-<h2>@ViewBag.Title</h2>
-<p>Créé par @ViewBag.Author</p>
+<h2>@Model.Title</h2>
+<p>Créé par @Model.Author</p>
 
-<div class="description">@ViewBag.Desc</div>
+<div class="description">@Model.Description</div>
 <br/><br/>
-@foreach (DataAccess.T_Article article in @ViewBag.Articles)
+@foreach (UserInterface.Models.ArticleModel article in Model.ArticleModels)
 {
-    <div class="article">
+    @Html.Partial("_DisplayArticle", article)
+    @*<div class="article">
         <div class="content">@article.Text</div>
         <div class="infos">
             Le : @article.CreationDate<br/>
             <a>Lien vers l'article</a>
         </div>
-    </div>
+    </div>*@
 }
 

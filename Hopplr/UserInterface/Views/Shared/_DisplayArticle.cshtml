@@ -56,7 +56,7 @@
     }
 </fieldset>
 <fieldset>
-    @Html.BeginForm()
+    @Html.BeginForm("AddComment", "CommentCreation", FormMethod.Post)
     {
         <input type="hidden" value="@Model.BlogId" name="blogId" id="blogid"/>
         <input type="hidden" value="@Model.ArticleId" name="articleId" id="articleid"/>
