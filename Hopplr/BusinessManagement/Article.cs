@@ -30,15 +30,17 @@ namespace BusinessManagement
             };
 
             List<T_Tag> newtags = new List<T_Tag>();
-            string[] tabTags = tags.Split(new Char[] {' '});
-
-
-            foreach (string tag in tabTags)
+            if (!String.IsNullOrEmpty(tags))
             {
-                newtags.Add(new T_Tag() {Name = tag});
-            }
+                string[] tabTags = tags.Split(new Char[] { ' ' });
 
-            ArticleCRUD.CreateAndAddTags(article, newtags);
+                foreach (string tag in tabTags)
+                {
+                    newtags.Add(new T_Tag() { Name = tag });
+                }
+            }
+           ArticleCRUD.CreateAndAddTags(article, newtags);
+            
         }
 
         public static Dbo.Article GetArticleDbo(long articleId)
