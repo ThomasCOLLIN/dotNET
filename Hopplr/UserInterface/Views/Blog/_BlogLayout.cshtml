@@ -21,6 +21,35 @@
         </form>
     </div>
     <img id="logo" src="../Content/images/logo.png" alt="logo"/>
+    @{
+        string listBlog = Url.Content("~/Blog/Index");
+        string connec = Url.Content("~/Login.aspx");
+        string prof = Url.Content("~/User/Profile");
+        string blog = Url.Content("~/User/Blog");
+        string follows = Url.Content("~/User/Follow");
+        string followed = "";
+        
+        if (User.Identity.IsAuthenticated)
+        {
+            BusinessManagement.User us = new BusinessManagement.User(User.Identity.Name);
+            followed = Url.Content("~/User/Followers?id=" + us.getId());
+        }
+    }
+    <ul id="navigation">
+        <li><a href="@listBlog">Liste des blogs</a></li>
+        <li>|</li>
+        @if (User.Identity.IsAuthenticated)
+        {
+            <li><a href="@prof">Profil</a></li>
+            <li><a href="@blog">Blog</a></li>
+            <li><a href="@follows">Follows</a></li>
+            <li><a href="@followed">Followers</a></li>
+        }
+        else
+        {
+            <li><a href="@connec">Connexion</a></li>
+        }
+    </ul>
     <div id="content">
         @RenderBody()
     </div>

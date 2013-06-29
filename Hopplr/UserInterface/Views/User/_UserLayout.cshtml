@@ -25,8 +25,11 @@
         </form>
     </div>
     <img id="logo" src="../Content/images/logo.png" alt="logo"/>
+    @{
+        string url = Url.Content("~/Blog/Index");
+        }
     <ul id="navigation">
-        <li><a href="Profile">Profil</a></li>
+        <li><a href="@url">Liste des blogs</a></li>
         <li>|</li>
         <li><a href="Profile">Profil</a></li>
         <li><a href="Blog">Blog</a></li>
