@@ -16,6 +16,18 @@ namespace UserInterface.Controllers
             return View();
         }
 
+        public ActionResult Search(string type, string search)
+        {
+            if (type == "Utilisateur")
+                return RedirectToAction("SearchUser", new { userName = search });
+            if (type == "Theme")
+                return RedirectToAction("SearchTheme", new { theme = search });
+            if (type == "Tag")
+                return RedirectToAction("SearchTags", new { tags = search });
+
+            return RedirectToAction("Profile", "User");
+        }
+
         public ActionResult SearchTheme(string theme)
         {
             Models.SearchThemeModel model = new Models.SearchThemeModel()

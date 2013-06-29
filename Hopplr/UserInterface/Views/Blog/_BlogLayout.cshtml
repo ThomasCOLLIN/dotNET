@@ -6,6 +6,20 @@
     <link rel="stylesheet" type="text/css" href="@ViewBag.CssPath">
 </head>
 <body>
+    <div id="header">
+        @{
+            string urlSearch = Url.Content("~/Search/Search");
+            }
+        <form action="@urlSearch" method="get">
+            <input type="text" name="search" />
+            <select name="type">
+                <option> Utilisateur </option>
+                <option> Theme </option>
+                <option> Tag </option>
+            </select>
+            <input type="submit" value="Submit" />
+        </form>
+    </div>
     <img id="logo" src="../Content/images/logo.png" alt="logo"/>
     <div id="content">
         @RenderBody()

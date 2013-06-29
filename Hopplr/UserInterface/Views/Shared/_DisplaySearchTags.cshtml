@@ -7,7 +7,7 @@
 @foreach (DataAccess.T_Article art in Model.articles)
 {
     <fieldset>
-        <a href="@Url.Content("../ArticleDisplay/Display?id=" + art.Id)">
+        <a href="@Url.Content("../ArticleDisplay/Display?articleId=" + art.Id)">
             <legend>@art.Text</legend>
         </a>
     </fieldset>
