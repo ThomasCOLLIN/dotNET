@@ -58,6 +58,56 @@ namespace DataAccess
             }
         }
 
+        public static bool DoFollow(string user, long blog)
+        {
+            try
+            {
+                List<T_Follow> fl;
+                using (Entities bdd = new Entities())
+                {
+                    T_User us = bdd.T_User.Where(u => u.Login == user).ToList().FirstOrDefault();
+                    fl = bdd.T_Follow.Where(ffl => ffl.UserId == us.Id).ToList();
+
+                }
+                foreach (T_Follow follow in fl)
+                {
+                    if (follow.BlogId == blog)
+                        return true;
+                }
+                return false;
+            }
+            catch (Exception e)
+            {
+                Trace.WriteLine(e.Message);
+                throw;
+            }
+        }
+
+        public static T_Follow SearchFollow(string user, long blog)
+        {
+            try
+            {
+                List<T_Follow> fl;
+                using (Entities bdd = new Entities())
+                {
+                    T_User us = bdd.T_User.Where(u => u.Login == user).ToList().FirstOrDefault();
+                    fl = bdd.T_Follow.Where(ffl => ffl.UserId == us.Id).ToList();
+
+                }
+                foreach (T_Follow follow in fl)
+                {
+                    if (follow.BlogId == blog)
+                        return follow;
+                }
+                return null;
+            }
+            catch (Exception e)
+            {
+                Trace.WriteLine(e.Message);
+                throw;
+            }
+        }
+
         public static void Update(long followId, T_Follow fllw)
         {
             try
@@ -76,13 +126,13 @@ namespace DataAccess
             }
         }
 
-        public static void Delete(long followId)
+        public static void Delete(long id)
         {
             try
             {
                 using (Entities bdd = new Entities())
                 {
-                    bdd.T_Follow.Remove(Get(followId));
+                    bdd.T_Follow.Remove(bdd.T_Follow.Where(x => x.Id == id).FirstOrDefault());
                     bdd.SaveChanges();
                 }
             }
