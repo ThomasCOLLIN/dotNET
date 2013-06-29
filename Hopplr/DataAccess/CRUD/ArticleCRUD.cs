@@ -198,7 +198,11 @@ namespace DataAccess
             {
                 using (Entities bdd = new Entities())
                 {
-                    bdd.T_Article.Remove(Get(articleId));
+                    T_Article article = bdd.T_Article.Where(art => art.Id == articleId).FirstOrDefault();
+                    if (article == null)
+                        return;
+                    bdd.T_ArticleTag.Where(aTag => aTag.ArticleId == articleId).ToList().ForEach(aTag => bdd.T_ArticleTag.Remove(aTag));
+                    bdd.T_Article.Remove(article);
                     bdd.SaveChanges();
                 }
             }
