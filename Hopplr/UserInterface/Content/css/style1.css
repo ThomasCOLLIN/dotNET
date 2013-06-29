@@ -170,10 +170,9 @@ ul {
 }
 
 #footer {
+    clear: both;
     width: 95%;
     text-align: center;
-    position: fixed;
-    bottom: 0;
     padding: 5px;
 }
 
