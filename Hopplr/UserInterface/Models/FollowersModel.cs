@@ -5,9 +5,9 @@ using System.Web;
 
 namespace UserInterface.Models
 {
-    public class SearchUserModel
+    public class FollowersModel
     {
-        public List<DataAccess.T_User> User { get; set; }
+        public List<Tuple<DataAccess.T_Blog, List<DataAccess.T_User>>> blogList { get; set; }
         public string name { get; set; }
     }
 }

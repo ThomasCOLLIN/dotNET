@@ -1,6 +1,7 @@
-﻿@{
-    ViewBag.Title = "Followers";
-    Layout = "~/Views/User/_UserLayout.cshtml";
+﻿@model UserInterface.Models.FollowersModel
+@{
+    ViewBag.Title = "DisplayFollowers";
+    Layout = "~/Views/Blog/_BlogLayout.cshtml";
 }
 
-<h2>Followers</h2>
+@Html.Partial("_DisplayFollowers", Model)
