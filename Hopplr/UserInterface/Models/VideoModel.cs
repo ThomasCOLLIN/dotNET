@@ -18,5 +18,8 @@ namespace UserInterface.Models
 
         [Display(Name = "Légende")]
         public String Caption { get; set; }
+
+        [Display(Name = "Tags (séparés par des espaces)")]
+        public String Tags { get; set; }
     }
 }

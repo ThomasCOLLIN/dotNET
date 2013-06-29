@@ -17,5 +17,8 @@ namespace UserInterface.Models
         public long MediaType { get; set; }
         [Required(ErrorMessage = "Le texte est obligatoire")]
         public string Caption { get; set; }
+
+        [Display(Name = "Tags (séparés par des espaces)")]
+        public String Tags { get; set; }
     }
 }

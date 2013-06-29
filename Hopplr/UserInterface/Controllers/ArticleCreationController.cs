@@ -50,7 +50,7 @@ namespace UserInterface.Controllers
             if (String.IsNullOrEmpty(model.Quote))
                 return View(model);
 
-            InsertArticleInBDD(model.BlogId, model.Quote, (long)Tools.MediaTypes.Quote, model.Caption);
+            InsertArticleInBDD(model.BlogId, model.Quote, (long)Tools.MediaTypes.Quote, model.Caption, model.Tags);
 
             return RedirectToAction("BlogManagement", "User", new { model.BlogId });
         }
@@ -79,7 +79,7 @@ namespace UserInterface.Controllers
                 return View(model);
             }
 
-            InsertArticleInBDD(model.BlogId, path, (long)Tools.MediaTypes.Music, model.Caption);
+            InsertArticleInBDD(model.BlogId, path, (long)Tools.MediaTypes.Music, model.Caption, model.Tags);
 
             return RedirectToAction("BlogManagement", "User", new { model.BlogId });
         }
@@ -108,9 +108,9 @@ namespace UserInterface.Controllers
                 return View(model);
             }
 
-            InsertArticleInBDD(model.BlogId, path, (long)Tools.MediaTypes.Image, model.Caption);
+            InsertArticleInBDD(model.BlogId, path, (long)Tools.MediaTypes.Image, model.Caption, model.Tags);
 
-            return RedirectToAction("BlogManagement", "User", new { model.BlogId });
+            return RedirectToAction("BlogManagement", "User", new { id = model.BlogId });
         }
 
         #endregion image
@@ -143,7 +143,7 @@ namespace UserInterface.Controllers
                 return View(model);
             }
 
-            InsertArticleInBDD(model.BlogId, youtubeID, (long)Tools.MediaTypes.Video, model.Caption);
+            InsertArticleInBDD(model.BlogId, youtubeID, (long)Tools.MediaTypes.Video, model.Caption, model.Tags);
 
             return RedirectToAction("BlogManagement", "User", new { model.BlogId });
         }
@@ -196,27 +196,17 @@ namespace UserInterface.Controllers
         }
 
         /// <summary>
-        /// Insert a T_Article into the database.
+        /// Call the BusinessManagement to insert the article in the database
         /// </summary>
         /// <param name="blogID">Id of the blog containing the T_Article.</param>
         /// <param name="mediaUrl">Link to the media includes into the article, or text if the media is a quote.</param>
         /// <param name="mediaTypeId">Type of the media.</param>
         /// <param name="text">A caption for the media, or the content of the article if there is no media.</param>
+        /// <param name="tags">The tags, separated by a space</param>
         /// <returns>Nothing</returns>
-        private void InsertArticleInBDD(long blogID, String mediaUrl, long mediaTypeId, String text)
+        private void InsertArticleInBDD(long blogID, String mediaUrl, long mediaTypeId, String text, String tags)
         {
-            T_Article article = new T_Article()
-            {
-                BlogId = blogID,
-                MediaUrl = mediaUrl,
-                MediaTypeId = mediaTypeId,
-                Text = text,
-                CreationDate = DateTime.Now
-            };
-
-            // TODO: Insert into the database.
-            //Article bMArticle = new Article();
-            //bMArticle.Create(article);
+            BusinessManagement.Article.Create(blogID, mediaUrl, mediaTypeId, text, tags);
         }
 
         /// <summary>
