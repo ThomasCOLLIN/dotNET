@@ -16,6 +16,11 @@ namespace BusinessManagement
             get { return blog != null; }
         }
 
+        public long Id
+        {
+            get { return blog.Id; }
+        }
+
         public Blog(long id)
         {
             blog = DataAccess.BlogCRUD.Get(id);

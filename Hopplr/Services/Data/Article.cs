@@ -9,11 +9,28 @@ namespace Services
     [DataContract]
     public class Article
     {
+        [DataMember]
+        public enum MediaTypeEnum
+        {
+            IMAGE,
+            MP3,
+            YOUTUBE_ID,
+            TEXTE
+        }
+
         private string _text;
         private string _mediaUrl;
+        private MediaTypeEnum _mediaType;
         private long _id;
         private DateTime _creationDate;
         private List<string> _tags;
+
+        [DataMember]
+        public MediaTypeEnum MediaType
+        {
+            get { return _mediaType; }
+            set { _mediaType = value; }
+        }
 
         [DataMember]
         public List<string> Tags

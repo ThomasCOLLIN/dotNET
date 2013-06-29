@@ -7,15 +7,15 @@ namespace Services
     public interface IBlogService
     {
         [OperationContract]
-        List<Article> GetArticlesFromBlog(string token, string blogName);
+        List<Article> GetArticlesFromBlog(string blogOwner, string blogName);
 
         [OperationContract]
-        Article GetArticleFromBlog(string token, string blogName, long articleId);
+        Article GetArticleFromBlog(string blogOwner, string blogName, long articleId);
 
         [OperationContract]
-        bool AddArticle(string token, string blogname, Article article);
+        bool AddArticle(string blogname, Article article);
 
         [OperationContract]
-        bool DeleteArticle(string token, string blogname, long articleId);
+        bool DeleteArticle(string blogname, long articleId);
     }
 }
