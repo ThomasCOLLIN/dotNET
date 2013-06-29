@@ -1,7 +1,9 @@
 ﻿using BusinessManagement;
 using System;
 using System.Collections.Generic;
+using System.Text;
 using System.Web;
+using System.Web.Security;
 
 namespace Services
 {
@@ -44,21 +46,29 @@ namespace Services
             return null;
         }
 
-        public bool AddArticle(string blogname, Article article)
+        public bool AddArticle(string login, string password, string blogname, Article article)
         {
-            string username = HttpContext.Current.User.Identity.Name;
-            BusinessManagement.Blog blog = new Blog(username, blogname);
+            BusinessManagement.User user = new User(login);
+            if (!user.Exists || !user.IsPasswordValid(password))
+                return false;
+
+            BusinessManagement.Blog blog = new Blog(login, blogname);
 
             if (!blog.Exists)
                 return false;
 
+            BusinessManagement.Article.Create(blog.Id, article.MediaUrl, (long) ConvertToMediaType(article.MediaType), article.Text, TagsAsString(article.Tags));
+
             return true;
         }
 
-        public bool DeleteArticle(string blogname, long articleId)
+        public bool DeleteArticle(string login, string password, string blogname, long articleId)
         {
-            string username = HttpContext.Current.User.Identity.Name;
-            Blog blog = new Blog(username, blogname);
+            BusinessManagement.User user = new User(login);
+            if (!user.Exists || !user.IsPasswordValid(password))
+                return false;
+
+            Blog blog = new Blog(login, blogname);
             BusinessManagement.Article art = new BusinessManagement.Article();
             DataAccess.T_Article article = BusinessManagement.Article.Get(articleId);
             if (!blog.Exists || article == null || article.BlogId != blog.Id)
@@ -84,20 +94,46 @@ namespace Services
             switch ((long) article.MediaTypeId)
 	        {
                 case ((long) Tools.MediaTypes.Image):
-                    result.MediaType = Article.MediaTypeEnum.IMAGE;
+                    result.MediaType = MediaTypeWebService.IMAGE;
                     break;
                 case ((long) Tools.MediaTypes.Video):
-                    result.MediaType = Article.MediaTypeEnum.YOUTUBE_ID;
+                    result.MediaType = MediaTypeWebService.VIDEO;
                     break;
                 case ((long) Tools.MediaTypes.Music):
-                    result.MediaType = Article.MediaTypeEnum.MP3;
+                    result.MediaType = MediaTypeWebService.MUSIC;
                     break;
 		        default:
-                    result.MediaType = Article.MediaTypeEnum.TEXTE;
+                    result.MediaType = MediaTypeWebService.QUOTE;
                     break;
 	        }
 
             return result;
+        }
+
+        private Tools.MediaTypes ConvertToMediaType(MediaTypeWebService type)
+        {
+            switch (type)
+            {
+                case (MediaTypeWebService.IMAGE):
+                    return Tools.MediaTypes.Image;
+                case (MediaTypeWebService.MUSIC):
+                    return Tools.MediaTypes.Music;
+                case (MediaTypeWebService.VIDEO):
+                    return Tools.MediaTypes.Video;
+                default:
+                    return Tools.MediaTypes.Quote;
+            }
+        }
+
+        private string TagsAsString(List<string> tags)
+        {
+            StringBuilder sb = new StringBuilder();
+            tags.ForEach(tag =>
+            {
+                if (tag.Trim() != "")
+                    sb.Append(tag.Trim() + " ");
+            });
+            return sb.ToString().TrimEnd();
         }
     }
 }

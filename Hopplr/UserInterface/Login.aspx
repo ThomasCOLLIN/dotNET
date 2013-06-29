@@ -8,6 +8,17 @@
     <link rel="Stylesheet" type="text/css" href="~/Content/css/style1.css"/>
 </head>
 <body>
+    <div id="header">
+        <form action="Search/Search" method="get">
+            <input type="text" name="search" />
+            <select name="type">
+                <option> Utilisateur </option>
+                <option> Theme </option>
+                <option> Tag </option>
+            </select>
+            <input type="submit" value="Submit" />
+        </form>
+    </div>
     <a href="/Blog/Index">Acceder à la liste des blogs</a>
     <img id="home_page" src="Content/images/home_page.png" alt="home page logo"/>
     <h1>Createur de microblogs</h1>

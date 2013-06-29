@@ -134,6 +134,30 @@ ul {
     padding-top: 10px;
 }
 
+.button {
+    float:left;
+    display: inline;
+    padding: 5px;
+    background-color: #bce0f3;
+    background-size: 100% 100%;
+    border: solid 1px white;
+    width: auto; 
+}
+
+.button a {
+    color: white;
+    font: bold 15px "Calibri";
+}
+
+.button:hover {
+    color: gray;
+    border-color: gray;
+}
+
+.button:hover a {
+    color : gray;
+}
+
 #footer {
     width: 98%;
     text-align: center;

@@ -68,6 +68,7 @@
       <DependentUpon>BlogService.svc</DependentUpon>
     </Compile>
     <Compile Include="IBlogService.cs" />
+    <Compile Include="MediaTypeWebService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -108,7 +109,7 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerPort>5212</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:4767/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>

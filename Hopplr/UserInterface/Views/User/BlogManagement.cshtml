@@ -4,13 +4,6 @@
 
 <h2>Gestion de blog : @ViewBag.Title</h2>
 
-<ul>
-@foreach (DataAccess.T_Article art in ViewBag.Articles)
-{
-    <li> @art.Text </li>
-}
-</ul>
-
 @{
     // Lien vers les créations d'articles
     string quote = Url.Action("AddQuote", "ArticleCreation", new { blogId = ViewBag.id });
@@ -19,7 +12,18 @@
     string video = Url.Action("AddVideo", "ArticleCreation", new { blogId = ViewBag.id });
 }
 
-<a href="@quote" >Ajouter un article - quote</a>
-<a href="@music" >Ajouter un article - musique</a>
-<a href="@img" >Ajouter un article - image</a>
-<a href="@video" >Ajouter un article - video</a>
+    <ul>
+        <li class="button"><a href="@quote" >Ajouter un article - quote</a></li>
+        <li class="button"><a href="@music" >Ajouter un article - musique</a></li>
+        <li class="button"><a href="@img" >Ajouter un article - image</a></li>
+        <li class="button"><a href="@video" >Ajouter un article - video</a></li>
+    </ul>
+
+<ul>
+@foreach (DataAccess.T_Article art in ViewBag.Articles)
+{
+    <li> @art.Text </li>
+}
+</ul>
+
+

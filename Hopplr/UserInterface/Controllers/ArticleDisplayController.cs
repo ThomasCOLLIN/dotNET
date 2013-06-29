@@ -9,6 +9,8 @@ namespace UserInterface.Controllers
 {
     public class ArticleDisplayController : Controller
     {
+        private static readonly string BASE_URL = "http://localhost:5288";
+
         //
         // GET: /ArticleDisplay/
 
@@ -30,6 +32,11 @@ namespace UserInterface.Controllers
                     Tags = article.Tags,
                     Comments = article.Comments
                 };
+
+            //ViewData.Model = new ArticleModel();
+            string articleUrl = BASE_URL + "/ArticleDisplay/Display?id=" + articleId;
+            ViewBag.urlFB = HttpUtility.UrlEncode(articleUrl);
+            ViewBag.urlTw = articleUrl;
 
             return View(model);
         }

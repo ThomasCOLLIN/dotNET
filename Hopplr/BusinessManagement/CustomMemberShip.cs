@@ -31,7 +31,6 @@ namespace BusinessManagement
             throw new NotImplementedException();
         }
 
-        //TODO je pense pas devoir retourner null mais je ne sais pas quoi retourner
         public override MembershipUser CreateUser(string username, string password, string email, string passwordQuestion, string passwordAnswer, bool isApproved, object providerUserKey, out MembershipCreateStatus status)
         {
             if (!Registration.IsLoginValid(username))
@@ -60,7 +59,7 @@ namespace BusinessManagement
             if (Registration.RegisterAccount(account))
             {
                 status = MembershipCreateStatus.Success;
-                return null;
+                return new MembershipUser("Id", account.Login, providerUserKey, account.Email, "", "", true, false, DateTime.Now, DateTime.Now, DateTime.Now, DateTime.Now, DateTime.Now);
             }
             else
             {
@@ -89,7 +88,6 @@ namespace BusinessManagement
             get { return true; }
         }
 
-        // TODO same here
         public override MembershipUserCollection FindUsersByEmail(string emailToMatch, int pageIndex, int pageSize, out int totalRecords)
         {
             MembershipUserCollection collection = new MembershipUserCollection();
@@ -98,13 +96,12 @@ namespace BusinessManagement
                 totalRecords = 0;
             else
             {
-                collection.Add(null);
+                collection.Add(new MembershipUser("Id", user.Login, user.Id, user.Email, "", "", true, false, DateTime.Now, DateTime.Now, DateTime.Now, DateTime.Now, DateTime.Now));
                 totalRecords = 1;
             }
             return collection;
         }
 
-        // TODO same here
         public override MembershipUserCollection FindUsersByName(string usernameToMatch, int pageIndex, int pageSize, out int totalRecords)
         {
             MembershipUserCollection collection = new MembershipUserCollection();
@@ -113,7 +110,7 @@ namespace BusinessManagement
                 totalRecords = 0;
             else
             {
-                collection.Add(null);
+                collection.Add(new MembershipUser("Id", user.Login, user.Id, user.Email, "", "", true, false, DateTime.Now, DateTime.Now, DateTime.Now, DateTime.Now, DateTime.Now));
                 totalRecords = 1;
             }
             return collection;
@@ -134,23 +131,22 @@ namespace BusinessManagement
             throw new NotImplementedException();
         }
 
-        //TODO same here
         public override MembershipUser GetUser(string username, bool userIsOnline)
         {
             DataAccess.T_User user = DataAccess.UserCRUD.GetUserByLogin(username);
-            return null;
+            return new MembershipUser("Id", user.Login, user.Id, user.Email, "", "", true, false, DateTime.Now, DateTime.Now, DateTime.Now, DateTime.Now, DateTime.Now);
         }
 
         public override MembershipUser GetUser(object providerUserKey, bool userIsOnline)
         {
-            throw new NotImplementedException();
+            DataAccess.T_User user = DataAccess.UserCRUD.Get((long) providerUserKey);
+            return new MembershipUser("Id", user.Login, user.Id, user.Email, "", "", true, false, DateTime.Now, DateTime.Now, DateTime.Now, DateTime.Now, DateTime.Now);
         }
 
-        //TODO same here
         public override string GetUserNameByEmail(string email)
         {
             DataAccess.T_User user = DataAccess.UserCRUD.GetUserByEmail(email);
-            return null;
+            return user.Login;
         }
 
         public override int MaxInvalidPasswordAttempts
@@ -170,17 +166,17 @@ namespace BusinessManagement
 
         public override int PasswordAttemptWindow
         {
-            get { throw new NotImplementedException(); }
+            get { return 3; }
         }
 
         public override MembershipPasswordFormat PasswordFormat
         {
-            get { throw new NotImplementedException(); }
+            get { return MembershipPasswordFormat.Clear; }
         }
 
         public override string PasswordStrengthRegularExpression
         {
-            get { throw new NotImplementedException(); }
+            get { return ""; }
         }
 
         public override bool RequiresQuestionAndAnswer

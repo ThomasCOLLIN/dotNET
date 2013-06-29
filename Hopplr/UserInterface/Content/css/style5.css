@@ -60,7 +60,7 @@ html,body
 a {
     text-decoration: none;
     font-size: 20px;
-    color: pink;
+    color: hotpink;
     text-shadow: -.5px 0 purple, 0 1px purple, 1px 0 purple, 0 -.5px purple;
 }
 
@@ -135,6 +135,30 @@ ul {
 
 #content a {
     padding: 0px 5px;
+}
+
+.button {
+    float:left;
+    display: inline;
+    padding: 5px;
+    background-color: hotpink;
+    background-size: 100% 100%;
+    border: solid 1px white;
+    width: auto; 
+}
+
+.button a {
+    color: white;
+    font: bold 15px "Calibri";
+}
+
+.button:hover {
+    color: gray;
+    border-color: gray;
+}
+
+.button:hover a {
+    color : gray;
 }
 
 #footer {
