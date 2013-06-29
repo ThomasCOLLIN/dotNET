@@ -10,6 +10,7 @@ namespace Dbo
     {
         public long Id { get; set; }
         public long UserId { get; set; }
+        public string UserName { get; set; }
         public long ArticleId { get; set; }
         public string Content { get; set; }
         public System.DateTime CreationDate { get; set; }

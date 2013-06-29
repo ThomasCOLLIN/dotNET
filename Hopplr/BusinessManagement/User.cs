@@ -64,5 +64,15 @@ namespace BusinessManagement
         {
             return (user.HashPassword == password);
         }
+
+        public static long? GetUserId(string name)
+        {
+            DataAccess.T_User user = DataAccess.UserCRUD.GetUserByLogin(name);
+
+            if (user != null)
+                return user.Id;
+
+            return null;
+        }
     }
 }

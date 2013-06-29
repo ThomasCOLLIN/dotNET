@@ -98,6 +98,7 @@
     <Compile Include="Controllers\ArticleCreationController.cs" />
     <Compile Include="Controllers\ArticleDisplayController.cs" />
     <Compile Include="Controllers\BlogController.cs" />
+    <Compile Include="Controllers\CommentCreationController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
@@ -119,6 +120,9 @@
   <ItemGroup>
     <Content Include="Content\css\style2.css" />
     <Content Include="Content\css\style1.css" />
+    <Content Include="Content\css\style3.css" />
+    <Content Include="Content\css\style4.css" />
+    <Content Include="Content\css\style5.css" />
     <Content Include="Content\images\home_page.png" />
     <Content Include="Content\images\hopplr_bg.png" />
     <Content Include="Content\images\hopplr_dark_bg.png" />
