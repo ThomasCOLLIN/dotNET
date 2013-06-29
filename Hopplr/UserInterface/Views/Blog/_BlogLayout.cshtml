@@ -25,9 +25,12 @@
         @RenderBody()
     </div>
     <div id="footer">
+        @{
+            string home = Url.Content("~");
+         }
         <ul>
             <li><a href="#">Contact</a></li>
-            <li><a href="#">Home</a></li>
+            <li><a href="@home">Home</a></li>
             <li id="last"><a href="#">Credits</a></li>
         </ul>
     </div>

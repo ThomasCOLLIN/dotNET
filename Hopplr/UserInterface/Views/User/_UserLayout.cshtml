@@ -10,6 +10,20 @@
     <link rel="stylesheet" type="text/css" href="@css">
 </head>
 <body>
+    <div id="header">
+        @{
+            string urlSearch = Url.Content("~/Search/Search");
+            }
+        <form action="@urlSearch" method="get">
+            <input type="text" name="search" />
+            <select name="type">
+                <option> Utilisateur </option>
+                <option> Theme </option>
+                <option> Tag </option>
+            </select>
+            <input type="submit" value="Submit" />
+        </form>
+    </div>
     <img id="logo" src="../Content/images/logo.png" alt="logo"/>
     <ul id="navigation">
         <li><a href="Profile">Profil</a></li>
@@ -21,9 +35,12 @@
         @RenderBody()
     </div>
     <div id="footer">
+         @{
+            string home = Url.Content("~");
+         }
         <ul>
             <li><a href="#">Contact</a></li>
-            <li><a href="#">Home</a></li>
+            <li><a href="@home">Home</a></li>
             <li id="last"><a href="#">Credits</a></li>
         </ul>
     </div>
