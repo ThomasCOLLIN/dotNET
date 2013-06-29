@@ -1,4 +1,5 @@
 ﻿using BusinessManagement;
+using System;
 using System.Collections.Generic;
 using System.Web;
 
@@ -10,19 +11,15 @@ namespace Services
         {
             List<Article> articles = new List<Article>();
             Blog blog = new Blog(blogOwner, blogName);
+            BusinessManagement.Article art = new BusinessManagement.Article();
 
             if (!blog.Exists)
                 return articles;
 
-            blog.GetArticles().ForEach(art =>
+            blog.GetArticles().ForEach(item =>
             {
-                Article article = new Article();
-                article.CreationDate = art.CreationDate;
-                article.Id = art.Id;
-                article.Text = art.Text;
-                article.MediaUrl = GetUrl((long)art.MediaTypeId, art.MediaUrl);
-
-                articles.Add(article);
+                Dbo.Article dboArt = art.GetArticleDbo(item.Id);
+                articles.Add(ConvertToWebArticle(dboArt));
             });
 
             return articles;
@@ -39,16 +36,9 @@ namespace Services
 
             foreach (DataAccess.T_Article art in articles)
             {
-                if (art.Id != articleId)
+                if (art.Id != articleId || blog.Id != art.BlogId)
                     continue;
-
-                Article article = new Article();
-                article.CreationDate = art.CreationDate;
-                article.Id = art.Id;
-                article.Text = art.Text;
-                article.MediaUrl = GetUrl((long)art.MediaTypeId, art.MediaUrl);
-
-                return article;
+                return ConvertToWebArticle(new BusinessManagement.Article().GetArticleDbo(art.Id));
             };
 
             return null;
@@ -61,6 +51,8 @@ namespace Services
 
             if (!blog.Exists)
                 return false;
+
+            throw new Exception("Not Implemented yet");
 
             return true;
         }
@@ -79,11 +71,35 @@ namespace Services
             return true;
         }
 
-        private string GetUrl(long mediaType, string media)
+        private Article ConvertToWebArticle(Dbo.Article article)
         {
-            return mediaType == (long)BusinessManagement.Tools.MediaTypes.Video
-                ? "http://www.youtube.com/v/" + media
-                : media;
+            Article result = new Article();
+
+            result.CreationDate = article.CreationDate;
+            result.Id = article.Id;
+            result.Text = article.Caption;
+            result.MediaUrl = article.MediaUrl;
+            
+            result.Tags = new List<string>();
+            article.Tags.ForEach(tag => result.Tags.Add(tag.Name));
+
+            switch ((long) article.MediaTypeId)
+	        {
+                case ((long) Tools.MediaTypes.Image):
+                    result.MediaType = Article.MediaTypeEnum.IMAGE;
+                    break;
+                case ((long) Tools.MediaTypes.Video):
+                    result.MediaType = Article.MediaTypeEnum.YOUTUBE_ID;
+                    break;
+                case ((long) Tools.MediaTypes.Music):
+                    result.MediaType = Article.MediaTypeEnum.MP3;
+                    break;
+		        default:
+                    result.MediaType = Article.MediaTypeEnum.TEXTE;
+                    break;
+	        }
+
+            return result;
         }
     }
 }
