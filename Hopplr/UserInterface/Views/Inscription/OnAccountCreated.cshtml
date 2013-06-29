@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Compte créé</title>
+    <link rel="Stylesheet" type="text/css" href="@Url.Content("~/Content/css/style1.css")"/>
+</head>
+<body>
+    <div id="header">
+        <form action="Search/Search" method="get">
+            <input type="text" name="search" />
+            <select name="type">
+                <option> Utilisateur </option>
+                <option> Theme </option>
+                <option> Tag </option>
+            </select>
+            <input type="submit" value="Submit" />
+        </form>
+    </div>
+    <div id="content">
+        <h2>Votre Compte a été créé avec succès</h2>
+        <br/><br />
+        <a href="@Url.Content("~/Login.aspx")">Retourner à la page de connexion</a>
+    </div>
+    <div id="home_footer">
+        Bienvenue sur Hopplr ! Creez et partagez vos microblogs pour echanger sur vos passions, 
+        rejoignez le reseau et suivez vos bloggeurs favoris !
+    </div>
+</body>
+</html>

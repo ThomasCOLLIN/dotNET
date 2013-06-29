@@ -29,6 +29,7 @@
         </asp:Login>
     </div>
     </form>
+    <p><a href="Inscription/Index">S'inscrire</a></p>
     <div id="home_footer">
         Bienvenue sur Hopplr ! Creez et partagez vos microblogs pour echanger sur vos passions, 
         rejoignez le reseau et suivez vos bloggeurs favoris !
