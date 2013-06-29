@@ -59,7 +59,7 @@ namespace UserInterface.Controllers
 
             InsertArticleInBDD(model.BlogId, model.Quote, (long)Tools.MediaTypes.Quote, model.Caption, model.Tags);
 
-            return RedirectToAction("BlogManagement", "User", new { model.BlogId });
+            return RedirectToAction("BlogManagement", "User", new { id = model.BlogId });
         }
 
         #endregion quote
@@ -89,7 +89,7 @@ namespace UserInterface.Controllers
 
             InsertArticleInBDD(model.BlogId, filename, (long)Tools.MediaTypes.Music, model.Caption, model.Tags);
 
-            return RedirectToAction("BlogManagement", "User", new { model.BlogId });
+            return RedirectToAction("BlogManagement", "User", new { id = model.BlogId });
         }
 
         #endregion music
@@ -154,7 +154,7 @@ namespace UserInterface.Controllers
 
             InsertArticleInBDD(model.BlogId, youtubeID, (long)Tools.MediaTypes.Video, model.Caption, model.Tags);
 
-            return RedirectToAction("BlogManagement", "User", new { model.BlogId });
+            return RedirectToAction("BlogManagement", "User", new { id = model.BlogId });
         }
 
         #endregion vidéo
