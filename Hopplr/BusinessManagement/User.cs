@@ -49,7 +49,10 @@ namespace BusinessManagement
             return blogs;
         }
 
-
+        public static DataAccess.T_User GetById(long id)
+        {
+            return DataAccess.UserCRUD.Get(id);
+        }
 
 
     }

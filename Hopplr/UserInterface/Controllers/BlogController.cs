@@ -32,33 +32,19 @@ namespace UserInterface.Controllers
             ViewBag.Author = blog.GetAuthor();
             ViewBag.Desc = blog.GetDescription();
             ViewBag.Articles = blog.GetArticles();
+            
             return View();
         }
-        
-        public string Test()
+
+        public ActionResult DisplayUserBlogs(long id)
         {
-            /*List<DataAccess.T_User> res = BusinessManagement.Search.SearchByUser("kévin");
-            string resString = "user are : ";
-            foreach (DataAccess.T_User user in res)
+            Models.BlogListModel model = new Models.BlogListModel()
             {
-                resString += user.Login;
-            }
-            return resString;*/
-            /*List<DataAccess.T_Blog> res = BusinessManagement.Search.SearchByTheme("Manga");
-            string resString = "blogs are : ";
-            foreach (DataAccess.T_Blog user in res)
-            {
-                resString += user.Name;
-            }
-            return resString;*/
-            /*List<DataAccess.T_Article> res = BusinessManagement.Search.SearchByTags("Anime Tennis");
-            string resString = "Articles are : ";
-            foreach (DataAccess.T_Article art in res)
-            {
-                resString += ", " + art.Text;
-            }
-            return resString;*/
-            return "dadidadaire";
+                blogs = BusinessManagement.Search.SearchBlogFronUser(id),
+                user = BusinessManagement.User.GetById(id)
+            };
+
+            return View(model);
         }
     }
 }
