@@ -10,7 +10,7 @@ namespace UserInterface.Models
     public class StyleChoiceModel
     {
         [Required(ErrorMessage = "Sélectionnez un style")]
-        [Display(Name = "Choisissez  un nouveau Theme : ")]
+        [Display(Name = "Choisissez  un nouveau Theme ")]
         public long style { get; set; }
     }
 }
