@@ -13,9 +13,17 @@ namespace UserInterface.Controllers
         /// Profile of the user
         /// </summary>
         /// <returns>The view</returns>
-        public ActionResult Index()
+        public ActionResult Profile()
         {
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult Profile(StyleChoiceModel model)
+        {
+            BusinessManagement.User.ModifStyleChoice(User.Identity.Name, model.style);
+
+            return RedirectToAction("Profile", "User");
         }
 
         /// <summary>

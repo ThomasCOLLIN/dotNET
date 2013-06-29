@@ -32,6 +32,11 @@ namespace BusinessManagement
             return user.Id;
         }
 
+        public static void ModifStyleChoice(string user, long style)
+        {
+            DataAccess.UserCRUD.UpdateStyle(user, style);
+        }
+
         public List<DataAccess.T_Blog> getListBlogs()
         {
             return DataAccess.BlogCRUD.GetWithUser(user.Id);

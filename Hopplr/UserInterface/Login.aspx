@@ -14,7 +14,7 @@
     <h2>Connectez-vous maintenant</h2>
     <form id="form" runat="server">
     <div id="login_div">
-        <asp:Login ID="Login1" runat="server" DestinationPageUrl="~/User/Index">
+        <asp:Login ID="Login1" runat="server" DestinationPageUrl="~/User/Profile">
         </asp:Login>
     </div>
     </form>
