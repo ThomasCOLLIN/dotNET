@@ -1,13 +1,13 @@
-﻿/* Sunny Hopplr */
+﻿/* Hopplr pinky */
 
 html,body
 {
     height: 100%;
     width: 100%;
     padding: 1%;
-    background:#383232 url(../images/hopplr_sunny_bg.png) no-repeat;
+    background:#383232 url(../images/hopplr_pinky_bg.png) no-repeat;
     background-size: 100% 100%;
-    color:yellow;
+    color:purple;
     font: bold 15px "Calibri"; 
 }
 
@@ -60,13 +60,13 @@ html,body
 a {
     text-decoration: none;
     font-size: 20px;
-    color: yellow;
-    text-shadow: -.5px 0 orange, 0 1px orange, 1px 0 orange, 0 -.5px orange;
+    color: pink;
+    text-shadow: -.5px 0 purple, 0 1px purple, 1px 0 purple, 0 -.5px purple;
 }
 
 a:hover {
-    color: orange;
-    text-shadow: -1px 0 yellow, 0 .5px yellow, .5px 0 yellow, 0 -1px yellow;
+    color: purple;
+    text-shadow: -1px 0 pink, 0 .5px pink, .5px 0 pink, 0 -1px pink;
 }
 
 h1,h2 {
@@ -74,8 +74,8 @@ h1,h2 {
     text-align: center;
     font-size: 35px;
     line-height: 18px;
-    color: yellow;
-    text-shadow: -.5px 0 orange, 0 1px orange, 1px 0 orange, 0 -.5px orange;
+    color: purple;
+    text-shadow: -.5px 0 pink, 0 1px pink, 1px 0 pink, 0 -.5px pink;
 }
 
 h2 {
@@ -112,9 +112,9 @@ ul {
     padding: 5px;
     margin-top: 10px;
     clear: both;
-    background-color: rgba(233, 106, 0, .4);
+    background-color: rgba(104, 29, 129, .4);
     border-radius: 10px;
-    border: solid .5px red;
+    border: solid .5px purple;
     min-height: 500px;
     height: auto;
     width: auto;
@@ -143,13 +143,13 @@ ul {
     margin: 0 auto;
     display: inline-block;
     float: left;
-    border-right: 1px solid orange;
+    border-right: 1px solid purple;
     padding: 0px 5px;
 }
 
 
 #footer ul li a {
-    color: orange;
+    color: purple;
     font: normal 11px/18px "Calibri";
     text-shadow: none;
 }
