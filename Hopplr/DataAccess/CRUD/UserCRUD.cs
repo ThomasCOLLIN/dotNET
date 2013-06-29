@@ -124,6 +124,24 @@ namespace DataAccess
             }
         }
 
+        public static void UpdateStyle(string username, long styleId)
+        {
+            try
+            {
+                using (Entities bdd = new Entities())
+                {
+                    T_User user = bdd.T_User.Where(x => x.Login == username).ToList().FirstOrDefault();
+                    user.StyleId = styleId;
+                    bdd.SaveChanges();
+                }
+            }
+            catch (Exception e)
+            {
+                Trace.WriteLine(e.Message);
+                throw;
+            }
+        }
+
         public static void Delete(long userId)
         {
             try

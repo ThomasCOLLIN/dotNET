@@ -113,6 +113,7 @@
     <Compile Include="Models\SearchTagsModel.cs" />
     <Compile Include="Models\SearchThemeModel.cs" />
     <Compile Include="Models\SearchUserModel.cs" />
+    <Compile Include="Models\StyleChoiceModel.cs" />
     <Compile Include="Models\VideoModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -217,7 +218,6 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\Shared\Error.aspx" />
     <Content Include="Views\User\_UserLayout.cshtml" />
-    <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\User\Blog.cshtml" />
     <Content Include="Views\User\Follows.cshtml" />
     <Content Include="Views\User\Followers.cshtml" />
@@ -245,6 +245,7 @@
     <Content Include="Views\Blog\DisplayUserBlogs.cshtml" />
     <Content Include="Views\Shared\_DisplayUserBlogs.cshtml" />
     <Content Include="Views\Shared\_DisplayFollowers.cshtml" />
+    <Content Include="Views\User\Profile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
