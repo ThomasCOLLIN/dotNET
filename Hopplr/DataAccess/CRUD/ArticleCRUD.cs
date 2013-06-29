@@ -94,6 +94,20 @@ namespace DataAccess
             }
         }
 
+        public static List<Dbo.Article> GetArticlesDboWithBlog(long blogId)
+        {
+            List<T_Article> articles = GetWithBlog(blogId);
+
+            List<Dbo.Article> dboArticles = new List<Dbo.Article>();
+
+            foreach (T_Article article in articles)
+            {
+                dboArticles.Add(GetArticleDbo(article.Id));
+            }
+
+            return dboArticles;
+        }
+
         public static Dbo.Article GetArticleDbo(long articleId)
         {
             try

@@ -102,6 +102,14 @@ namespace BusinessManagement
             return DataAccess.ArticleCRUD.GetWithBlog(blog.Id);
         }
 
+        public List<Dbo.Article> GetArticlesDbo()
+        {
+            if (blog == null)
+                return null;
+
+            return DataAccess.ArticleCRUD.GetArticlesDboWithBlog(blog.Id);
+        }
+
         public string GetAuthor()
         {
             if (blog == null)
