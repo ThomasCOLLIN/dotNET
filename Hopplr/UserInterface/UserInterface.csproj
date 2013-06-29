@@ -98,6 +98,7 @@
     <Compile Include="Controllers\ArticleCreationController.cs" />
     <Compile Include="Controllers\ArticleDisplayController.cs" />
     <Compile Include="Controllers\BlogController.cs" />
+    <Compile Include="Controllers\CommentCreationController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
