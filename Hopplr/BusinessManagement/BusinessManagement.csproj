@@ -54,6 +54,7 @@
     <Compile Include="Search.cs" />
     <Compile Include="User.cs" />
     <Compile Include="Utils\Email.cs" />
+    <Compile Include="WebServices\TokenManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataAccess\DataAccess.csproj">

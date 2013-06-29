@@ -11,9 +11,19 @@ namespace BusinessManagement
     {
         private DataAccess.T_Blog blog;
 
+        public bool Exists
+        {
+            get { return blog != null; }
+        }
+
         public Blog(long id)
         {
             blog = DataAccess.BlogCRUD.Get(id);
+        }
+
+        public Blog(string username, string blogname)
+        {
+            blog = DataAccess.BlogCRUD.Get(username, blogname);
         }
 
         public Blog()
