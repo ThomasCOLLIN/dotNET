@@ -1,11 +1,13 @@
+/* Snowy Hopplr */
+
 html,body
 {
     height: 100%;
     width: 100%;
     padding: 1%;
-    background:#383232 url(../images/hopplr_bg.png) no-repeat;
+    background:white url(../images/hopplr_snowy_bg.png) no-repeat;
     background-size: 100% 100%;
-    color: white;
+    color: gray;
     font: bold 15px "Calibri"; 
 }
 
@@ -57,14 +59,14 @@ html,body
 
 a {
     text-decoration: none;
-    color: #660000;
+    color: white;
     font-size: 20px;
-    text-shadow: -.5px 0 #b13b33, 0 1px #b13b33, 1px 0 #b13b33, 0 -.5px #b13b33;
+    text-shadow: -.5px 0 gray, 0 1px gray, 1px 0 gray, 0 -.5px gray;
 }
 
 a:hover {
-    color: white;
-    text-shadow: -1px 0 gray, 0 .5px gray, .5px 0 gray, 0 -1px gray;
+    color: gray;
+    text-shadow: -1px 0 white, 0 .5px white, .5px 0 white, 0 -1px white;
 }
 
 h1,h2 {
@@ -72,8 +74,8 @@ h1,h2 {
     text-align: center;
     font-size: 35px;
     line-height: 18px;
-    color: #660000;
-    text-shadow: -.5px 0 #b13b33, 0 1px #b13b33, 1px 0 #b13b33, 0 -.5px #b13b33;
+    color: white;
+    text-shadow: -.5px 0 gray, 0 1px gray, 1px 0 gray, 0 -.5px gray;
 }
 
 h2 {
@@ -110,9 +112,9 @@ ul {
     padding: 5px;
     margin-top: 10px;
     clear: both;
-    background-color: rgba(80, 80, 80, .5);
+    background-color: rgba(120, 120, 120, .5);
     border-radius: 10px;
-    border: solid .5px black;
+    border: solid .5px blue;
     min-height: 500px;
     height: auto;
     width: auto;
@@ -121,10 +123,6 @@ ul {
 
 #content form {
     display: inline-block;
-}
-
-#content a {
-    padding: 0px 5px;
 }
 
 #footer {
@@ -141,13 +139,13 @@ ul {
     margin: 0 auto;
     display: inline-block;
     float: left;
-    border-right: 1px solid white;
+    border-right: 1px solid gray;
     padding: 0px 5px;
 }
 
 
 #footer ul li a {
-    color: white;
+    color: gray;
     font: normal 11px/18px "Calibri";
     text-shadow: none;
 }
