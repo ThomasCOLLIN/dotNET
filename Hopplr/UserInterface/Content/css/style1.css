@@ -1,7 +1,7 @@
 html,body
 {
-    height: 100%;
-    width: 100%;
+    height: 99%;
+    width: 99%;
     padding: 1%;
     background:#383232 url(../images/hopplr_bg.png) no-repeat;
     background-size: 100% 100%;
@@ -121,7 +121,7 @@ ul {
     text-align: center;
 }
 
-#content ul,li,div
+#content ul,li,div,p
 {
     padding-left: 0px;
     width: 98%;  
@@ -139,6 +139,30 @@ ul {
 
 #content a {
     padding: 0px 5px;
+}
+
+.button {
+    float:left;
+    display: inline;
+    padding: 5px;
+    background-color: #660000;
+    background-size: 100% 100%;
+    border: solid 1px white;
+    width: auto; 
+}
+
+.button a {
+    color: white;
+    font: bold 15px "Calibri";
+}
+
+.button:hover {
+    color: gray;
+    border-color: gray;
+}
+
+.button:hover a {
+    color : gray;
 }
 
 #footer {

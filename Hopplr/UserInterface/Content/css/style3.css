@@ -59,7 +59,7 @@ html,body
 
 a {
     text-decoration: none;
-    color: black;
+    color: rgb(70, 70, 70);
     font-size: 20px;
     text-shadow: -.5px 0 #5e1d1c, 0 1px #5e1d1c, 1px 0 #5e1d1c, 0 -.5px #5e1d1c;
 }
@@ -135,6 +135,30 @@ ul {
 
 #content a {
     padding: 0px 5px;
+}
+
+.button {
+    float:left;
+    display: inline;
+    padding: 5px;
+    background-color: black;
+    background-size: 100% 100%;
+    border: solid 1px white;
+    width: auto; 
+}
+
+.button a {
+    color: white;
+    font: bold 15px "Calibri";
+}
+
+.button:hover {
+    color: gray;
+    border-color: gray;
+}
+
+.button:hover a {
+    color : gray;
 }
 
 #footer {

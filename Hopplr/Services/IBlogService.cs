@@ -13,9 +13,9 @@ namespace Services
         Article GetArticleFromBlog(string blogOwner, string blogName, long articleId);
 
         [OperationContract]
-        bool AddArticle(string blogname, Article article);
+        bool AddArticle(string login, string password, string blogname, Article article);
 
         [OperationContract]
-        bool DeleteArticle(string blogname, long articleId);
+        bool DeleteArticle(string login, string password, string blogname, long articleId);
     }
 }
