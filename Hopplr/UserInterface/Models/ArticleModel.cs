@@ -18,7 +18,10 @@ namespace UserInterface.Models
         [Required(ErrorMessage = "Le texte est obligatoire")]
         public string Caption { get; set; }
 
+        public List<Dbo.Tag> Tags {get; set;}
+        public List<Dbo.Comment> Comments { get; set;   }
+
         [Display(Name = "Tags (séparés par des espaces)")]
-        public String Tags { get; set; }
+        public String TagsList { get; set; }
     }
 }

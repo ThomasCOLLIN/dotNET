@@ -1,0 +1,21 @@
+﻿@model UserInterface.Models.FollowersModel
+@using BusinessManagement
+@using DataAccess
+
+
+@foreach (Tuple<DataAccess.T_Blog, List<DataAccess.T_User>> tpl in Model.blogList)
+{
+    <fieldset>
+        <a href="@Url.Content("../Blog/Display?id=" + tpl.Item1.Id)">
+            <legend>@tpl.Item1.Name</legend>
+        </a><BR>
+        @foreach (DataAccess.T_User usr in tpl.Item2)
+        {
+            <a href="@Url.Content("../Blog/DisplayUserBlogs?id=" + usr.Id)">
+                @usr.Login
+            </a>
+            <span>, </span>
+            
+        }
+    </fieldset>
+}

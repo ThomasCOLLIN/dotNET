@@ -44,9 +44,22 @@ namespace UserInterface.Controllers
         /// List the followers (user that follow at least 1 blog of the User)
         /// </summary>
         /// <returns>The view</returns>
-        public ActionResult Followers()
+        public ActionResult Followers(long id)
         {
-            return View();
+            List<DataAccess.T_Blog> blgList = BusinessManagement.Blog.GetWithUser(id);
+            List<Tuple<DataAccess.T_Blog, List<DataAccess.T_User>>> resList = new List<Tuple<DataAccess.T_Blog, List<DataAccess.T_User>>>();
+
+            foreach (DataAccess.T_Blog blg in blgList)
+            {
+                resList.Add(new Tuple<DataAccess.T_Blog, List<DataAccess.T_User>>(blg, BusinessManagement.Blog.GetFollower(blg.Id)));
+            }
+            Models.FollowersModel model = new Models.FollowersModel()
+            {
+                blogList = resList,
+                name = BusinessManagement.User.GetById(id).Login
+            };
+
+            return View(model);
         }
 
         public ActionResult BlogManagement(long id)

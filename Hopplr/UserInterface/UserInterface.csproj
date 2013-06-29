@@ -107,6 +107,7 @@
     <Compile Include="Models\BlogListModel.cs" />
     <Compile Include="Models\FileModel.cs" />
     <Compile Include="Models\BlogModel.cs" />
+    <Compile Include="Models\FollowersModel.cs" />
     <Compile Include="Models\QuoteModel.cs" />
     <Compile Include="Models\SearchTagsModel.cs" />
     <Compile Include="Models\SearchThemeModel.cs" />
@@ -120,7 +121,9 @@
     <Content Include="Content\images\home_page.png" />
     <Content Include="Content\images\hopplr_bg.png" />
     <Content Include="Content\images\hopplr_dark_bg.png" />
+    <Content Include="Content\images\hopplr_pinky_bg.png" />
     <Content Include="Content\images\hopplr_snowy_bg.png" />
+    <Content Include="Content\images\hopplr_sunny_bg.png" />
     <Content Include="Content\images\logo.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
@@ -237,6 +240,7 @@
     <Content Include="Views\Shared\_DisplaySearchTags.cshtml" />
     <Content Include="Views\Blog\DisplayUserBlogs.cshtml" />
     <Content Include="Views\Shared\_DisplayUserBlogs.cshtml" />
+    <Content Include="Views\Shared\_DisplayFollowers.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -275,7 +279,7 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerPort>61822</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:5288/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>

@@ -41,7 +41,7 @@ namespace BusinessManagement
             ArticleCRUD.CreateAndAddTags(article, newtags);
         }
 
-        public Dbo.Article GetArticleDbo(long articleId)
+        public static Dbo.Article GetArticleDbo(long articleId)
         {
             return ArticleCRUD.GetArticleDbo(articleId);
         }

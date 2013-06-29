@@ -115,5 +115,15 @@ namespace BusinessManagement
         {
             return DataAccess.BlogCRUD.GetUserWithBlogId(blogId);
         }
+
+        public static List<T_Blog> GetWithUser(long id)
+        {
+            return DataAccess.BlogCRUD.GetWithUser(id);
+        }
+
+        public static List<T_User> GetFollower(long id)
+        {
+            return DataAccess.BlogCRUD.GetFollower(id);
+        }
     }
 }

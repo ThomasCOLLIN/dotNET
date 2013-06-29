@@ -159,5 +159,24 @@ namespace DataAccess
                 throw;
             }
         }
+
+        public static List<T_User> GetFollower(long id)
+        {
+            try
+            {
+                using (Entities bdd = new Entities())
+                {
+                    List<T_User> followers = new List<T_User>();
+                    bdd.T_Follow.Include("T_User").Where((flw) => flw.BlogId == id).ToList().ForEach((fol) => followers.Add(fol.T_User));
+
+                    return followers;
+                }
+            }
+            catch (Exception e)
+            {
+                Trace.WriteLine(e.Message);
+                throw;
+            }
+        }
     }
 }

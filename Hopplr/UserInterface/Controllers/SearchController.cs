@@ -31,7 +31,7 @@ namespace UserInterface.Controllers
         {
             Models.SearchUserModel model = new Models.SearchUserModel()
             {
-                user = BusinessManagement.Search.SearchByUser(userName),
+                User = BusinessManagement.Search.SearchByUser(userName),
                 name = userName
             };
 

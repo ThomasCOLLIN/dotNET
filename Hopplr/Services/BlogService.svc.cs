@@ -18,7 +18,7 @@ namespace Services
 
             blog.GetArticles().ForEach(item =>
             {
-                Dbo.Article dboArt = art.GetArticleDbo(item.Id);
+                Dbo.Article dboArt = BusinessManagement.Article.GetArticleDbo(item.Id);
                 articles.Add(ConvertToWebArticle(dboArt));
             });
 
@@ -38,7 +38,7 @@ namespace Services
             {
                 if (art.Id != articleId || blog.Id != art.BlogId)
                     continue;
-                return ConvertToWebArticle(new BusinessManagement.Article().GetArticleDbo(art.Id));
+                return ConvertToWebArticle(BusinessManagement.Article.GetArticleDbo(art.Id));
             };
 
             return null;
@@ -51,8 +51,6 @@ namespace Services
 
             if (!blog.Exists)
                 return false;
-
-            throw new Exception("Not Implemented yet");
 
             return true;
         }
