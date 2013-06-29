@@ -60,5 +60,21 @@ namespace UserInterface.Controllers
 
             return View(model);
         }
+
+        #region Follow/UnFollow
+
+        public ActionResult FollowBlog(long id)
+        {
+            BusinessManagement.Follow.FollowBlog(User.Identity.Name, id);
+            return RedirectToAction("Display", new { id = id });
+        }
+
+        public ActionResult UnFollow(long id)
+        {
+            BusinessManagement.Follow.UnFollow(User.Identity.Name, id);
+            return RedirectToAction("Display", new { id = id });
+        }
+
+        #endregion Follow/UnFollow
     }
 }
