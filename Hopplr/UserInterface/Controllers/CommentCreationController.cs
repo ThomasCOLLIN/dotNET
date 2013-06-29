@@ -8,16 +8,8 @@ namespace UserInterface.Controllers
 {
     public class CommentCreationController : Controller
     {
-        //
-        // GET: /CommentCreation/
-
-        public ActionResult AddComment()
-        {
-            return View();
-        }
-
         [HttpPost]
-        public ActionResult AddComment(long BlogId, long articleId, String comment)
+        public ActionResult AddComment(long blogId, long articleId, String comment)
         {
             // if there is no comment, we do nothing
             if (!String.IsNullOrEmpty(comment))
@@ -35,8 +27,7 @@ namespace UserInterface.Controllers
                 });
             }
 
-            return View();
+            return RedirectToAction("Display", "ArticleDisplay", new { articleId = articleId });
         }
-
     }
 }

@@ -55,3 +55,12 @@
         <span><BR/> - @comment.Content</span><BR/>
     }
 </fieldset>
+<fieldset>
+    @Html.BeginForm()
+    {
+        <input type="hidden" value="@Model.BlogId" name="blogId" id="blogid"/>
+        <input type="hidden" value="@Model.ArticleId" name="articleId" id="articleid"/>
+        <textarea style="resize: none" ></textarea>
+        <input type="submit" value="Poster"/>
+    }
+</fieldset>
