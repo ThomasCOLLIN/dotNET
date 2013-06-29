@@ -41,25 +41,19 @@
             <span>@Model.Caption</span>
         </div>
     }
-</fieldset>
-<fieldset>
-    <legend>Tags</legend>
+    <p>Tags</p>
     @foreach (Dbo.Tag tag in @Model.Tags)
     {
         <a href="@Url.Content("../Search/SearchTags?tags=" + tag.Name)">@tag.Name</a>
         <span>, </span>
     }
-</fieldset>
-<fieldset>
-    <legend>Commentaires</legend>
+    <p>Commentaires</p>
     Ajouter un commentaire<BR/>
     @foreach (Dbo.Comment comment in @Model.Comments)
     {
         <a href="@Url.Content("../Blog/DisplayUserBlogs?id=" + comment.UserId)">@comment.UserName</a><span> :</span>
         <span><BR/> - @comment.Content</span><BR/>
     }
-</fieldset>
-<fieldset>
     @using(Html.BeginForm("AddComment", "CommentCreation", FormMethod.Post))
     {
         <input type="hidden" value="@Model.BlogId" name="blogId" id="blogid"/>
