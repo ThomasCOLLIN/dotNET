@@ -98,14 +98,19 @@
     <Compile Include="Controllers\ArticleCreationController.cs" />
     <Compile Include="Controllers\ArticleDisplayController.cs" />
     <Compile Include="Controllers\BlogController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\ArticleModel.cs" />
+    <Compile Include="Models\BlogListModel.cs" />
     <Compile Include="Models\FileModel.cs" />
     <Compile Include="Models\BlogModel.cs" />
     <Compile Include="Models\QuoteModel.cs" />
+    <Compile Include="Models\SearchTagsModel.cs" />
+    <Compile Include="Models\SearchThemeModel.cs" />
+    <Compile Include="Models\SearchUserModel.cs" />
     <Compile Include="Models\VideoModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -217,6 +222,14 @@
     <Content Include="Views\ArticleCreation\AddVideo.cshtml" />
     <Content Include="Views\Shared\_DisplayArticle.cshtml" />
     <Content Include="Views\ArticleDisplay\Display.cshtml" />
+    <Content Include="Views\Shared\_DisplaySearchTheme.cshtml" />
+    <Content Include="Views\Search\SearchTheme.cshtml" />
+    <Content Include="Views\Search\SearchUser.cshtml" />
+    <Content Include="Views\Shared\_DisplaySearchUser.cshtml" />
+    <Content Include="Views\Search\SearchTags.cshtml" />
+    <Content Include="Views\Shared\_DisplaySearchTags.cshtml" />
+    <Content Include="Views\Blog\DisplayUserBlogs.cshtml" />
+    <Content Include="Views\Shared\_DisplayUserBlogs.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -233,6 +246,10 @@
     <ProjectReference Include="..\DataAccess\DataAccess.csproj">
       <Project>{c2e57a85-e328-4be3-9736-fe3e71713189}</Project>
       <Name>DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Dbo\Dbo.csproj">
+      <Project>{f7bc15de-58cb-4a6a-929a-82f12a8c4f6d}</Project>
+      <Name>Dbo</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

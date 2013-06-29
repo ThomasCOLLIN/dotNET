@@ -32,13 +32,23 @@ namespace BusinessManagement
             List<T_Tag> newtags = new List<T_Tag>();
             string[] tabTags = tags.Split(new Char[] {' '});
 
+
             foreach (string tag in tabTags)
             {
                 newtags.Add(new T_Tag() {Name = tag});
             }
 
             ArticleCRUD.CreateAndAddTags(article, newtags);
-        
+        }
+
+        public Dbo.Article GetArticleDbo(long articleId)
+        {
+            return ArticleCRUD.GetArticleDbo(articleId);
+        }
+
+        public List<T_Article> GetWithBlog(long blogId)
+        {
+            return ArticleCRUD.GetWithBlog(blogId);
         }
 
         public static T_Article Get(long articleId)

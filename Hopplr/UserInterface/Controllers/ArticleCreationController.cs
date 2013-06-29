@@ -31,6 +31,13 @@ namespace UserInterface.Controllers
             }
         }
 
+        public ActionResult Test()
+        {
+            Article article = new Article();
+            Dbo.Article res = article.GetArticleDbo(2);
+            return View();
+        }
+
         #region quote
 
         public ActionResult AddQuote(long blogId)

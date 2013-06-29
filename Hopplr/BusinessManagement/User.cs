@@ -1,14 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace BusinessManagement
 {
     public class User
     {
         private DataAccess.T_User user;
+
+        public bool Exists
+        {
+            get { return user != null; }
+        }
+
 
         public User(string login)
         {
@@ -35,7 +37,6 @@ namespace BusinessManagement
             return DataAccess.BlogCRUD.GetWithUser(user.Id);
         }
 
-
         public List<DataAccess.T_Blog> getListFollows()
         {
             List<DataAccess.T_Follow> follows = DataAccess.FollowCRUD.GetByuserId(user.Id);
@@ -49,8 +50,14 @@ namespace BusinessManagement
             return blogs;
         }
 
+        public static DataAccess.T_User GetById(long id)
+        {
+            return DataAccess.UserCRUD.Get(id);
+        }
 
-
-
+        public bool IsPasswordValid(string password)
+        {
+            return (user.HashPassword == password);
+        }
     }
 }

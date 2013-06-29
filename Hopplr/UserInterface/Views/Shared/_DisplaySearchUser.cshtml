@@ -1,0 +1,15 @@
+﻿@model UserInterface.Models.SearchUserModel
+@using BusinessManagement
+@using DataAccess
+
+<fieldset>
+    <legend>Search for @Model.name users</legend>
+@foreach (DataAccess.T_User user in Model.user)
+{
+    <fieldset>
+        <a href="@Url.Content("../Blog/DisplayUserBlogs?id=" + user.Id)">
+            <legend>@user.Login</legend>
+        </a>
+    </fieldset>
+}
+</fieldset>

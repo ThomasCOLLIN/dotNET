@@ -1,0 +1,16 @@
+﻿@model UserInterface.Models.SearchThemeModel
+@using BusinessManagement
+@using DataAccess
+
+<fieldset>
+    <legend>Search about @Model.Theme theme</legend>
+@foreach (DataAccess.T_Blog blog in Model.Blogs)
+{
+    <fieldset>
+        <a href="@Url.Content("../Blog/Display?id=" + blog.Id)">
+            <legend>@blog.Name</legend>
+            @blog.Description
+        </a>
+    </fieldset>
+}
+</fieldset>

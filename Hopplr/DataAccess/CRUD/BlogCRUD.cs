@@ -42,6 +42,22 @@ namespace DataAccess
             }
         }
 
+        public static T_Blog Get(string login, string blogName)
+        {
+            try
+            {
+                using (Entities bdd = new Entities())
+                {
+                    return bdd.T_Blog.Include("T_User").Where(bl => bl.T_User.Login == login && bl.Name == blogName).FirstOrDefault();
+                }
+            }
+            catch (Exception e)
+            {
+                Trace.WriteLine(e.Message);
+                throw;
+            }
+        }
+
         public static T_User GetUserWithBlogId(long blogId)
         {
             try

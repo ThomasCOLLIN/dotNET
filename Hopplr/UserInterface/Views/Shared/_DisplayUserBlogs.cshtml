@@ -1,0 +1,15 @@
+﻿@model UserInterface.Models.BlogListModel
+@using BusinessManagement
+@using DataAccess
+
+<fieldset>
+    <legend>Blogs list of @Model.user.Login</legend>
+@foreach (DataAccess.T_Blog blog in Model.blogs)
+{
+    <fieldset>
+        <a href="@Url.Content("../Blog/Display?id=" + blog.Id)">
+            <legend>@blog.Name</legend>
+        </a>
+    </fieldset>
+}
+</fieldset>
