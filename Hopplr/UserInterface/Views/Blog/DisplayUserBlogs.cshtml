@@ -2,6 +2,7 @@
 @{
     ViewBag.Title = "DisplayUserBlogs";
     Layout = "~/Views/Blog/_BlogLayout.cshtml";
+    ViewBag.CssPath = Url.Content("~/Content/css/style1.css");
 }
 
 @Html.Partial("_DisplayUserBlogs", Model)

@@ -118,6 +118,9 @@
   <ItemGroup>
     <Content Include="Content\css\style2.css" />
     <Content Include="Content\css\style1.css" />
+    <Content Include="Content\css\style3.css" />
+    <Content Include="Content\css\style4.css" />
+    <Content Include="Content\css\style5.css" />
     <Content Include="Content\images\home_page.png" />
     <Content Include="Content\images\hopplr_bg.png" />
     <Content Include="Content\images\hopplr_dark_bg.png" />

@@ -101,28 +101,5 @@ namespace UserInterface.Controllers
 
         #endregion
 
-
-        #region Création d'un article
-
-        public ActionResult CreateArticle(long id)
-        {
-            ViewBag.BlogId = id;
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult CreateArticle(ArticleModel art)
-        {
-            if (ModelState.IsValid)
-            {
-                BusinessManagement.Blog.CreateArticle(art.BlogId, art.MediaUrl, art.MediaType, art.Caption);
-                return RedirectToAction("BlogManagement", new { id = art.BlogId });
-            }
-
-            // If we got this far, something failed, redisplay form
-            return View();
-        }
-
-        #endregion
     }
 }

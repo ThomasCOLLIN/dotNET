@@ -7,14 +7,14 @@
     @if (Model.MediaType == (long)Tools.MediaTypes.Image)
     {
         <div class="display-field">
-            <img alt="image" src="@Model.MediaUrl" />
+            <img alt="image" src="@Path.Combine(Server.MapPath("~/Medias"), Model.MediaUrl)" />
         </div>
     }
     else if (Model.MediaType == (long)Tools.MediaTypes.Music)
     {
         <audio controls height="100" width="100">
           <source src="@Model.MediaUrl" type="audio/mpeg">
-          <embed height="50" width="100" src="@Model.MediaUrl">
+          <embed height="50" width="100" src="@Path.Combine(Server.MapPath("~/Medias"), Model.MediaUrl)">
           Votre navigateur ne supporte pas ce format audio.
         </audio>
     }
@@ -48,6 +48,7 @@
 </fieldset>
 <fieldset>
     <legend>Commentaires</legend>
+<<<<<<< HEAD
     Ajouter un commentaire<BR/>
     @foreach (Dbo.Comment comment in @Model.Comments)
     {
@@ -55,3 +56,6 @@
         <span><BR/> - @comment.Content</span><BR/>
     }
 </fieldset>
+=======
+</fieldset>
+>>>>>>> f71fecee8fc1a4d62c7a701c1fd3d971c8da26cb
