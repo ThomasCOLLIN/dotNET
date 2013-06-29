@@ -36,7 +36,6 @@
         
         if (User.Identity.IsAuthenticated)
         {
-            BusinessManagement.User us = new BusinessManagement.User(User.Identity.Name);
             followed = Url.Content("~/User/Followers?id=" + us.getId());
         }
     }
