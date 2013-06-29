@@ -34,7 +34,7 @@ namespace UserInterface.Controllers
         public ActionResult Test()
         {
             Article article = new Article();
-            Dbo.Article res = article.GetArticleDbo(2);
+            Dbo.Article res = BusinessManagement.Article.GetArticleDbo(2);
             return View();
         }
 

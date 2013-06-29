@@ -19,15 +19,16 @@ namespace UserInterface.Controllers
 
         public ActionResult Display(long id)
         {
-            DataAccess.T_Article article = BusinessManagement.Article.Get(id);
+            Dbo.Article article = BusinessManagement.Article.GetArticleDbo(id);
             Models.ArticleModel model = new Models.ArticleModel()
                 {
                     BlogId = article.BlogId,
-                    Caption = article.Text,
+                    Caption = article.Caption,
                     MediaType = article.MediaTypeId.Value,
-                    MediaUrl = article.MediaUrl
+                    MediaUrl = article.MediaUrl,
+                    Tags = article.Tags,
+                    Comments = article.Comments
                 };
-            //ViewData.Model = new ArticleModel();
 
             return View(model);
         }

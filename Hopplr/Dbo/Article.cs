@@ -16,6 +16,6 @@ namespace Dbo
         public System.DateTime CreationDate { get; set; }
 
         public List<Dbo.Tag> Tags { get; set; }
-        public List<Dbo.Comment> Comment { get; set; }
+        public List<Dbo.Comment> Comments { get; set; }
     }
 }

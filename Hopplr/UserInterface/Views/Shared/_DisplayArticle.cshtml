@@ -1,5 +1,6 @@
 ﻿@model UserInterface.Models.ArticleModel
 @using BusinessManagement
+@using Dbo
 
 <fieldset>
     <legend>Article</legend>
@@ -36,4 +37,15 @@
             <span>@Model.Caption</span>
         </div>
     }
+</fieldset>
+<fieldset>
+    <legend>Tags</legend>
+    @foreach (Dbo.Tag tag in @Model.Tags)
+    {
+        <a href="@Url.Content("../Search/SearchTags?tags=" + tag.Name)">@tag.Name</a>
+        <span>, </span>
+    }
+</fieldset>
+<fieldset>
+    <legend>Commentaires</legend>
 </fieldset>

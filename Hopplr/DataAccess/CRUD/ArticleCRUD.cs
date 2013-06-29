@@ -57,13 +57,13 @@ namespace DataAccess
                         MediaTypeId = article.MediaTypeId,
                         Caption = article.Text,
                         CreationDate = article.CreationDate,
-                        Comment = new List<Dbo.Comment>(),
+                        Comments = new List<Dbo.Comment>(),
                         Tags = new List<Dbo.Tag>()
                     };
                     
                     foreach (T_Comment comment in article.T_Comment)
                     {
-                        dboArticle.Comment.Add(new Dbo.Comment()
+                        dboArticle.Comments.Add(new Dbo.Comment()
                         {
                             Id = comment.Id,
                             UserId = comment.UserId,

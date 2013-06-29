@@ -19,7 +19,7 @@ namespace BusinessManagement
             return ArticleCRUD.Get(articleId);
         }
 
-        public Dbo.Article GetArticleDbo(long articleId)
+        public static Dbo.Article GetArticleDbo(long articleId)
         {
             return ArticleCRUD.GetArticleDbo(articleId);
         }

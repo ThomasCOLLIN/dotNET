@@ -17,5 +17,8 @@ namespace UserInterface.Models
         public long MediaType { get; set; }
         [Required(ErrorMessage = "Le texte est obligatoire")]
         public string Caption { get; set; }
+
+        public List<Dbo.Tag> Tags {get; set;}
+        public List<Dbo.Comment> Comments { get; set;   }
     }
 }
