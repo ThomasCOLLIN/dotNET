@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Transactions;
 
 namespace DataAccess
 {
@@ -18,6 +19,56 @@ namespace DataAccess
                 {
                     bdd.T_Article.Add(article);
                     bdd.SaveChanges();
+                }
+            }
+            catch (Exception e)
+            {
+                Trace.WriteLine(e.Message);
+                throw;
+            }
+        }
+
+        public static void CreateAndAddTags(T_Article article, List<T_Tag> tags)
+        {
+            try
+            {
+                using (Entities bdd = new Entities())
+                {
+                    using (TransactionScope scope = new TransactionScope())
+                    {
+
+                        bdd.T_Article.Add(article);
+                        bdd.SaveChanges();
+
+                        foreach (T_Tag tag in tags)
+                        {
+                            T_Tag oldTag = bdd.T_Tag.Where(tg => tg.Name == tag.Name).FirstOrDefault();
+                            if (oldTag == null)
+                            {
+                                bdd.T_Tag.Add(tag);
+                                bdd.SaveChanges();
+                                T_ArticleTag at = new T_ArticleTag()
+                                {
+                                    ArticleId = article.Id,
+                                    TagId = tag.Id
+                                };
+                                bdd.T_ArticleTag.Add(at);
+                                bdd.SaveChanges();
+                            }
+                            else
+                            {
+                                T_ArticleTag at = new T_ArticleTag()
+                                {
+                                    ArticleId = article.Id,
+                                    TagId = oldTag.Id
+                                };
+                                bdd.T_ArticleTag.Add(at);
+                                bdd.SaveChanges();
+                            }
+                        }
+
+                        scope.Complete();
+                    }
                 }
             }
             catch (Exception e)

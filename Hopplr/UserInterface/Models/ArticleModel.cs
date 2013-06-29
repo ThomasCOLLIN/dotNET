@@ -20,5 +20,8 @@ namespace UserInterface.Models
 
         public List<Dbo.Tag> Tags {get; set;}
         public List<Dbo.Comment> Comments { get; set;   }
+
+        [Display(Name = "Tags (séparés par des espaces)")]
+        public String TagsList { get; set; }
     }
 }

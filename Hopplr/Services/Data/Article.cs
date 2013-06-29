@@ -9,7 +9,6 @@ namespace Services
     [DataContract]
     public class Article
     {
-        [DataMember]
         public enum MediaTypeEnum
         {
             IMAGE,

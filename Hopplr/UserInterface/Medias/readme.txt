@@ -1,1 +1,1 @@
-Directory for the medias uploaded by users.
+Directory for medias upload by users.

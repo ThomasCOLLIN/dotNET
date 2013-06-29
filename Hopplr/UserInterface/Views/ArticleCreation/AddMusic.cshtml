@@ -33,6 +33,14 @@
             @Html.ValidationMessageFor(model => model.Caption)
         </div>
 
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Tags)
+        </div>
+        <div class="editor-field">
+            @Html.TextAreaFor(model => model.Tags, new { style="resize:none" })
+            @Html.ValidationMessageFor(model => model.Tags)
+        </div>
+
         <p>
             <input type="submit" value="Create" />
         </p>

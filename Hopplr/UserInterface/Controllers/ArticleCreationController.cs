@@ -57,9 +57,9 @@ namespace UserInterface.Controllers
             if (String.IsNullOrEmpty(model.Quote))
                 return View(model);
 
-            InsertArticleInBDD(model.BlogId, model.Quote, (long)Tools.MediaTypes.Quote, model.Caption);
+            InsertArticleInBDD(model.BlogId, model.Quote, (long)Tools.MediaTypes.Quote, model.Caption, model.Tags);
 
-            return RedirectToAction("BlogManagement", "User", new { model.BlogId });
+            return RedirectToAction("BlogManagement", "User", new { id = model.BlogId });
         }
 
         #endregion quote
@@ -76,7 +76,8 @@ namespace UserInterface.Controllers
         public ActionResult AddMusic(FileModel model)
         {
             String path;
-            if (!CheckAndImportFile(model, out path))
+            String filename;
+            if (!CheckAndImportFile(model, out path, out filename))
                 return View(model);
 
             if (!path.EndsWith("mp3", true, null))
@@ -86,9 +87,9 @@ namespace UserInterface.Controllers
                 return View(model);
             }
 
-            InsertArticleInBDD(model.BlogId, path, (long)Tools.MediaTypes.Music, model.Caption);
+            InsertArticleInBDD(model.BlogId, filename, (long)Tools.MediaTypes.Music, model.Caption, model.Tags);
 
-            return RedirectToAction("BlogManagement", "User", new { model.BlogId });
+            return RedirectToAction("BlogManagement", "User", new { id = model.BlogId });
         }
 
         #endregion music
@@ -105,7 +106,8 @@ namespace UserInterface.Controllers
         public ActionResult AddImage(FileModel model)
         {
             String path;
-            if (!CheckAndImportFile(model, out path))
+            String filename;
+            if (!CheckAndImportFile(model, out path, out filename))
                 return View(model);
 
             if (!IsValidImage(path))
@@ -115,9 +117,9 @@ namespace UserInterface.Controllers
                 return View(model);
             }
 
-            InsertArticleInBDD(model.BlogId, path, (long)Tools.MediaTypes.Image, model.Caption);
+            InsertArticleInBDD(model.BlogId, filename, (long)Tools.MediaTypes.Image, model.Caption, model.Tags);
 
-            return RedirectToAction("BlogManagement", "User", new { model.BlogId });
+            return RedirectToAction("BlogManagement", "User", new { id = model.BlogId });
         }
 
         #endregion image
@@ -150,9 +152,9 @@ namespace UserInterface.Controllers
                 return View(model);
             }
 
-            InsertArticleInBDD(model.BlogId, youtubeID, (long)Tools.MediaTypes.Video, model.Caption);
+            InsertArticleInBDD(model.BlogId, youtubeID, (long)Tools.MediaTypes.Video, model.Caption, model.Tags);
 
-            return RedirectToAction("BlogManagement", "User", new { model.BlogId });
+            return RedirectToAction("BlogManagement", "User", new { id = model.BlogId });
         }
 
         #endregion vidéo
@@ -174,9 +176,10 @@ namespace UserInterface.Controllers
 
         }
 
-        private Boolean CheckAndImportFile(FileModel model, out String path)
+        private Boolean CheckAndImportFile(FileModel model, out String path, out String filename)
         {
             path = null;
+            filename = null;
 
             if (model == null)
                 throw new ArgumentNullException("model");
@@ -186,10 +189,16 @@ namespace UserInterface.Controllers
             if (model.File == null || model.File.ContentLength < 0)
                 return false;
 
+            // get file extension
+            String extension = Path.GetExtension(model.File.FileName);
+
             // extract only the filename
-            var fileName = Path.GetFileName(model.File.FileName);
+            //var fileName = Path.GetFileName(model.File.FileName);
+
+            filename = Guid.NewGuid().ToString() + extension;
+
             // store the file inside ~/Medias/Images folder
-            path = Path.Combine(Server.MapPath("~/Medias"), fileName);
+            path = Path.Combine(Server.MapPath("~/Medias"), filename);
             try
             {
                 model.File.SaveAs(path);
@@ -203,27 +212,17 @@ namespace UserInterface.Controllers
         }
 
         /// <summary>
-        /// Insert a T_Article into the database.
+        /// Call the BusinessManagement to insert the article in the database
         /// </summary>
         /// <param name="blogID">Id of the blog containing the T_Article.</param>
         /// <param name="mediaUrl">Link to the media includes into the article, or text if the media is a quote.</param>
         /// <param name="mediaTypeId">Type of the media.</param>
         /// <param name="text">A caption for the media, or the content of the article if there is no media.</param>
+        /// <param name="tags">The tags, separated by a space</param>
         /// <returns>Nothing</returns>
-        private void InsertArticleInBDD(long blogID, String mediaUrl, long mediaTypeId, String text)
+        private void InsertArticleInBDD(long blogID, String mediaUrl, long mediaTypeId, String text, String tags)
         {
-            T_Article article = new T_Article()
-            {
-                BlogId = blogID,
-                MediaUrl = mediaUrl,
-                MediaTypeId = mediaTypeId,
-                Text = text,
-                CreationDate = DateTime.Now
-            };
-
-            // TODO: Insert into the database.
-            //Article bMArticle = new Article();
-            //bMArticle.Create(article);
+            BusinessManagement.Article.Create(blogID, mediaUrl, mediaTypeId, text, tags);
         }
 
         /// <summary>
