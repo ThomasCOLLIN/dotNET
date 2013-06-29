@@ -32,10 +32,11 @@ namespace DataAccess
         {
             try
             {
-                using (TransactionScope scope = new TransactionScope())
+                using (Entities bdd = new Entities())
                 {
-                    using (Entities bdd = new Entities())
+                    using (TransactionScope scope = new TransactionScope())
                     {
+
                         bdd.T_Article.Add(article);
                         bdd.SaveChanges();
 
@@ -66,9 +67,8 @@ namespace DataAccess
                             }
                         }
 
-
+                        scope.Complete();
                     }
-                    scope.Complete();
                 }
             }
             catch (Exception e)

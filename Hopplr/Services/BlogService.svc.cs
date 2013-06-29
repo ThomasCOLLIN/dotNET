@@ -70,7 +70,7 @@ namespace Services
             string username = HttpContext.Current.User.Identity.Name;
             Blog blog = new Blog(username, blogname);
             BusinessManagement.Article art = new BusinessManagement.Article();
-            DataAccess.T_Article article = art.Get(articleId);
+            DataAccess.T_Article article = BusinessManagement.Article.Get(articleId);
             if (!blog.Exists || article == null || article.BlogId != blog.Id)
                 return false;
 

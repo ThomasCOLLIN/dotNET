@@ -76,7 +76,8 @@ namespace UserInterface.Controllers
         public ActionResult AddMusic(FileModel model)
         {
             String path;
-            if (!CheckAndImportFile(model, out path))
+            String filename;
+            if (!CheckAndImportFile(model, out path, out filename))
                 return View(model);
 
             if (!path.EndsWith("mp3", true, null))
@@ -86,7 +87,7 @@ namespace UserInterface.Controllers
                 return View(model);
             }
 
-            InsertArticleInBDD(model.BlogId, path, (long)Tools.MediaTypes.Music, model.Caption, model.Tags);
+            InsertArticleInBDD(model.BlogId, filename, (long)Tools.MediaTypes.Music, model.Caption, model.Tags);
 
             return RedirectToAction("BlogManagement", "User", new { model.BlogId });
         }
@@ -105,7 +106,8 @@ namespace UserInterface.Controllers
         public ActionResult AddImage(FileModel model)
         {
             String path;
-            if (!CheckAndImportFile(model, out path))
+            String filename;
+            if (!CheckAndImportFile(model, out path, out filename))
                 return View(model);
 
             if (!IsValidImage(path))
@@ -115,7 +117,7 @@ namespace UserInterface.Controllers
                 return View(model);
             }
 
-            InsertArticleInBDD(model.BlogId, path, (long)Tools.MediaTypes.Image, model.Caption, model.Tags);
+            InsertArticleInBDD(model.BlogId, filename, (long)Tools.MediaTypes.Image, model.Caption, model.Tags);
 
             return RedirectToAction("BlogManagement", "User", new { id = model.BlogId });
         }
@@ -174,9 +176,10 @@ namespace UserInterface.Controllers
 
         }
 
-        private Boolean CheckAndImportFile(FileModel model, out String path)
+        private Boolean CheckAndImportFile(FileModel model, out String path, out String filename)
         {
             path = null;
+            filename = null;
 
             if (model == null)
                 throw new ArgumentNullException("model");
@@ -186,10 +189,16 @@ namespace UserInterface.Controllers
             if (model.File == null || model.File.ContentLength < 0)
                 return false;
 
+            // get file extension
+            String extension = Path.GetExtension(model.File.FileName);
+
             // extract only the filename
-            var fileName = Path.GetFileName(model.File.FileName);
+            //var fileName = Path.GetFileName(model.File.FileName);
+
+            filename = Guid.NewGuid().ToString() + extension;
+
             // store the file inside ~/Medias/Images folder
-            path = Path.Combine(Server.MapPath("~/Medias"), fileName);
+            path = Path.Combine(Server.MapPath("~/Medias"), filename);
             try
             {
                 model.File.SaveAs(path);
