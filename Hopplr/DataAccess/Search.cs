@@ -48,8 +48,6 @@ namespace DataAccess
             {
                 using (Entities bdd = new Entities())
                 {
-                    //List<T_Tag> usList = T_TagCRUD.GetAll();
-                    //List<T_Article> arList = ArticleCRUD.GetAll();
                     List<T_ArticleTag> atList = T_ArticleTagCRUD.GetAll();
                     List<T_Article> resList = new List<T_Article>();
                     List<String> tagList = new List<string>(tags.Split(' '));
@@ -79,6 +77,22 @@ namespace DataAccess
             {
                 Trace.WriteLine(e.Message);
                 return new List<T_Article>();
+            }
+        }
+
+        public static List<T_Blog> SearchBlogFromUser(long userId)
+        {
+            try
+            {
+                using (Entities bdd = new Entities())
+                {
+                    return bdd.T_Blog.Include("T_User").Where(blg => blg.T_User.Id == userId).ToList();
+                }
+            }
+            catch (Exception e)
+            {
+                Trace.WriteLine(e.Message);
+                return new List<T_Blog>();
             }
         }
     }

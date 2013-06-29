@@ -22,5 +22,10 @@ namespace BusinessManagement
         {
             return DataAccess.Search.SearchByTags(tags);
         }
+
+        public static List<DataAccess.T_Blog> SearchBlogFronUser(long userId)
+        {
+            return DataAccess.Search.SearchBlogFromUser(userId);
+        }
     }
 }

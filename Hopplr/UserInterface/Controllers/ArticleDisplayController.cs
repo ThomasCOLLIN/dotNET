@@ -32,9 +32,9 @@ namespace UserInterface.Controllers
             return View(model);
         }
 
-        public string Test(long id)
+        public string Test(string dadaire)
         {
-            return id.ToString();
+            return dadaire;
         }
 
     }

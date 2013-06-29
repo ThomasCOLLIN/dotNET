@@ -1,0 +1,7 @@
+﻿@model UserInterface.Models.BlogListModel
+@{
+    ViewBag.Title = "DisplayUserBlogs";
+    Layout = "~/Views/Blog/_BlogLayout.cshtml";
+}
+
+@Html.Partial("_DisplayUserBlogs", Model)

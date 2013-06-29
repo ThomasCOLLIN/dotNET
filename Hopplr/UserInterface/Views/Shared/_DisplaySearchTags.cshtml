@@ -1,0 +1,15 @@
+﻿@model UserInterface.Models.SearchTagsModel
+@using BusinessManagement
+@using DataAccess
+
+<fieldset>
+    <legend>Search for @Model.tags</legend>
+@foreach (DataAccess.T_Article art in Model.articles)
+{
+    <fieldset>
+        <a href="@Url.Content("../ArticleDisplay/Display?id=" + art.Id)">
+            <legend>@art.Text</legend>
+        </a>
+    </fieldset>
+}
+</fieldset>
