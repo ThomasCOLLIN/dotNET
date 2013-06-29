@@ -12,7 +12,7 @@ namespace Dbo
         public long BlogId { get; set; }
         public string MediaUrl { get; set; }
         public Nullable<long> MediaTypeId { get; set; }
-        public string Text { get; set; }
+        public string Caption { get; set; }
         public System.DateTime CreationDate { get; set; }
 
         public List<Dbo.Tag> Tags { get; set; }

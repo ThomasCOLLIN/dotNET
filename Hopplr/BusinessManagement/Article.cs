@@ -19,6 +19,11 @@ namespace BusinessManagement
             return ArticleCRUD.Get(articleId);
         }
 
+        public Dbo.Article GetArticleDbo(long articleId)
+        {
+            return ArticleCRUD.GetArticleDbo(articleId);
+        }
+
         public List<T_Article> GetWithBlog(long blogId)
         {
             return ArticleCRUD.GetWithBlog(blogId);
